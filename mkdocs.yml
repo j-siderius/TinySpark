@@ -9,17 +9,17 @@ theme:
     name: material
     features:
     	- navigation.tabs
-    	- navigation.instant
+        - navigation.instant
     locale: en
     plugins:
-	- search:
-      		lang: en
-	- with-pdf:
-      		cover_title: TinySpark
-      		cover_subtitle: Tiny board, big predictions
-      		# cover_logo: assets/images/
- 		toc_title: Contents
-      		output_path: pdf/main.pdf
+    - search:
+    	lang: en
+    - with-pdf:
+    	cover_title: TinySpark
+	cover_subtitle: Tiny board, big predictions
+	output_path: pdf/main.pdf 
+	# cover_logo: assets/images/
+	# toc_title: Contents
 
 nav:
     - Home: index.md
@@ -31,12 +31,15 @@ nav:
 #        - Contributing: about/contributing.md
 #        - License: about/license.md
 
+
+# TODO: Fix indentation below in next commit
+
 extra_css:
 #    - css/extra.css
 
 markdown_extensions:
 #    - toc:
-#        permalink: 
+#        permalink:
 #    - attr_list
 #    - def_list
 #    - tables
@@ -49,8 +52,6 @@ markdown_extensions:
 #        user: mkdocs
 #        repo: mkdocs
 #    - mkdocs-click
-
-#copyright: Copyright &copy; 2014 <a href="https://twitter.com/starletdreaming">Tom Christie</a>, Maintained by the <a href="/about/release-notes/#maintenance-team">MkDocs Team</a>.
 
 plugins:
 #    - search
