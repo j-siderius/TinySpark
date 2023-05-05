@@ -7,7 +7,6 @@ repo_url: https://jsiderius.github.io/TinySpark
 
 theme:
   name: material
-  custom_dir: material/.overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -101,6 +100,3 @@ plugins:
 #            user-guide/plugins.md: dev-guide/plugins.md
 #            user-guide/custom-themes.md: dev-guide/themes.md
 #            user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
-
-watch:
-  - mkdocs
