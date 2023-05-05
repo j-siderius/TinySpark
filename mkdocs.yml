@@ -6,14 +6,55 @@ copyright: Copyright &copy; 2023 J Siderius
 repo_url: https://jsiderius.github.io/TinySpark
 
 theme:
-    name: material
-    features:
-    	- navigation.tabs
-        - navigation.instant
-    locale: en
-    plugins:
+  name: material
+  custom_dir: material/.overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+  plugins:
     - search:
     	lang: en
+      	separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
     - with-pdf:
     	cover_title: TinySpark
 	cover_subtitle: Tiny board, big predictions
@@ -22,7 +63,7 @@ theme:
 	# toc_title: Contents
 
 nav:
-    - Home: index.md
+  - Home: index.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
 #    - Developer Guide: dev-guide/
@@ -54,9 +95,12 @@ markdown_extensions:
 #    - mkdocs-click
 
 plugins:
-#    - search
+  - search
 #    - redirects:
 #        redirect_maps:
 #            user-guide/plugins.md: dev-guide/plugins.md
 #            user-guide/custom-themes.md: dev-guide/themes.md
 #            user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
+
+watch:
+  - mkdocs
