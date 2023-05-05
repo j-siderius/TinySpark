@@ -1,0 +1,61 @@
+# Project information
+site_name: TinySpark
+site_description: Tiny board, big predictions.
+site_author: J Siderius
+copyright: Copyright &copy; 2023 J Siderius
+repo_url: https://jsiderius.github.io/TinySpark
+
+theme:
+    name: material
+    features:
+    	- navigation.tabs
+    	- navigation.instant
+    locale: en
+    plugins:
+	- search:
+      		lang: en
+	- with-pdf:
+      		cover_title: TinySpark
+      		cover_subtitle: Tiny board, big predictions
+      		# cover_logo: assets/images/
+ 		toc_title: Contents
+      		output_path: pdf/main.pdf
+
+nav:
+    - Home: index.md
+#    - Getting Started: getting-started.md
+#    - User Guide: user-guide/
+#    - Developer Guide: dev-guide/
+#    - About:
+#        - Release Notes: about/release-notes.md
+#        - Contributing: about/contributing.md
+#        - License: about/license.md
+
+extra_css:
+#    - css/extra.css
+
+markdown_extensions:
+#    - toc:
+#        permalink: 
+#    - attr_list
+#    - def_list
+#    - tables
+#    - pymdownx.highlight:
+#        use_pygments: false
+#    - pymdownx.snippets
+#    - pymdownx.superfences
+#    - callouts
+#    - mdx_gh_links:
+#        user: mkdocs
+#        repo: mkdocs
+#    - mkdocs-click
+
+#copyright: Copyright &copy; 2014 <a href="https://twitter.com/starletdreaming">Tom Christie</a>, Maintained by the <a href="/about/release-notes/#maintenance-team">MkDocs Team</a>.
+
+plugins:
+#    - search
+#    - redirects:
+#        redirect_maps:
+#            user-guide/plugins.md: dev-guide/plugins.md
+#            user-guide/custom-themes.md: dev-guide/themes.md
+#            user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
