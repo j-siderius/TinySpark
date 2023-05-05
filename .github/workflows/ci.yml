@@ -1,0 +1,43 @@
+# Workflow for MkDocs Material deployment
+
+name: MkDocs Material CI
+
+on:
+  # Triggers the workflow on push event but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+# Modify the default permissions to allow file writing
+permissions:
+  contents: write
+
+jobs:
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the current repository for this workflow
+      - uses: actions/checkout@v3
+      # Setup the Python compiling environment with Python 3.x
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      # Cache dependencies and build outputs for quicker execution
+      - uses: actions/cache@v3
+        with:
+          # Update cache with each pull request
+          key: mkdocs-material-${{ github.ref }} 
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      # Install the MkDocs + Material libraries
+      - run: pip install mkdocs-material
+      # Install the MkDocs PDF exporter
+      - run: pip install mkdocs-with-pdf
+      # Build the MkDocs Material site and deploy
+      - run: mkdocs gh-deploy --force
+      
+      
+      
