@@ -93,6 +93,7 @@ markdown_extensions:
 #        repo: mkdocs
 #    - mkdocs-click
   - admonition
+  
   - footnotes
   - pymdownx.details
   - pymdownx.superfences
@@ -105,3 +106,13 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

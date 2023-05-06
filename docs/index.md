@@ -10,7 +10,11 @@ Templates and Snippets for MKDocs
 
 This is some example text, just some words to see what's up with this documentation system, even some sp&cia/ chåräctérs @nd 0th3r ødîti€s!
 
-The document can also contain some **bold** text, or some _italic_ text or some ~~strikethrough~~ text, or some super^script^ or some sub~script~ or some ==highlighted== text.
+The document can also contain some **bold** text, or some _italic_ text or some super^script^ or some sub~script~ or some ==highlighted== text, we can also add some keyboard keys like ++ctrl+alt+del++.
+
+More information on text formatting can be found in the [Formatting reference].
+
+[Formatting reference]:https://squidfunk.github.io/mkdocs-material/reference/formatting/
 
 Additionally, block-quotes can be inserted:
 
@@ -22,19 +26,19 @@ Lists can also be generated, there are two types, Ordered Lists and Unordered li
 
 1. This is the first list item
 2. Another item on the ordered list
-   1. Nested ordered list
-   2. another nested item
+    1. Nested ordered list
+    2. another nested item
 3. Third item in the list
-   - unordered nested list
-   - inside an ordered list
+    - unordered nested list
+    - inside an ordered list
 
 - This is the first unordered item
 - The second item
-  - Nested unordered lists
-  - Another nested item
+    - Nested unordered lists
+    - Another nested item
 - The third unordered item
-  1. Ordered lists inside of unordered lists
-  2. And another ordered item
+    1. Ordered lists inside of unordered lists
+    2. And another ordered item
 
 Next, we might want to add some code to the document. Adding some `inline code` is pretty easy. Alternatively, we can also make a typeless code-block:
 
@@ -49,7 +53,7 @@ Next, we might want to add some code to the document. Adding some `inline code` 
 
 If we want our codeblock to be styled according to a certain coding language, with line highlighting:
 
-``` py hl_lines="2 3"
+``` py hl_lines="3"
 text = "This is some test content"
 
 def codeBlock(content):
@@ -98,19 +102,19 @@ Call-outs can include side stories and other less important or extra content. Mo
 
 !!! note
 
-  This is a admonitium or call-out with the note style, this should be displayed as such.
+    This is a admonitium or call-out with the note style, this should be displayed as such.
 
 These call-outs can also be made collapsible:
 
 ??? info
 
-  This is a collapsed information call-out.
+    This is a collapsed information call-out.
 
 We can also expand this collapsible call-out normally:
 
 ???+ warning
 
-  This is a collapsible warning call-out that is expanded by default.
+    This is a collapsible warning call-out that is expanded by default.
 
 Mathematical equations can be added using the MathJax extension. More information can be found in the [MathJax reference] and the [LaTex math reference].
 
