@@ -32,6 +32,8 @@ Lists can also be generated, there are two types, Ordered Lists and Unordered li
     - unordered nested list
     - inside an ordered list
 
+We need to separate lists either by text or double newlines.
+
 - This is the first unordered item
 - The second item
     - Nested unordered lists
@@ -51,19 +53,21 @@ Next, we might want to add some code to the document. Adding some `inline code` 
   codeblock(text);
 ```
 
-If we want our codeblock to be styled according to a certain coding language, with line highlighting:
+If we want our codeblock to be styled according to a certain coding language, with line highlighting and annotations:
 
 ``` py hl_lines="3"
 text = "This is some test content"
 
 def codeBlock(content):
-  html = content.html
+  html = content.html  # (1)!
   return html
 
 codeBlock(text)
 ```
 
-Or another coding language, with title:
+1.  This is the annotation that will get added to the codeblock above
+
+Or another coding language, with title and annotations:
 
 ``` js title="codeBlock.js"
 let text = "This is some test content"
@@ -121,7 +125,7 @@ Mathematical equations can be added using the MathJax extension. More informatio
 Formulas like $y(x)=2a*bx$ can be added inline. Alternatively, mathematical equations can be added as a code block:
 
 $$
-  f = \sum^{i=0}_{n}x_i*n_i+b^{i+1} \\
+  f = \sum^{i=0}_{n}x_i*n_i+b^{i+1}\\
   \frac{1}{2}*\sqrt(22a+16b^5)
 $$
 

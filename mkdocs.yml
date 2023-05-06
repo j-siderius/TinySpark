@@ -76,8 +76,6 @@ nav:
 #        - License: about/license.md
 
 
-# TODO: Fix indentation below in next commit
-
 extra_css:
 #    - css/extra.css
 
@@ -93,7 +91,6 @@ markdown_extensions:
 #        repo: mkdocs
 #    - mkdocs-click
   - admonition
-  
   - footnotes
   - pymdownx.details
   - pymdownx.superfences
