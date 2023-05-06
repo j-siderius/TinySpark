@@ -52,14 +52,14 @@ theme:
     logo: logo
   plugins:
     - search:
-      lang: en
-      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+        lang: en
+        separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
     - with-pdf:
-      cover_title: TinySpark
-      cover_subtitle: Tiny board, big predictions
-      output_path: pdf/main.pdf 
-      # cover_logo: assets/images/
-      # toc_title: Contents
+        cover_title: TinySpark
+        cover_subtitle: Tiny board, big predictions
+        output_path: pdf/main.pdf 
+        # cover_logo: assets/images/
+        # toc_title: Contents
 
 nav:
   - Home: index.md
