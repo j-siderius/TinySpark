@@ -50,16 +50,21 @@ theme:
   favicon: assets/favicon.png
   icon:
     logo: logo
-  plugins:
-    - search:
-        lang: en
-        separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-    - with-pdf:
-        cover_title: TinySpark
-        cover_subtitle: Tiny board, big predictions
-        output_path: pdf/main.pdf 
-        # cover_logo: assets/images/
-        # toc_title: Contents
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+#    - redirects:
+#        redirect_maps:
+#            user-guide/plugins.md: dev-guide/plugins.md
+#            user-guide/custom-themes.md: dev-guide/themes.md
+#            user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
+  - with-pdf:
+      cover_title: TinySpark
+      cover_subtitle: Tiny board, big predictions
+      output_path: pdf/main.pdf 
+      # cover_logo: assets/images/
+      # toc_title: Contents
 
 nav:
   - Home: index.md
@@ -92,11 +97,3 @@ markdown_extensions:
 #        user: mkdocs
 #        repo: mkdocs
 #    - mkdocs-click
-
-plugins:
-  - search
-#    - redirects:
-#        redirect_maps:
-#            user-guide/plugins.md: dev-guide/plugins.md
-#            user-guide/custom-themes.md: dev-guide/themes.md
-#            user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
