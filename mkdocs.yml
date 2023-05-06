@@ -105,9 +105,12 @@ extra_javascript:
   
 nav:
   - Home: index.md
-  - Second page: second_page.md
-    - Nested home: index.md
-    - Another nested: second_page.md
+  - Second page:
+    - second_page.md
+    - Nested page: index.md
+  - Another page:
+    - Second nested: second_page.md
+    - Another nested page: index.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
 #    - Developer Guide: dev-guide/
