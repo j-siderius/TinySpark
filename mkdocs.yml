@@ -65,17 +65,6 @@ plugins:
       # cover_logo: assets/images/
       # toc_title: Contents
 
-nav:
-  - Home: index.md
-#    - Getting Started: getting-started.md
-#    - User Guide: user-guide/
-#    - Developer Guide: dev-guide/
-#    - About:
-#        - Release Notes: about/release-notes.md
-#        - Contributing: about/contributing.md
-#        - License: about/license.md
-
-
 extra_css:
 #    - css/extra.css
 
@@ -113,3 +102,16 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
+nav:
+  - Home: index.md
+  - Second page: second_page.md
+    - Nested home: index.md
+    - Another nested: second_page.md
+#    - Getting Started: getting-started.md
+#    - User Guide: user-guide/
+#    - Developer Guide: dev-guide/
+#    - About:
+#        - Release Notes: about/release-notes.md
+#        - Contributing: about/contributing.md
+#        - License: about/license.md
