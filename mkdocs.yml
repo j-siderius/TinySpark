@@ -3,7 +3,7 @@ site_name: TinySpark
 site_description: Tiny board, big predictions.
 site_author: J Siderius
 copyright: Copyright &copy; 2023 J Siderius
-repo_url: https://jsiderius.github.io/TinySpark
+# repo_url: https://jsiderius.github.io/TinySpark
 
 theme:
   name: material
@@ -19,31 +19,30 @@ theme:
     # - navigation.expand
     - navigation.footer
     - navigation.indexes
-    # - navigation.instant
-    # - navigation.prune
-    - navigation.sections
+    - navigation.instant
+    # - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
-    - search.share
+    # - search.share
     - search.suggest
     - toc.follow
-    # - toc.integrate
+    - toc.integrate
   palette:
     - scheme: default
       primary: blue
       accent: blue
       toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+        icon: material/brightness-3
+        name: Switch to light mode
     - scheme: slate
       primary: blue
       accent: blue
       toggle:
-        icon: material/brightness-3
-        name: Switch to light mode
+        icon: material/brightness-7
+        name: Switch to dark mode
   font:
     text: Roboto
     code: Roboto Mono
@@ -88,12 +87,21 @@ markdown_extensions:
 #    - attr_list
 #    - def_list
 #    - tables
-#    - pymdownx.highlight:
-#        use_pygments: false
-#    - pymdownx.snippets
-#    - pymdownx.superfences
 #    - callouts
 #    - mdx_gh_links:
 #        user: mkdocs
 #        repo: mkdocs
 #    - mkdocs-click
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
