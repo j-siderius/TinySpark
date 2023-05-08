@@ -31,24 +31,26 @@ theme:
     - toc.follow
     - toc.integrate
   palette:
-    - scheme: default
-      primary: blue
-      accent: blue
-      toggle:
-        icon: material/brightness-3
-        name: Switch to light mode
-    - scheme: slate
-      primary: blue
-      accent: blue
+    - media: "(prefers-color-scheme: light)"
+      scheme: slate
+      primary: indigo
+      accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: default
+      primary: blue
+      accent: teal
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
   font:
-    text: Roboto
+    text: Noto Serif
     code: Roboto Mono
   favicon: assets/favicon.png
-  icon:
-    logo: logo
+  logo: assets/logo.png
+
 plugins:
   - search:
       lang: en
@@ -63,7 +65,8 @@ plugins:
       cover_subtitle: Tiny board, big predictions
       output_path: pdf/main.pdf 
       # cover_logo: assets/images/
-      # toc_title: Contents
+      # render-js: true  # !! Possibly needed to export formulas, check documentation at https://pypi.org/project/mkdocs-with-pdf/
+  - charts
 
 extra_css:
 #    - css/extra.css
@@ -83,6 +86,10 @@ markdown_extensions:
   - footnotes
   - pymdownx.details
   - pymdownx.superfences
+    custom_fences:
+          - name: vegalite
+            class: vegalite
+            format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -102,6 +109,9 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
   
 nav:
   - Home: index.md
