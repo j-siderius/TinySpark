@@ -1,11 +1,18 @@
+---
+hide: 
+    - toc
+    - navigation
+---
+
 # TinySpark
-### Teaching Tiny Machine Learning
+
+ Teaching Tiny Machine Learning
 
 ---
 
 Welcome to **TinySpark**, the online learning platform that teaches you how to create smart machine learning applications on tiny devices. 
 
-TinyML is an emerging field of technology that combines deep learning and embedded systems to enable artificial intelligence on resource-constrained hardware. It has many applications in various domains, such as ariculture, environmental sensing, speech recognition, healthcare and more.
+TinyML is an emerging field of technology that combines deep learning and embedded systems to enable artificial intelligence on resource-constrained hardware. It has many applications in various domains, such as agriculture, environmental sensing, speech recognition, healthcare and more.
 
 On the platform, you will interactively learn the basics of neural networks, how to train them, and how to use libraries and tools such as [Tensorflow] to compress and optimize them for TinyML. You will learn how to fully develop and deploy machine learning networks.
 
