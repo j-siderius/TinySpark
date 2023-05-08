@@ -87,9 +87,12 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
     custom_fences:
-          - name: vegalite
-            class: vegalite
-            format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+      - name: vegalite
+        class: vegalite
+        format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -115,12 +118,9 @@ extra_javascript:
   
 nav:
   - Home: index.md
-  - Second page:
-    - second_page.md
-    - Nested page: index.md
-  - Another page:
-    - Second nested: second_page.md
-    - Another nested page: index.md
+  - Chapter 1:
+    - Introduction: second_page.md
+  - Templates: templates.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
 #    - Developer Guide: dev-guide/
