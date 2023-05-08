@@ -85,14 +85,18 @@ markdown_extensions:
   - admonition
   - footnotes
   - pymdownx.details
-  - pymdownx.superfences
-    custom_fences:
-      - name: vegalite
-        class: vegalite
-        format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
-      - name: mermaid
-        class: mermaid
-        format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+      # custom_fences:
+        - name: vega  lite
+          class: vegalite
+          format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite   
+      #   - name: mermaid
+      #     class: mermaid
+      #     format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
