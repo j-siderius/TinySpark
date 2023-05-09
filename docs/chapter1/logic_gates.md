@@ -29,10 +29,12 @@ $$
 Now try if the neuron from the [previous section](neuron.md) does the trick:
 
 $$
+\displaylines{
 \text{input 1}=0\\
 \text{input 2}=0\\
 \text{weight 1}=0.3\\
 \text{weight 2}=0.9\\
+}
 $$
 
 $$
@@ -42,9 +44,11 @@ $$
 That looks promising, let's try the other input combinations:
 
 $$
+\displaylines{
 \text{output}=f(0*0.3+1*0.9)=1 \\
 \text{output}=f(1*0.3+0*0.9)=0 \\
 \text{output}=f(1*0.3+1*0.9)=1 \\
+}
 $$
 
 We are almost there, however with the inputs $1,0$ we get the wrong output of $0$, which should be $1$ (according to our logic table above).
@@ -75,13 +79,15 @@ In neural networks, we normally want to change the weights, and only change the 
 In order to trigger the activation function, the sum for inputs $1,0$ needs to be higher than or equal to 0.5 in order to trigger $f(x)$. If we increase $\text{weight 1}=0.5$ for example, let's recalculate all outputs and see if our 'network' is correct.
 
 $$
+\displaylines{
 \text{output}=f(0*0.5+0*0.9)=0 \\
 \text{output}=f(0*0.5+1*0.9)=1 \\
 \text{output}=f(1*0.5+0*0.9)=1 \\
 \text{output}=f(1*0.5+1*0.9)=1 \\
+}
 $$
 
-Let's program this into a simple Python script.
+Let's program this into a simple Python script. To make sure that we cover all possible inputs our OR-gate might receive, we will store those inside of an array. We will then loop over all possible inputs and create an output for each.
 
 ```python title="single_neuron_OR_gate.py"
 inputs = [

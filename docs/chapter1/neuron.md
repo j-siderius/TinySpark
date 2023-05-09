@@ -42,10 +42,12 @@ $$
 Now let's calculate the output for the following inputs and weights:
 
 $$
+\displaylines{
 \text{input 1}=0.2\\
 \text{input 2}=0.8\\
 \text{weight 1}=0.3\\
 \text{weight 2}=0.9\\
+}
 $$
 
 $$
