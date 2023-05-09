@@ -126,6 +126,7 @@ nav:
     - Introduction: chapter1/introduction.md
     - Neuron: chapter1/neuron.md
     - Logic gates: chapter1/logic_gates.md
+    - Logic gates on micro: chapter1/logic_gates_on_micro.md
   - Templates: templates.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
