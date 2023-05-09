@@ -7,6 +7,8 @@ copyright: Copyright &copy; 2023 J Siderius
 
 theme:
   name: material
+  logo: img/logo.png
+  favicon: img/favicon.ico
   features:
     - announce.dismiss
     - content.action.edit
