@@ -123,7 +123,8 @@ extra_javascript:
 nav:
   - Home: index.md
   - Chapter 1:
-    - Introduction: second_page.md
+    - Introduction: chapter1/introduction.md
+    - Neuron: chapter1/neuron.md
   - Templates: templates.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
