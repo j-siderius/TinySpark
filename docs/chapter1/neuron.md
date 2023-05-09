@@ -11,6 +11,8 @@ The neuron is at the heart of every neural network, it provides all computation 
 
 The inputs of a neuron come in many different shapes and sizes (literally). A neuron could receive just one single input, or be connected to more than 500 different inputs. The inputs to a neuron are always numeric (since we are essentially working with one giant mathematical formula), so complex inputs like sound or images have to be split into many different parts (e.g. milliseconds of sound or pixels in an image). These can then be fed into the input of a network.
 
+---
+
 Let's now look at an example neuron, and how inputs travel through it; suppose we have a neuron with two inputs, two weights and a simple threshold function. We will compute the output of this neuron.
 
 ```mermaid
@@ -27,7 +29,7 @@ $$
 
 The activation function which comes after the inputs can be a simple threshold function that fires if the input signals exceed a certain value, or a more complex function that can capture nonlinear relationships between inputs and outputs. Some common activation functions are sigmoid, tanh, ReLU and softmax, which will be covered in later chapters.
 
-Now, our neuron needs to be _activated_ by running the sum through the chosen activation function. We choose a simple threshold function:
+Now, our neuron needs to be _activated_ by running the sum through the chosen activation function. We choose a simple threshold function. If the sum of the neuron is $0.5$ or higher, we output $1$, otherwise we output $0$.
 
 $$ 
 f(x) =
@@ -40,10 +42,10 @@ $$
 Now let's calculate the output for the following inputs and weights:
 
 $$
-\text{input 1}=0.2 \\
-\text{input 2}=0.8 \\
-\text{weight 1}=0.3 \\
-\text{weight 2}=0.9 \\
+\text{input 1}=0.2\\
+\text{input 2}=0.8\\
+\text{weight 1}=0.3\\
+\text{weight 2}=0.9\\
 $$
 
 $$
@@ -54,7 +56,7 @@ $$
 f(0.78)=1
 $$
 
-Thus, the output for the neuron in our example would be $1$. Putting this into a simple Python script:
+Thus, the output for the neuron in our example would be $1$. Let's program this into a simple Python script.
 
 ```python title="single_neuron.py"
 input1 = 0.2
@@ -68,7 +70,9 @@ if sum >= 0.5:
 else:
     activation = 0
 
-activation
+print(activation)
 
 => 1
 ```
+
+In the next section, we will have a look at actually predicting something with the neuron that we just created.

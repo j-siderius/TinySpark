@@ -125,6 +125,7 @@ nav:
   - Chapter 1:
     - Introduction: chapter1/introduction.md
     - Neuron: chapter1/neuron.md
+    - Logic gates: chapter1/logic_gates.md
   - Templates: templates.md
 #    - Getting Started: getting-started.md
 #    - User Guide: user-guide/
