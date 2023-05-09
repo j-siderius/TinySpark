@@ -25,6 +25,8 @@ while 1:
         print("button2 pressed")
 ```
 
+![TinyML development baord](../img/devboard.png)
+
 Now let's implement the logic from our last section, and build the neuron 'network' into our development board code.
 
 ```python title="devboard_OR_gate.py"
