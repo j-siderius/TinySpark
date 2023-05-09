@@ -18,7 +18,7 @@ On the platform, you will interactively learn the basics of neural networks, how
 
 To follow along with the projects and examples, you will need a TinySpark development board, which is a tiny device that packs enough processing power and sensors to start your TinyML journey!
 
-![TinyML development baord](../docs/img/devboard.png)
+![TinyML development baord](img/devboard.png)
 
 <!-- sources -->
 [Tensorflow]: https://www.tensorflow.org/overview
