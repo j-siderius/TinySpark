@@ -108,4 +108,4 @@ for input in inputs:
 => [1, 1]   1
 ```
 
-You programmed your first neuron-network!
+You hand-programmed your first neuron-network!
