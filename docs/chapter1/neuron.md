@@ -11,23 +11,23 @@ The neuron is at the heart of every neural network, it provides all computation 
 
 The inputs of a neuron come in many different shapes and sizes (literally). A neuron could receive just one single input, or be connected to more than 500 different inputs. The inputs to a neuron are always numeric (since we are essentially working with one giant mathematical formula), so complex inputs like sound or images have to be split into many different parts (e.g. milliseconds of sound or pixels in an image). These can then be fed into the input of a network.
 
-The activation function which comes after the inputs can be a simple threshold function that fires if the input signals exceed a certain value, or a more complex function that can capture nonlinear relationships between inputs and outputs. Some common activation functions are sigmoid, tanh, ReLU and softmax, which will be covered in later chapters.
-
-Let's now look at an example neuron, and how inputs travel through it; suppose we have a neuron with two inputs and a simple threshold function. We will compute the output of this neuron.
+Let's now look at an example neuron, and how inputs travel through it; suppose we have a neuron with two inputs, two weights and a simple threshold function. We will compute the output of this neuron.
 
 ```mermaid
     graph LR
-    A((input 1)) --> B[Neuron]
-    C((input 2)) --> B
+    A((input 1)) -- weight 1 --> B[Neuron]
+    C((input 2)) -- weight 2 --> B
 ```
 
-The first step in computation of the output is to sum the inputs together:
+The first step in computation of the output is to sum the inputs together with the weights:
 
 $$
-\sum \text{inputs} = \text{input 1} + \text{input 2} 
+\sum \text{inputs}*\text{weights} = \text{input 1} * \text{weight 1} + \text{input 2} * \text{weight 2}
 $$
 
-Next, the neuron needs to be _activated_ by running the sum through the chosen activation function. We choose a simple threshold function:
+The activation function which comes after the inputs can be a simple threshold function that fires if the input signals exceed a certain value, or a more complex function that can capture nonlinear relationships between inputs and outputs. Some common activation functions are sigmoid, tanh, ReLU and softmax, which will be covered in later chapters.
+
+Now, our neuron needs to be _activated_ by running the sum through the chosen activation function. We choose a simple threshold function:
 
 $$ 
 f(x) =
@@ -37,4 +37,38 @@ f(x) =
 \end{cases}
 $$
 
+Now let's calculate the output for the following inputs and weights:
 
+$$
+\text{input 1}=0.2 \\
+\text{input 2}=0.8 \\
+\text{weight 1}=0.3 \\
+\text{weight 2}=0.9 \\
+$$
+
+$$
+\sum \text{inputs}*\text{weights} = 0.2 * 0.3 + 0.8 * 0.9 = 0.78 \\
+$$
+
+$$
+f(0.78)=1
+$$
+
+Thus, the output for the neuron in our example would be $1$. Putting this into a simple Python script:
+
+```python title="single_neuron.py"
+input1 = 0.2
+input2 = 0.8
+weight1 = 0.3
+weight2 = 0.9
+
+sum = (input1 * weight1) + (input2 * weight2)
+if sum >= 0.5:
+    activation = 1
+else:
+    activation = 0
+
+activation
+
+=> 1
+```
