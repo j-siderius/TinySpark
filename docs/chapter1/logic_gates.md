@@ -2,12 +2,12 @@
 
 A logic gate (in electronics), is a device which performs logical operations using binary logic. Logic gates are the fundaments of modern processors, enabling chips to store data using Latches[^1], perform binary calculations using Arithmic Logic Units[^2] and much more.
 
-[^1]:https://en.wikipedia.org/wiki/Flip-flop_(electronics)
-[^2]: https://en.wikipedia.org/wiki/Arithmetic_logic_unit
+[^1]: <https://en.wikipedia.org/wiki/Flip-flop_(electronics)>
+[^2]: <https://en.wikipedia.org/wiki/Arithmetic_logic_unit>
 
 In this first Mini-project, we will build a single-neuron 'network' to replicate the behaviour of an OR logic gate[^3]. The OR gate will activate whenever either of it's inputs reads HIGH (or 1 in our case).
 
-[^3]: https://en.wikipedia.org/wiki/OR_gate
+[^3]: <https://en.wikipedia.org/wiki/OR_gate>
 
 The logic table for an OR gate looks like this:
 
