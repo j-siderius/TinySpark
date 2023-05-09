@@ -27,7 +27,7 @@ while 1:
 
 Now let's implement the logic from our last section, and build the neuron 'network' into our development board code.
 
-```python devboard_OR_gate.py
+```python title="devboard_OR_gate.py"
 # import the library to take care of our pins
 from machine import Pin
 
