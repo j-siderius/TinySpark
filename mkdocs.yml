@@ -127,11 +127,7 @@ nav:
     - Neuron: chapter1/neuron.md
     - Logic gates: chapter1/logic_gates.md
     - Logic gates on micro: chapter1/logic_gates_micro.md
+  - About: 
+    - Project: about/project.md
+    - License: about/license.md
   - Templates: templates.md
-#    - Getting Started: getting-started.md
-#    - User Guide: user-guide/
-#    - Developer Guide: dev-guide/
-#    - About:
-#        - Release Notes: about/release-notes.md
-#        - Contributing: about/contributing.md
-#        - License: about/license.md
