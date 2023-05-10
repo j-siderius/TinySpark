@@ -90,7 +90,7 @@ We can divide some content using a horizontal rule:
 (External) content can be [linked] to websites or other [pages] of the website.
 
 [linked]: https://google.com
-[pages]: second_page.md
+[pages]: index.md
 
 Images and ![other graphics] get added in a similar way.
 
@@ -98,7 +98,7 @@ Images and ![other graphics] get added in a similar way.
 
 If a citation is needed, footnotes[^1] and other citations can be added.
 
-[^1]: second_page.md
+[^1]: https://google.com
 
 Call-outs can include side stories and other less important or extra content. More info can be found in the [Admonitions reference].
 
