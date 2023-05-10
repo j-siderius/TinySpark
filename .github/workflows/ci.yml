@@ -3,9 +3,15 @@
 name: MkDocs Material CI
 
 on:
-  # Triggers the workflow on push event but only for the "main" branch
+  # Triggers the workflow when a new push action is detected
   push:
-    branches: [ "main" ]
+    # Filter to make sure to only run when pushes to main are detected
+    branches: 
+      - 'main'
+    # Filter to make sure to only run on page or config change
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
