@@ -89,6 +89,8 @@ $$
 
 Let's program this into a simple Python script. To make sure that we cover all possible inputs our OR-gate might receive, we will store those inside of an array. We will then loop over all possible inputs and create an output for each.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)
+
 ```python title="single_neuron_OR_gate.py"
 inputs = [
     [0, 0],
@@ -114,4 +116,6 @@ for input in inputs:
 => [1, 1]   1
 ```
 
-You hand-programmed your first neuron-network!
+You hand-programmed your first neuron-network, try to open the Python code in Colab and play around with the values for the weights to see how they change the outcome of the different inputs.
+
+In the next section, we will deploy this network to our TinySpark development board, in order to experience how to expand our neuron 'network' beyond the screen.

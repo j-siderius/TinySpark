@@ -79,6 +79,10 @@ function code_block(content) => {
 code_block(text)
 ```
 
+A 'Open in Colab' badge can be added as follows:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx)
+
 More information can be found in the [Code reference].
 
 [Code reference]: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
