@@ -64,7 +64,7 @@ The output of our neuron, with the given inputs would be $1$.
 
 If we now implement this into a simple Python script, it could look like this:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=Ktv4RpKJP8mR)
+[![Open In Colab](../img/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=Ktv4RpKJP8mR)
 
 ```python title="single_neuron.py"
 input1 = 0.2
