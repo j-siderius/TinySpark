@@ -13,11 +13,11 @@ The TinySpark platform is divided into several chapters:
 - [Chapter 5: Datatypes and more Projects]
 
 <!-- sources -->
-[Chapter 1: Introduction to neurons]:chapter1/introduction.md
-[Chapter 2: Networks and structures]:index.md
-[Chapter 3: Training networks]:index.md
-[Chapter 4: Large models and Input shaping]:index.md
-[Chapter 5: Datatypes and more Projects]:index.md
+[Chapter 1: Introduction to neurons]:../chapter1/introduction.md
+[Chapter 2: Networks and structures]:../index.md
+[Chapter 3: Training networks]:../index.md
+[Chapter 4: Large models and Input shaping]:../index.md
+[Chapter 5: Datatypes and more Projects]:../index.md
 
 These chapters will introduce various concepts within (Tiny) Machine Learning in an engaging, interactive and project-based way. They can be accessed by clicking on the chapters here, or on the navigation bar at the top of the page.
 

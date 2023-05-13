@@ -81,7 +81,7 @@ code_block(text)
 
 A 'Open in Colab' badge can be added as follows:
 
-[![Open In Colab](../docs/img/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)
+[![Open In Colab](/docs/img/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)
 
 More information can be found in the [Code reference].
 
@@ -138,30 +138,6 @@ $$
 
 [MathJax reference]: https://squidfunk.github.io/mkdocs-material/reference/mathjax
 [LaTex math reference]: https://en.wikibooks.org/wiki/LaTeX/Mathematics
-
-Charts can be added using the Vega-Lite plugin, more on that in the [Chart plugin reference] and the [Vega-Lite examples].
-
-```vegalite
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A simple bar chart with embedded data.",
-  "data": {
-    "values": [
-      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
-      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
-      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
-    ]
-  },
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
-    "y": {"field": "b", "type": "quantitative"}
-  }
-}
-```
-
-[Chart plugin reference]: https://github.com/timvink/mkdocs-charts-plugin
-[Vega-Lite syntax reference]: https://vega.github.io/vega-lite/examples/
 
 We can also add some diagrams using the Mermaid.js library. More info on the [Mermaid.js examples] or the [Diagram reference]
 

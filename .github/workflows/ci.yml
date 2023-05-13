@@ -42,8 +42,6 @@ jobs:
       - run: pip install mkdocs-material
       # Install the MkDocs PDF exporter
       - run: pip install mkdocs-with-pdf
-      # Install the chart plugin
-      - run: pip3 install mkdocs-charts-plugin
       # Build the MkDocs Material site and deploy
       - run: mkdocs gh-deploy --force
       
