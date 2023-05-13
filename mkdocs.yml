@@ -3,7 +3,7 @@ site_name: TinySpark
 site_description: Tiny board, big predictions.
 site_author: J Siderius
 copyright: Copyright &copy; 2023 J Siderius
-repo_url: https://jsiderius.github.io/TinySpark
+repo_url: https://github.com/j-siderius/TinySpark
 
 theme:
   name: material
@@ -122,6 +122,11 @@ extra_javascript:
   
 nav:
   - Home: index.md
+  - TinySpark:
+    - Introduction: kit/introduction.md
+    - Platform: kit/platform.md
+    - TinyML development kit: kit/devkit.md
+    - Programming: kit/programming.md
   - Chapter 1:
     - Introduction: chapter1/introduction.md
     - Neuron: chapter1/neuron.md
