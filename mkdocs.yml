@@ -3,6 +3,8 @@ site_name: TinySpark
 site_description: Tiny board, big predictions.
 site_author: J Siderius
 copyright: Copyright &copy; 2023 J Siderius
+
+repo_name: j-siderius/TinySpark
 repo_url: https://github.com/j-siderius/TinySpark
 
 theme:
