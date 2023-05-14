@@ -9,8 +9,7 @@ repo_url: https://github.com/j-siderius/TinySpark
 
 theme:
   name: material
-  logo: assets/images/logo.png
-  favicon: assets/images/favicon.ico
+  logo: assets/logo.png
   features:
     - announce.dismiss
     # - content.action.edit
