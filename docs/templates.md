@@ -81,7 +81,7 @@ code_block(text)
 
 A 'Open in Colab' badge can be added as follows:
 
-[![Open In Colab](/docs/img/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)
+[![Open In Colab](assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)
 
 More information can be found in the [Code reference].
 

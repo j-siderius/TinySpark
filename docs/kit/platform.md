@@ -28,7 +28,7 @@ The TinySpark platform uses several methods to teach, for example using textual 
 
 Code snippets will be introduced in the following manner:
 
-[![Open In Colab](../img/colab-badge.svg)](https://colab.research.google.com/drive/1AoRa8GUn_qJEkL_W6yFm9ECDFSHOD0yD)
+[![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1AoRa8GUn_qJEkL_W6yFm9ECDFSHOD0yD)
 
 ```python title="test_code.py"
 # This is some Python code

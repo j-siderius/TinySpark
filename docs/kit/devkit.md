@@ -1,19 +1,19 @@
 # TinySpark Development kit
 
-The TinySpark Development kit is a development board specifically tailored to exploration of TinyML concepts and test possible applications in an easy manner. It is based on the popular ESP32-S3 chipset, which is perfect for TinyML applications, because of it's fast processor speed and relatively large storage. Additionally it has Bluetooth 5 and WiFi capabilities, making it easy to share sensor data and warn users in case of anomalies. You can learn more about this chip on it's [datasheet](../datasheets/esp32-s3-wroom-1.pdf).
+The TinySpark Development kit is a development board specifically tailored to exploration of TinyML concepts and test possible applications in an easy manner. It is based on the popular ESP32-S3 chipset, which is perfect for TinyML applications, because of it's fast processor speed and relatively large storage. Additionally it has Bluetooth 5 and WiFi capabilities, making it easy to share sensor data and warn users in case of anomalies. You can learn more about this chip on it's [datasheet](../assets/datasheets/esp32-s3-wroom-1.pdf).
 
-![TinyML Development kit](../img/devboard.png)
+![TinyML Development kit](../assets/images/devboard.png)
 
 The TinyML Development kit contains a selection of sensors which enable direct deployment for various tasks, as well as expansion options to adapt to your specific projects.
 
 The Development kit contains the following sensors:
 
-- **Inertial motion sensor**: this sensor measures both the angular motion using a gyroscope, as well as the acceleration using a accelerometer. The LSM6DS3TR-C sensor is used, [datasheet](../datasheets/lsm6ds3tr-c.pdf).
-- **Microphone**: this sensor measures the amplitude and pitch of sound. The ICS-43434 sensor is used, [datasheet](../datasheets/ics-43434.pdf).
-- **Light and Distance sensor**: this sensor measures the ambient light level, as well as short-range distance. The APDS-9930 sensor is used, [datasheet](../datasheets/apds-9930.pdf).
-- **Hall effect sensor**: this sensor measures the magnetic field around it's axis. The AH-49E sensor is used, [datasheet](../datasheets/ah-49e.pdf).
-- **Environmental sensor**: this sensor measures multiple environmental parameters; temperature, relative humidity as well as atmospheric pressure. The BME-280 sensor is used, [datasheet](../datasheets/bme-280.pdf).
-- **Infrared receiver**: this sensor receives infrared signals, for example from a remote control. The IRM-H638T-TR2 sensor is used, [datasheet](../datasheets/irm-h638t-tr2.pdf).
+- **Inertial motion sensor**: this sensor measures both the angular motion using a gyroscope, as well as the acceleration using a accelerometer. The LSM6DS3TR-C sensor is used, [datasheet](../assets/datasheets/lsm6ds3tr-c.pdf).
+- **Microphone**: this sensor measures the amplitude and pitch of sound. The ICS-43434 sensor is used, [datasheet](../assets/datasheets/ics-43434.pdf).
+- **Light and Distance sensor**: this sensor measures the ambient light level, as well as short-range distance. The APDS-9930 sensor is used, [datasheet](../assets/datasheets/apds-9930.pdf).
+- **Hall effect sensor**: this sensor measures the magnetic field around it's axis. The AH-49E sensor is used, [datasheet](../assets/datasheets/ah-49e.pdf).
+- **Environmental sensor**: this sensor measures multiple environmental parameters; temperature, relative humidity as well as atmospheric pressure. The BME-280 sensor is used, [datasheet](../assets/datasheets/bme-280.pdf).
+- **Infrared receiver**: this sensor receives infrared signals, for example from a remote control. The IRM-H638T-TR2 sensor is used, [datasheet](../assets/datasheets/irm-h638t-tr2.pdf).
 
 Furthermore, the Development kit contains some other components:
 
