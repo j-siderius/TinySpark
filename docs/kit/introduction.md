@@ -6,7 +6,7 @@ These pages give a quick overview of the TinySpark kit.
 
 ## Overview of the kit
 
-![TinySpark kit](/docs/img/devboard.png)
+![TinySpark kit](../img/devboard.png)
 
 The TinySpark kit contains the following:
 

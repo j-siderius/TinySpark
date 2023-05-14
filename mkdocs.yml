@@ -7,8 +7,8 @@ repo_url: https://github.com/j-siderius/TinySpark
 
 theme:
   name: material
-  logo: img/logo.png
-  favicon: img/favicon.ico
+  logo: ../img/logo.png
+  favicon: ../img/favicon.ico
   features:
     - announce.dismiss
     - content.action.edit
@@ -109,7 +109,7 @@ extra_javascript:
   
 nav:
   - Home: index.md
-  - TinySpark:
+  - TinySpark kit:
     - Introduction: kit/introduction.md
     - Platform: kit/platform.md
     - TinyML development kit: kit/devkit.md
