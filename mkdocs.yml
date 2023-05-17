@@ -121,6 +121,8 @@ nav:
     - Neuron: chapter1/neuron.md
     - Logic gates: chapter1/logic_gates.md
     - Logic gates on micro: chapter1/logic_gates_micro.md
+  - Chapter 2:
+    - Introduction: chapter2/introduction.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
