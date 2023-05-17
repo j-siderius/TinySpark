@@ -4,6 +4,8 @@ hide:
     - navigation
 ---
 
+<style> .md-footer__inner:not([hidden]) { display: none } </style>
+
 # TinySpark
 
  Teaching Tiny Machine Learning
