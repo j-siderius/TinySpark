@@ -1,10 +1,9 @@
 ---
 hide: 
-    - toc
     - navigation
 ---
 
-<style> .md-footer__inner:not([hidden]) { display: none } </style>
+<style> .md-footer__link--prev:not([hidden]) { display: none } </style>
 
 # TinySpark
 

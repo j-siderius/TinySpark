@@ -4,7 +4,7 @@ hide:
     - navigation
 ---
 
-<style> .md-footer__inner:not([hidden]) { display: none } </style>
+<style> .md-footer__link--next:not([hidden]) { display: none } </style>
 
 # TinySpark licenses
 
