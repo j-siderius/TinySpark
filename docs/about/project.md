@@ -1,8 +1,3 @@
----
-hide: 
-    - navigation
----
-
 <style> .md-footer__link--prev:not([hidden]) { display: none } </style>
 
 # TinySpark

@@ -1,9 +1,3 @@
----
-hide: 
-    - toc
-    - navigation
----
-
 <style> .md-footer__link--next:not([hidden]) { display: none } </style>
 
 # TinySpark licenses
