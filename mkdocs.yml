@@ -111,7 +111,7 @@ extra_javascript:
   
 nav:
   - Home: index.md
-  - TinySpark kit:
+  - TinySpark:
     - Introduction: kit/introduction.md
     - Platform: kit/platform.md
     - TinyML development kit: kit/devkit.md
@@ -123,6 +123,7 @@ nav:
     - Logic gates on micro: chapter1/logic_gates_micro.md
   - Chapter 2:
     - Introduction: chapter2/introduction.md
+    - The neuron problem: chapter2/network_connections.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
