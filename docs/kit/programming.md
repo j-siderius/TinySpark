@@ -1,3 +1,5 @@
+<style> .md-footer__link--next:not([hidden]) { display: none } </style>
+
 # Programming the TinyML Development kit
 
 The TinyML Development kit uses the [MicroPython] programming language. This is fork of the popular Python 3 programming language, which brings simple to understand syntax of Python to microcontroller such as our TinyML Development kit.

@@ -1,10 +1,10 @@
+<style> .md-footer__link--prev:not([hidden]) { display: none } </style>
+
 # Introducing the TinySpark kit
 
 These pages give a quick overview of the TinySpark kit.
 
 ---
-
-## Overview of the kit
 
 ![TinySpark kit](../assets/images/devboard.png)
 

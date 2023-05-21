@@ -1,3 +1,5 @@
+<style> .md-footer__link--prev:not([hidden]) { display: none } </style>
+
 # Chapter 1 - Introduction to ML
 
 A neural network is a computational model that mimics the structure and function of biological neurons. A neuron is a basic unit of a neural network that can receive, process and transmit information. In this chapter, we will explain how neurons work and how they are connected in a neural network.

@@ -4,6 +4,8 @@ hide:
     - navigation
 ---
 
+<style> .md-footer__inner:not([hidden]) { display: none } </style>
+
 # TinySpark
 
 The TinySpark project is created by J Siderius, as part of the Bachelor Thesis for Creative Technology in 2023.
