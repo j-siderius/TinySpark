@@ -1,4 +1,4 @@
-# Fully-connected Neural Network
+# XOR gates
 
 In the first chapter, Logic gates were introduced. The mini-project programmed a OR gate in Python, and later implemented it onto the TinySpark development board.
 
@@ -34,25 +34,37 @@ To calculate the output of the network with the given weights and inputs $0,1$, 
 
 $$
 \displaylines{
-\text{output_hidden1}=f(0*0.2+1*0.3)=0
-\text{output_hidden2}=f(0*0.5+1*0.6)=1
-\text{output}=f(0*0.8+1*0.9)=1
+\text{output_hidden1}=f(0*0.2+1*0.3)=0\\
+\text{output_hidden2}=f(0*0.5+1*0.6)=1\\
+\text{output}=f(0*0.8+1*0.9)=1\\
 }
 $$
 
-Calculating the outputs for all input combinations looks a lot more complicated than in the previous chapter:
+Calculating the outputs for all input combinations is now a little more complicated than in the previous chapter:
 
 $$
 \displaylines{
-\text{output(0,0)}=f(f(0*0.2+0*0.3)*0.8+f(0*0.5+0*0.6)*0.9)=0
-\text{output(0,1)}=f(f(0*0.2+1*0.3)*0.8+f(0*0.5+1*0.6)*0.9)=1
-\text{output(1,0)}=f(f(1*0.2+0*0.3)*0.8+f(1*0.5+0*0.6)*0.9)=1
-\text{output(1,1)}=f(f(1*0.2+1*0.3)*0.8+f(1*0.5+1*0.6)*0.9)=1
+\text{output(0,0)}=f(f(0*0.2+0*0.3)*0.8+f(0*0.5+0*0.6)*0.9)=0\\
+\text{output(0,1)}=f(f(0*0.2+1*0.3)*0.8+f(0*0.5+1*0.6)*0.9)=1\\
+\text{output(1,0)}=f(f(1*0.2+0*0.3)*0.8+f(1*0.5+0*0.6)*0.9)=1\\
+\text{output(1,1)}=f(f(1*0.2+1*0.3)*0.8+f(1*0.5+1*0.6)*0.9)=1\\
 }
 $$
 
-Now the inputs $1,1$ give the incorrect output of 1, so again the weights need to be tweaked. In the last chapter, the weight tweaking was performed through intuition, however in this more complicated network, this becomes harder. If the networks grow even bigger, intuitively determining the change in weights needed to achieve the correct outputs turns into an impossible task.
+Now the inputs $1,1$ give the incorrect output of $1$, so again the weights need to be tweaked. Compared to the neuron in the last chapter, tweaking becomes more complicated in this network. Breaking down the calculation into small steps to see where the error occurs is a good way to start.
+
+$$
+\displaylines{
+\text{output_hidden1}=f(1*0.2+1*0.3)=1\\
+\text{output_hidden2}=f(1*0.5+1*0.6)=1\\
+\text{output}=f(1*0.8+1*0.9)=1\\
+}
+$$
+
+To ensure the correct output of $0$, the final calculation for $output$ needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$).
+
+<!-- Now the inputs $1,1$ give the incorrect output of 1, so again the weights need to be tweaked. In the last chapter, the weight tweaking was performed through intuition, however in this more complicated network, this becomes harder. If the networks grow even bigger, intuitively determining the change in weights needed to achieve the correct outputs turns into an impossible task.
 
 That's why in the next chapter, a new mathematical approach will be introduced to compute the needed changes to all weights.
 
-**TODO: change text to still manually adjust, this chapter is just to introduce MLPs / FCNNs**
+**TODO: change text to still manually adjust, this chapter is just to introduce MLPs / FCNNs** -->

@@ -123,7 +123,8 @@ nav:
     - Logic gates on micro: chapter1/logic_gates_micro.md
   - Chapter 2:
     - Introduction: chapter2/introduction.md
-    - The neuron problem: chapter2/network_connections.md
+    - Network connections: chapter2/network_connections.md
+    - Advanced logic gates: chapter2/xor_gate.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
