@@ -15,7 +15,7 @@ The logic table for an XOR gate looks like this:
 1|0|1
 1|1|0
 
-Classifying inputs to an XOR gate is a little more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case our inputs) where it is possible to draw a straight line that can completely separate the points into different classes (0 or 1 in our case). To overcome this separability problem, it is nescessary to introduce more neurons into the neural network.
+Classifying inputs to an XOR gate is a little more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case our inputs) where it is possible to draw a straight line that can completely separate the points into different classes (0 or 1 in our case). The XOR logic gate proposed above is such a non-linearly separable problem. To overcome this, it is nescessary to introduce more neurons into the neural network.
 
 [^2]:<https://en.wikipedia.org/wiki/Linear_separability>
 
@@ -39,11 +39,7 @@ $$
 Calculating the outputs for all input combinations is now a little more complicated than in the previous chapter. The first calculation is broken down into it's individual steps, then the rest of the inputs are calculated in one go.
 
 $$
-\displaylines{
-\text{output_hidden1}=f(0*0.2+0*0.3)=0\\
-\text{output_hidden2}=f(0*0.5+0*0.6)=0\\
-\text{output}=f(0*-0.4+0*0.9)=0\\
-\\
+\text{output(0,0)}=f(f(0*0.2+0*0.3)*-0.4+f(0*0.5+0*0.6)*0.9)=0\\
 \text{output(0,1)}=f(f(0*0.2+1*0.3)*-0.4+f(0*0.5+1*0.6)*0.9)=1\\
 \text{output(1,0)}=f(f(1*0.2+0*0.3)*-0.4+f(1*0.5+0*0.6)*0.9)=1\\
 \text{output(1,1)}=f(f(1*0.2+1*0.3)*-0.4+f(1*0.5+1*0.6)*0.9)=1\\
@@ -62,7 +58,7 @@ $$
 
 To ensure the correct output of $0$, the output neuron calculation for needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$). If the weight $-0.4$ is tweaked to a value of $-0.5$, the activation function will not output $1$ anymore, since the result of the sum is $(1*-0.4 + 1*0.9)=0.4$.
 
-Now program this into a simple Python script. The weights of the network will be stored inside of an array (ensure correct indexing).
+Now program this into a simple Python script. The weights of the network will be stored inside of an array.
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1n0ICeDesHq-a74yKYkdi2NV9295TgGCH#scrollTo=kK0VsuHfyz7M)
 
