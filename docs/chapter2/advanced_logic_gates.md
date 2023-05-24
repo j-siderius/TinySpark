@@ -39,6 +39,7 @@ $$
 Calculating the outputs for all input combinations is now a little more complicated than in the previous chapter. The first calculation is broken down into it's individual steps, then the rest of the inputs are calculated in one go.
 
 $$
+\displaylines{
 \text{output(0,0)}=f(f(0*0.2+0*0.3)*-0.4+f(0*0.5+0*0.6)*0.9)=0\\
 \text{output(0,1)}=f(f(0*0.2+1*0.3)*-0.4+f(0*0.5+1*0.6)*0.9)=1\\
 \text{output(1,0)}=f(f(1*0.2+0*0.3)*-0.4+f(1*0.5+0*0.6)*0.9)=1\\
