@@ -27,5 +27,6 @@ To follow along with the projects and examples, you will need a TinySpark develo
 <!-- sources -->
 [Tensorflow]: https://www.tensorflow.org/overview
 
+<!-- Last updated timestamp -->
 <script>fetch("https://api.github.com/repos/j-siderius/TinySpark/commits?per_page=1").then((e=>e.json())).then((e=>{datetime=new Date(e[0].commit.author.date),document.getElementById("lastupdate").innerHTML=datetime.toLocaleString("en-GB",{timeZone:"CET"})}));</script>
 <i>Last updated: <span id=lastupdate></span></i>

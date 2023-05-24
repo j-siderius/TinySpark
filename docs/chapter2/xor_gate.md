@@ -4,7 +4,7 @@ In the first chapter, Logic gates were introduced. The mini-project programmed a
 
 There are several more complex logic gates in electronics, such as the XOR gate [^1]. The XOR gate will only activate whenever one of it's inputs reads HIGH (or 1 in our case). The gate will however not activate if both inputs read HIGH (1) or LOW (0).
 
-[^1]:https://en.wikipedia.org/wiki/XOR_gate
+[^1]:<https://en.wikipedia.org/wiki/XOR_gate>
 
 The logic table for an XOR gate looks like this:
 
@@ -16,6 +16,8 @@ The logic table for an XOR gate looks like this:
 1|1|0
 
 ---
+
+![FCNN](../assets/images/nn_2-2-1.png)
 
 Defining the weights for the given network
 
@@ -62,6 +64,47 @@ $$
 $$
 
 To ensure the correct output of $0$, the final calculation for $output$ needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$).
+
+Now program this into a simple Python script. The weights of the network will be stored inside of an array (ensure correct indexing).
+
+**TODO: add more explanation**
+
+[![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1n0ICeDesHq-a74yKYkdi2NV9295TgGCH#scrollTo=yqEmxnavsPhb)
+
+```python title="small_network_XOR_gate.py"
+inputs = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+]
+weights = [
+    0.2,
+    0.3,
+    0.5,
+    0.6,
+    0.8,
+    0.9
+]
+
+def activation(x):
+    if x >= 0.5:
+        return 1
+    else:
+        return 0
+
+for input in inputs:
+    neuron1 = activation( (input[0] * weights[0]) + (input[1] * weights[1]) )
+    neuron2 = activation( (input[0] * weights[2]) + (input[1] * weights[3]) )
+    output = activation( (neuron1 * weights[4]) + (neuron2 * weights[5]) )
+
+    print(input, output)
+
+=> [0, 0]   0
+=> [0, 1]   1
+=> [1, 0]   1
+=> [1, 1]   1
+```
 
 <!-- Now the inputs $1,1$ give the incorrect output of 1, so again the weights need to be tweaked. In the last chapter, the weight tweaking was performed through intuition, however in this more complicated network, this becomes harder. If the networks grow even bigger, intuitively determining the change in weights needed to achieve the correct outputs turns into an impossible task.
 
