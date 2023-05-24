@@ -124,7 +124,7 @@ nav:
   - Chapter 2:
     - Introduction: chapter2/introduction.md
     - Network connections: chapter2/network_connections.md
-    - Advanced logic gates: chapter2/xor_gate.md
+    - Advanced logic gates: chapter2/advanced_logic_gates.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
