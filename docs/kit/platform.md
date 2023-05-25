@@ -74,7 +74,6 @@ TinyML development board code is hosted on Github, since there is no online plat
 
 Interactive applications will be shown as follows:
 
-<div id="sketch-holder"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
 let slider1;
@@ -121,8 +120,9 @@ function draw() {
 }
 </script>
 <div>
-  <label for="weight5">Weight 5</label>
-  <input type="range" id="weight5" name="weight5" min="-1" max="1" value="-0.4" step="0.1">
+    <div id="sketch-holder"></div>
+    <label for="weight5">Weight 5</label>
+    <input type="range" id="weight5" name="weight5" min="-1" max="1" value="-0.4" step="0.1">
 </div>
 
 To interact, click on the interactive window and start changing values, clicking on points etc. The animation will change and explain concepts in a tangible way.
