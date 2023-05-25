@@ -74,6 +74,7 @@ TinyML development board code is hosted on Github, since there is no online plat
 
 Interactive applications will be shown as follows:
 
+<div id="sketch-holder"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
 let slider1;
@@ -87,8 +88,9 @@ let weights = [
 ];
 
 function setup() {
-  createCanvas(400, 400);
-  
+  const canvas = createCanvas(400, 400);
+  canvas.parent('sketch-holder');
+
   slider1 = select('#weight5')
 }
 
