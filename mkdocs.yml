@@ -13,6 +13,7 @@ theme:
   favicon: assets/favicon.png
   features:
     - announce.dismiss
+    - attr_list
     # - content.action.edit
     # - content.action.view
     - content.code.annotate
@@ -62,9 +63,9 @@ plugins:
   - with-pdf:
       cover_title: TinySpark
       cover_subtitle: Tiny board, big predictions
-      output_path: pdf/main.pdf 
+      output_path: assets/pdf/main.pdf 
       # cover_logo: assets/images/
-      # render-js: true  # !! Possibly needed to export formulas, check documentation at https://pypi.org/project/mkdocs-with-pdf/
+      render-js: true  # !! Possibly needed to export formulas, check documentation at https://pypi.org/project/mkdocs-with-pdf/
 
 extra_css:
 #    - css/extra.css

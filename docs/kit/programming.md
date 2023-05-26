@@ -2,12 +2,81 @@
 
 # Programming the TinyML Development kit
 
-The TinyML Development kit uses the [MicroPython] programming language. This is fork of the popular Python 3 programming language, which brings simple to understand syntax of Python to microcontroller such as our TinyML Development kit.
+The TinyML Development kit uses the [CircuitPython] programming language. It is based on the popular Python 3 programming language, and designed to simplify experimentation and learning on microcontrollers and development kits. It requires very little setup on your computer and since the language is based on Python, code is easy to read and understand. Additionally, there are many libraries available, ready to use in your project.
 
-[MicroPython]:https://micropython.org/
+[CircuitPython]:https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython
 
-To program our Development kit, first we connect to it using the USB-C to USB-A cable. The kit should be recognized as a new device (COM in Windows, dev/tty in Mac OSX or Linux). We will use the [Code with Mu] programming IDE, because it offers simple interfacing with the TinyML Development kit, and gives helpful programming prompts for MicroPython.
+---
+
+The TinyML development kit is programmed using the included USB-C to USB-A cable. If your computer requires another connection (e.g. USB-C to USB-C) you have to provide your own cable for connecting the kit.
+
+After connecting the TinyML development kit, two green LEDs on the board should light up, indicating that there is power on the board. At the same time, a new USB-drive named `CIRCUITPY` should appear on your computer (in File Explorer, Finder or Files). This drive contains code, software libraries and files.
+
+**TODO: change USB name?***
+<!-- https://learn.adafruit.com/welcome-to-circuitpython/the-circuitpy-drive -->
+
+![CIRCUITPY drive](https://placehold.co/600x400?text=CIRCUITPY+drive)
+
+---
+
+Programming the TinyML development kit is as easy as editing the `code.py` file that is found on the CIRCUITPY drive. However to make coding for the kit a little easier, the [Code with Mu] IDE will be used. Code with Mu works out of the box with CircuitPython, gives helpful programming prompts and was built with learning in mind.
 
 [Code with Mu]:https://codewith.mu/
 
-<!-- TODO: add information on programming devkit using Mu -->
+To install the software, head to the [Code with Mu - Downloads] page and install the correct version of the IDE for your computer.
+
+[Code with Mu - Downloads]:https://codewith.mu/en/download
+
+**TODO: add hint for advanced config and other IDEs (https://learn.adafruit.com/welcome-to-circuitpython/advanced-setup)**
+
+After installing, open the Code with Mu editor and (upon first start) select the CircuitPython mode. This ensures that the IDE is set up correctly for use with the TinyML development kit.
+
+**TODO: add hint for re-enabling CircuitPython mode**
+
+<!-- https://codewith.mu/en/tutorials/1.2/adafruit -->
+
+![Code with Mu IDE](https://placehold.co/600x400?text=Code+with+Mu+IDE)
+
+---
+
+Now you can start coding! To begin, try to make the built-in LED (D13) blink.
+
+[![Open In Github](../assets/images/github-badge.svg)]()
+
+```python title="circuitpython_first_code.py"
+# import the required libraries for accessing the pins and timing
+import time
+import board
+from digitalio import DigitalInOut, Direction
+
+# setup the LED
+led = DigitalInOut(board.LED)
+led.direction = Direction.OUTPUT
+
+# do forever
+while True:
+    # turn LED on
+    led.value = True
+    # wait for 1 second
+    time.sleep(1)
+    # turn LED off
+    led.value = False
+    time.sleep(1)
+```
+
+Copy or write the above code into the Code with Mu editor and Save it to the TinyML development board. The red LED should start to blink.
+
+To check out more simple code examples, take a look at the [Adafruit Learning System - Guide to CIrcuitPython](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/main/CircuitPython_Essentials) or at the sensor code examples in the [previous section](devkit.md).
+
+---
+
+As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, however if you want to learn more about external libraries, visit the [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries) page.
+
+**TODO: list built-in libraries**
+
+---
+
+That's it! Now you know everything needed to get started with the TinySpark TinyML material.
+
+[Return home](../index.md){ .md-button .md-button--primary }
+[Go to Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }

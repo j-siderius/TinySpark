@@ -100,6 +100,10 @@ Images and ![other graphics] get added in a similar way.
 
 [other graphics]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Even some tooltip information can be displayed"
 
+Placeholder images can be added like this:
+
+![Placeholder image](https://placehold.co/600x400?text=Placeholder+image)
+
 If a citation is needed, footnotes[^1] and other citations can be added.
 
 [^1]: https://google.com
