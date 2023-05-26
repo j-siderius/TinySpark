@@ -4,7 +4,7 @@
 
 These pages give a quick overview of the TinySpark platform and kit.
 
-![TinySpark kit](https://placehold.co/600x400?text=TinySpark+logo+or+kit)
+![TinySpark kit](https://placehold.co/600x400?text=TinySpark+kit)
 
 <!-- The TinySpark kit contains the following:
 

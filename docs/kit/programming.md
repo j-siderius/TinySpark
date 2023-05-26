@@ -10,12 +10,11 @@ The TinyML Development kit uses the [CircuitPython] programming language. It is 
 
 The TinyML development kit is programmed using the included USB-C to USB-A cable. If your computer requires another connection (e.g. USB-C to USB-C) you have to provide your own cable for connecting the kit.
 
-After connecting the TinyML development kit, two green LEDs on the board should light up, indicating that there is power on the board. At the same time, a new USB-drive named `CIRCUITPY` should appear on your computer (in File Explorer, Finder or Files). This drive contains code, software libraries and files.
+After connecting the TinyML development kit, two green LEDs on the board should light up, indicating that there is power on the board. At the same time, a new USB-drive named `CIRCUITPY` should appear on your computer (in File Explorer, Finder or Files). This drive contains code, software libraries and files. To learn more about the `CIRCUITPY`-drive, take a look at the [Adafruit - Circuitpy Drive guide](https://learn.adafruit.com/welcome-to-circuitpython/the-circuitpy-drive).
 
 **TODO: change USB name?***
-<!-- https://learn.adafruit.com/welcome-to-circuitpython/the-circuitpy-drive -->
 
-![CIRCUITPY drive](https://placehold.co/600x400?text=CIRCUITPY+drive)
+![CIRCUITPY drive](../assets/images/circuitpy_drive.png)
 
 ---
 
@@ -27,15 +26,17 @@ To install the software, head to the [Code with Mu - Downloads] page and install
 
 [Code with Mu - Downloads]:https://codewith.mu/en/download
 
-**TODO: add hint for advanced config and other IDEs (https://learn.adafruit.com/welcome-to-circuitpython/advanced-setup)**
+??? info
+
+    If you are already familiar with programming development kits, or want to work in an IDE which you are familiar with (such as Atom or VS Code), take a look at the [Adafruit - Advanced CircuitPython setup](https://learn.adafruit.com/welcome-to-circuitpython/advanced-setup).
 
 After installing, open the Code with Mu editor and (upon first start) select the CircuitPython mode. This ensures that the IDE is set up correctly for use with the TinyML development kit.
 
-**TODO: add hint for re-enabling CircuitPython mode**
+??? info
 
-<!-- https://codewith.mu/en/tutorials/1.2/adafruit -->
+    If you already started Code with Mu and did not select the CircuitPython mode, click the `Mode` button in the top left of the Code with Mu editor, and select CircuitPython. If you want more information about setting up Code with Mu for CircuitPython, take a look at the [Code with Mu - CircuitPython setup](https://codewith.mu/en/tutorials/1.2/adafruit).
 
-![Code with Mu IDE](https://placehold.co/600x400?text=Code+with+Mu+IDE)
+![Code with Mu IDE](../assets/images/code_with_mu.png)
 
 ---
 
@@ -72,7 +73,32 @@ To check out more simple code examples, take a look at the [Adafruit Learning Sy
 
 As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, however if you want to learn more about external libraries, visit the [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries) page.
 
-**TODO: list built-in libraries**
+??? info
+
+    The following libraries are built-in to the default CircuitPython installation on the TinyML development kit:
+    - `analogbufio`
+    - `analogio` (for analog I/O)
+    - `array`
+    - `bitbangio`
+    - `board` (used to get the pin numbers and descriptions)
+    - `busio`
+    - `collections`
+    - `digitalio` (for digital I/O)
+    - `math`
+    - `os`
+    - `pwmio` (to control PWM devices)
+    - `random`
+    - `struct`
+    - `sys`
+    - `time`
+    - `ulab` (for Python NumPy like maths and variables)
+    - `usb_cdc` (for the USB connection)
+
+    - `neopixel`
+    - `lsm6ds`
+    - `ir_remote`
+    - `bme280`
+    - `apds9930`
 
 ---
 

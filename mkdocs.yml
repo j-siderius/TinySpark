@@ -65,7 +65,8 @@ plugins:
       cover_subtitle: Tiny board, big predictions
       output_path: assets/pdf/main.pdf 
       # cover_logo: assets/images/
-      render-js: true  # !! Possibly needed to export formulas, check documentation at https://pypi.org/project/mkdocs-with-pdf/
+      # render-js: true
+      # headless_chrome_path: headless-chromium
 
 extra_css:
 #    - css/extra.css
@@ -73,7 +74,7 @@ extra_css:
 markdown_extensions:
 #    - toc:
 #        permalink:
-#    - attr_list
+  - attr_list
 #    - def_list
 #    - tables
 #    - callouts
