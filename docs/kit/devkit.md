@@ -27,7 +27,7 @@ The TinyML development kit also contains some miscellaneous other components suc
 
 ??? warning "Microphone use"
 
-    Due to driver issues in CircuitPython, it is currently not possible to access the microphone data using this programming language. The microphone is still usable in other programming languages such as [Arduino](https://github.com/atomic14/esp32-i2s-mic-test) and the [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2s.html). Please see the examples linked above for template code.
+    Due to driver issues in CircuitPython, it is currently not possible to access the microphone data using this programming language. The microphone is still usable in other programming languages such as [Arduino](https://github.com/atomic14/esp32-i2s-mic-test) and the [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2s.html). Please see the examples linked here.
 
 ---
 
