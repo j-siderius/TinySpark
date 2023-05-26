@@ -26,13 +26,13 @@ To install the software, head to the [Code with Mu - Downloads] page and install
 
 [Code with Mu - Downloads]:https://codewith.mu/en/download
 
-??? info
+??? info "Advanced IDE setup"
 
     If you are already familiar with programming development kits, or want to work in an IDE which you are familiar with (such as Atom or VS Code), take a look at the [Adafruit - Advanced CircuitPython setup](https://learn.adafruit.com/welcome-to-circuitpython/advanced-setup).
 
 After installing, open the Code with Mu editor and (upon first start) select the CircuitPython mode. This ensures that the IDE is set up correctly for use with the TinyML development kit.
 
-??? info
+??? info "Reset the Code with Mu editor"
 
     If you already started Code with Mu and did not select the CircuitPython mode, click the `Mode` button in the top left of the Code with Mu editor, and select CircuitPython. If you want more information about setting up Code with Mu for CircuitPython, take a look at the [Code with Mu - CircuitPython setup](https://codewith.mu/en/tutorials/1.2/adafruit).
 
@@ -71,39 +71,58 @@ To check out more simple code examples, take a look at the [Adafruit Learning Sy
 
 ---
 
-As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, however if you want to learn more about external libraries, visit the [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries) page.
+To access I/O of the TinyML development kit, CircuitPython has defined easy references to the different pins. Certain inputs and outputs can be accessed using their semantic definition (e.g. the output connected to the red LED is `GPIO13`, however we can just reference it as `board.LED` in our code. To see all pin definitions, fold out the info box below. To learn more about the board library, visit [CircuitPython - Pins and Board](https://learn.adafruit.com/circuitpython-essentials/circuitpython-pins-and-modules).
 
-??? info
+??? info "Pin definition"
 
-    The following libraries are built-in to the default CircuitPython installation on the TinyML development kit:
-    
-    - `analogbufio`
+    The TinyML development kit has the following pin definitions and names:
+
+    - `GPIO0` = `board.BUTTON1` = `board.BOOT`
+    - `GPIO1` = `board.IR`
+    - `GPIO2` = `board.HALL`
+    - `GPIO4` = `board.I2S_CLK`
+    - etc...
+
+    The original I/O pins of the kit can also be found in the electronic schematic of the TinyML development kit, in the [previous section](devkit.md).
+
+
+**TODO: update pin list with all definitions**
+
+---
+
+As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, however if you want to learn more about external libraries, visit the [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries).
+
+??? info "Included libraries"
+
+    The following libraries are built-in to the default CircuitPython installation on the TinyML development kit
+  
     - `analogio` (for analog I/O)
-    - `array`
-    - `bitbangio`
-    - `board` (used to get the pin numbers and descriptions)
-    - `busio`
-    - `collections`
+    - `array` (for generating array objects)
+    - `bitbangio` (for simulating different communication protocols)
+    - `board` (for getting pin numbers and descriptions)
+    - `busio` (for using default data busses like I2C)
+    - `collections` (for special data containers)
     - `digitalio` (for digital I/O)
-    - `math`
-    - `os`
-    - `pwmio` (to control PWM devices)
-    - `random`
-    - `struct`
-    - `sys`
-    - `time`
+    - `math` (for basic mathematic operations and constants)
+    - `os` (for accessing operating level functions)
+    - `pwmio` (for controlling PWM devices)
+    - `random` (for generating random numbers)
+    - `struct` (for defining data structures)
+    - `sys` (for accessing system and program functions)
+    - `time` (for timing)
     - `ulab` (for Python NumPy like maths and variables)
     - `usb_cdc` (for the USB connection)
 
-    - `neopixel`
-    - `lsm6ds`
-    - `ir_remote`
-    - `bme280`
-    - `apds9930`
+    The following libraries are used for the sensors and outputs on the TinyML development kit.
+
+    - `apds9930` (for the on-board Light and Distance sensor)
+    - `bme280` (for the on-board Environmental sensor)
+    - `ir_remote` (for the on-board IR receiver)
+    - `neopixel` (for the on-board Neopixels)
+    - `lsm6ds` (for the on-board Inertial motion sensor)
 
 ---
 
 That's it! Now you know everything needed to get started with the TinySpark TinyML material.
 
-[Return home](../index.md){ .md-button .md-button--primary }
 [Go to Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }

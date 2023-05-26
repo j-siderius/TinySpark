@@ -1,6 +1,6 @@
 # TinySpark Development kit
 
-The TinySpark Development kit is a development board specifically tailored to the exploration of TinyML concepts and to test possible applications of TinyML in an easy way. It is based on the popular ESP32-S3 chipset, which is perfect for TinyML applications, because of its fast processor speed and large storage. Additionally it has Bluetooth 5 and WiFi capabilities, making it easy to share sensor data and warn users in case of detections or errors. You can learn more about this chip in its [datasheet](../assets/datasheets/esp32-s3-wroom-1.pdf).
+The TinySpark Development kit is a development board specifically tailored to the exploration of TinyML concepts and to test possible applications of TinyML in an easy way. It is based on the popular ESP32-S3 chipset, which is perfect for TinyML applications, because of its fast processor speed and large storage. Additionally it has Bluetooth 5 and WiFi capabilities, making it easy to share sensor data and warn users in case of detections or errors. You can learn more about this chip in its [datasheet](../assets/datasheets/esp32-s3-wroom-1.pdf). The full electronic schematic of the TinyML development kit is available [here](../assets/datasheets/tinyml_development_kit.pdf).
 
 ---
 
@@ -11,7 +11,7 @@ The TinyML Development kit contains a selection of sensors which enable direct m
 The Development kit contains the following sensors and I/O:
 
 - **Inertial motion sensor**: this sensor measures both the angular motion using a gyroscope, as well as the acceleration using a accelerometer. The datasheet for the LSM6DS3TR-C sensor can be found [here](../assets/datasheets/lsm6ds3tr-c.pdf). A template code project for using this sensor can be found [here]().
-- **Microphone**: this sensor measures the amplitude and pitch of sound. The datasheet for the ICS-43434 microphone can be found [here](../assets/datasheets/ics-43434.pdf). A template code project for using this sensor can be found [here](). **TODO: add disclaimer that microphone does not work in CircuitPython**
+- **Microphone**: this sensor measures the amplitude and pitch of sound. The datasheet for the ICS-43434 microphone can be found [here](../assets/datasheets/ics-43434.pdf).
 - **Light and Distance sensor**: this sensor measures the ambient light level, as well as short-range distance. The datasheet for the APDS-9930 sensor can be found [here](../assets/datasheets/apds-9930.pdf). A template code project for using this sensor can be found [here]().
 - **Hall effect sensor**: this sensor measures the magnetic field around it's axis. The datasheet for the AH-49E sensor can be found [here](../assets/datasheets/ah-49e.pdf). A template code project for using this sensor can be found [here]().
 - **Environmental sensor**: this sensor measures multiple environmental parameters; temperature, relative humidity as well as atmospheric pressure. The datasheet for the BME-280 sensor can be found [here](../assets/datasheets/bme-280.pdf). A template code project for using this sensor can be found [here]().
@@ -25,15 +25,19 @@ The Development kit contains the following sensors and I/O:
 
 The TinyML development kit also contains some miscellaneous other components such as two green LEDs (for showing power), a Debug header (used to initially program and test the development kit) and some passive components such as resistors and capacitors.
 
+??? warning "Microphone use"
+
+    Due to driver issues in CircuitPython, it is currently not possible to access the microphone data using this programming language. The microphone is still usable in other programming languages such as [Arduino](https://github.com/atomic14/esp32-i2s-mic-test) and the [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2s.html). Please see the examples linked above for template code.
+
 ---
 
 There are multiple output pins on the TinyML development board. The specific pinouts are shown in the image below. A template code project for using the expansion pins can be found [here](). 
 
 ![TinyML devkit pinouts](../assets/images/header_pins.png)
 
-The Stemma QT / Qwiic connector uses a different I2C communication bus as the main sensors on the board (on board = I2C1, Stemma QT / Qwiic = I2C2). Keep this in mind when connecting external devices.
+The Stemma QT / Qwiic connector uses a different I2C communication bus as the main sensors on the board (on board uses I2C1, Stemma QT / Qwiic uses I2C2). Please see information below to connect sensors to the Stemma QT / Qwiic connector.
 
-??? info
+??? info "Secondary I2C bus"
 
     To connect external sensors to the Stemma QT / Qwiic connector, a new (secondary) I2C bus needs to be initialised. This I2C2-bus is connected to the following pins: `SDA2=GPIO17 SCL2=GPIO16`.
 

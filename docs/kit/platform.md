@@ -23,6 +23,10 @@ These chapters will introduce various concepts within (Tiny) Machine Learning in
 
 ![Navigation bar](../assets/images/navigation_bar.png)
 
+To navigate through chapters, it is possible to use the arrows at the bottom of most pages. Clicking the right-arrow will go to the next chapter section. THe left-arrow can be used to go back to the previous section of a chapter.
+
+![Navigation footer](../assets/images/navigation_footer.png)
+
 ---
 
 The TinySpark platform uses several methods to teach, for example using textual explanation, formulas, code snippets and interactive applications.

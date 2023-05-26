@@ -2,13 +2,17 @@
 
 # Chapter 1 - Introduction to ML
 
-A neural network is a computational model that mimics the structure and function of biological neurons. A neuron is a basic unit of a neural network that can receive, process and transmit information. In this chapter, we will explain how neurons work and how they are connected in a neural network.
+A neural network is a computational model that mimics the structure and function of biological neurons. A neuron is a basic unit of a neural network that can receive, process and transmit information. In this chapter, neurons' function and connections will be explained. After the explanation, a simple project will be programmed to show how a neuron functions mathematically.
 
 ```mermaid
     graph LR
     A((inputs)) --> B[Neural\nnetwork]
     B --> C((output))
 ```
+
+---
+
+In the next section, the basics of neurons are introduced.
 
 <!-- A neuron consists of three main components: an input layer, an activation function and an output layer. The input layer receives signals from other neurons or external sources, such as images texts, or numbers. The activation function determines whether the neuron should fire or not based on the input signals. The output layer sends the firing signal to other neurons or to the final output of the network.
 
