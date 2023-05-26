@@ -76,6 +76,7 @@ As mentioned before, it is possible to use ready-made code libraries, for exampl
 ??? info
 
     The following libraries are built-in to the default CircuitPython installation on the TinyML development kit:
+    
     - `analogbufio`
     - `analogio` (for analog I/O)
     - `array`
