@@ -21,9 +21,9 @@ Classifying inputs to an XOR gate is a little more difficult than classifying si
 
 ---
 
-![FCNN](../assets/images/nn_2-2-1.png)
+![FCNN with weights](../assets/images/nn_2-2-1_weights.png)
 
-The network above needs weights to be defined. For the activation function, the step function from [Chapter 1](../chapter1/logic_gates.md) is used again. Note how in this example, negative weights are also possible, and we introduce it to weight the first input of the output neuron.
+Weights are defined for our network. For the activation function, the step function from [Chapter 1](../chapter1/logic_gates.md) is used again. Note how in this example, negative weights are also possible, and we introduce it to weight the first input of the output neuron.
 
 $$
 \displaylines{
