@@ -10,10 +10,10 @@ The requirements for succesful growth are very particular, they are summarized i
 
 **Temperature**|**Humidity**|**Growth**
 :-----:|:-----:|:-----:
-below 25&deg;|below 70%|no
-below 25&deg;|above 70%|yes
-above 25&deg;|below 70%|yes
-above 25&deg;|above 70%|no
+below 25&deg;C|below 70&percnt;|no
+above 25&deg;C|above 70&percnt;|no
+below 25&deg;C|above 70&percnt;|yes
+above 25&deg;C|below 70&percnt;|yes
 
 [^1]:The Fictioplantus acts as a simplified plant example in our case, although principles learned in this project can be applied to real plant monitoring.
 
@@ -25,8 +25,6 @@ Classifying inputs like the temperature and humidity is a little more difficult 
 
 ![FCNN with weights](../assets/images/nn_2-2-1_weights.png)
 
-**TODO: Fix image weights**
-
 The network from the [previous section](network_connections.md) is used here. Weights are defined as seen. For the activation function, the step function from [Chapter 1](../chapter1/logic_gates.md) is used again. Note how in this example, negative weights are also possible, and we introduce it to weight the first input of the output neuron.
 
 $$ 
@@ -36,17 +34,6 @@ f(x) =
      1 & \text{if } x \geq  0.5
 \end{cases}
 $$
-
-<!-- $$
-\displaylines{
-\text{weight 1}=0.2\\
-\text{weight 2}=0.3\\
-\text{weight 3}=0.5\\
-\text{weight 4}=0.6\\
-\text{weight 5}=-0.4\\
-\text{weight 6}=0.9\\
-}
-$$ -->
 
 $$
 \displaylines{
@@ -59,29 +46,31 @@ $$
 }
 $$
 
-In order to process the inputs correctly, some pre-proccessing of the measurements needs to take place. The temperature and humidity will both be set around null and their inputs divided by 10: $temp_{in} = (temperature - 24) / 10$ and $humid_{in} = (humidity - 70) / 10$. This is done in order to make calculations easier, and to keep weights managable (in this case within ranges -1 and 1). In complicated neural networks, this pre-processing can be part of the network, in so called Convolutional layers[^3].
+In order to process the inputs correctly, some pre-proccessing of the measurements needs to take place. The temperature and humidity will both be set around null and their inputs divided by 10: $temp_{in} = (temperature - 25) / 10$ and $humid_{in} = (humidity - 70) / 10$. This is done in order to make calculations easier, and to keep weights managable (in this case within ranges -1 and 1). In complicated neural networks, this pre-processing can be part of the network, in a so called Convolution step[^3].
 
-[^3]:https://en.wikipedia.org/wiki/Layer_(deep_learning)
+[^3]:<https://en.wikipedia.org/wiki/Layer_(deep_learning)>
 
-Calculating the outputs for some possible input combinations is now a little more complicated than in the previous chapter.
+Calculating the outputs for some possible input combinations is now a little more complicated than in the previous chapter. As inputs, a few values above and below the threshold are chosen: $22$&deg;C and $30$&deg;C for temperature, $40$&percnt; and $85$&percnt; for humidity. In the calculations below, first the pre-processing of the values is done, then the repective outputs are calculated. Remember that because the activation function used is still a step function, the output will always be either $0$ or $1$ (signifying poor and good growing conditions respectively).
 
-<!-- $$
+$$
 \displaylines{
-\text{output(0,0)}=f(f(0*0.2+0*0.3)*-0.4+f(0*0.5+0*0.6)*0.9)=0\\
-\text{output(0,1)}=f(f(0*0.2+1*0.3)*-0.4+f(0*0.5+1*0.6)*0.9)=1\\
-\text{output(1,0)}=f(f(1*0.2+0*0.3)*-0.4+f(1*0.5+0*0.6)*0.9)=1\\
-\text{output(1,1)}=f(f(1*0.2+1*0.3)*-0.4+f(1*0.5+1*0.6)*0.9)=1\\
+\text{input(22&deg;C)}=(22 - 25) / 10 = -0.3\\
+\text{input(30&deg;C)}=(30 - 25) / 10 = 0.5\\
+\text{input(40&percnt;)}=(40 - 70) / 10 = -3\\
+\text{input(80&percnt;)}=(80 - 70) / 10 = 1\\
 }
-$$ -->
+$$
 
-<!-- $$
+$$
 \displaylines{
-\text{output(0,0)}=f(f(0*0.2+0*0.3)*-0.4+f(0*0.5+0*0.6)*0.9)=0\\
-\text{output(0,1)}=f(f(0*0.2+1*0.3)*-0.4+f(0*0.5+1*0.6)*0.9)=1\\
-\text{output(1,0)}=f(f(1*0.2+0*0.3)*-0.4+f(1*0.5+0*0.6)*0.9)=1\\
-\text{output(1,1)}=f(f(1*0.2+1*0.3)*-0.4+f(1*0.5+1*0.6)*0.9)=1\\
+\text{output(-0.3, -3)}=f(f(-0.3*0.3+-3*-0.5)*0.7+f(-0.3*-0.6+-3*0.4)*0.5)=0\\
+\text{output(-0.3, 1)}=f(f(-0.3*0.3+1*-0.5)*0.7+f(-0.3*-0.6+1*0.4)*0.5)=1\\
+\text{output(0.5, -3)}=f(f(0.5*0.3+-3*-0.5)*0.7+f(0.5*-0.6+-3*0.4)*0.5)=1\\
+\text{output(0.5, 1)}=f(f(0.5*0.3+1*-0.5)*0.7+f(0.5*-0.6+1*0.4)*0.5)=0\\
 }
-$$ -->
+$$
+
+**TODO: write tweaking of new network**
 
 <!-- Now the inputs $1,1$ give the incorrect output of $1$, so again the weights need to be tweaked. Compared to the neuron in the last chapter, tweaking becomes more complicated in this network. Breaking down the calculation into small steps to see where the error occurs is a good way to start. -->
 
@@ -99,39 +88,54 @@ Now program this into a simple Python script. The weights of the network will be
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1n0ICeDesHq-a74yKYkdi2NV9295TgGCH#scrollTo=kK0VsuHfyz7M)
 
-```python title="small_network_XOR_gate.py"
-inputs = [
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1]
-]
+```python title="plant_monitoring.py"
+# import the libraries to fetch weather data from an API
+import requests
+import json
+
+# store our weights
 weights = [
-     0.2,
-     0.3,
-     0.5,
-     0.6,
+    0.3,
     -0.5,
-     0.9
+    -0.6,
+    0.4,
+    0.7,
+    0.5
 ]
 
+# defining the activation function
 def activation(x):
     if x >= 0.5:
         return 1
     else:
         return 0
 
-for input in inputs:
-    neuron1 = activation( (input[0] * weights[0]) + (input[1] * weights[1]) )
-    neuron2 = activation( (input[0] * weights[2]) + (input[1] * weights[3]) )
-    output = activation( (neuron1 * weights[4]) + (neuron2 * weights[5]) )
+# formulate the API request
+response = requests.get('https://data.buienradar.nl/2.0/feed/json')
 
-    print(input, output)
+# get the temperature and humidity from the Buienradar API
+# the location is currently set to De Bilt in the Netherlands
+temperature = response.json()['actual']['stationmeasurements'][3]['temperature']
+humidity = response.json()['actual']['stationmeasurements'][3]['humidity']
+print(f"Temperature: {temperature}°C, Humidity: {humidity}%")
 
-=> [0, 0]   0
-=> [0, 1]   1
-=> [1, 0]   1
-=> [1, 1]   0
+# pre-processing the inputs
+temp_in = (temperature - 25) / 10
+humid_in = (humidity - 70) / 10
+
+# perform network calculations
+neuron1 = activation( (temp_in * weights[0]) + (humid_in * weights[1]) )
+neuron2 = activation( (temp_in * weights[2]) + (humid_in * weights[3]) )
+output = activation( (neuron1 * weights[4]) + (neuron2 * weights[5]) )
+
+# printing the result
+if output == 1:
+    print("Growing conditions are good")
+else:
+    print("Growing conditions are poor")
+
+=> "Temperature: 16.7°C, Humidity: 66.0%"
+=> "Growing conditions are good"
 ```
 
-In the next section, the network will be deployed to the TinySpark development board, utilising the on-board sensors.
+In the next section, the network will be deployed to the TinySpark development board, utilising the on-board environmental sensor.

@@ -126,8 +126,8 @@ nav:
   - Chapter 2:
     - Introduction: chapter2/introduction.md
     - Network connections: chapter2/network_connections.md
-    - Advanced logic gates: chapter2/advanced_logic_gates.md
-    - Advanced logic gates on micro: chapter2/advanced_logic_gates_micro.md
+    - Advanced logic gates: chapter2/plant_monitoring.md
+    - Advanced logic gates on micro: chapter2/plant_monitoring_micro.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
