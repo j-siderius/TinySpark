@@ -31,7 +31,7 @@ To navigate through chapters, it is possible to use the arrows at the bottom of 
 
 The TinySpark platform uses several methods to teach, for example using textual explanation, formulas, code snippets and interactive applications.
 
-Source code will be displayed on the page, with the option to open Python code in [Google Colaboratory], a online code environment for Python notebooks. Any Python code that can be run on a PC (so no TinyML Development Kit code) will be available for testing and playing around on Colab; just click the link and a new notebook will open. If you want to interact this with the code, you need a Google account. TinyML development board code is hosted on Github, since there is no online platform available for running this code. All TinyML code should be uploaded to the development board to see it in action. Further explanation on running code on the TinyML development kit can be found in the [Programming](programming.md) section.
+Source code will be displayed on the page, with the option to open Python code in [Google Colaboratory], a online code environment for Python notebooks. Any Python code that can be run on a PC (so no TinyML Development Kit code) will be available for testing and playing around on Colab; just click the link and a new notebook will open. If you want to interact this with the code, you need a Google account. 
 
 [Google Colaboratory]:https://colab.research.google.com/
 
@@ -47,6 +47,8 @@ print(c)
 
 => 3
 ```
+
+TinyML development board code is hosted on Github, since there is no online platform available for running this code. All TinyML code should be uploaded to the development board to see it in action. Further explanation on running code on the TinyML development kit can be found in the [Programming](programming.md) section of this chapter.
 
 [![Open In Github](../assets/images/github-badge.svg)]()
 
