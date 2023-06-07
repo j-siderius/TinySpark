@@ -24,9 +24,9 @@ To follow along with the projects and examples, you will need a TinySpark develo
 
 ![TinyML development baord](assets/images/devboard.png)
 
-[Go to the TinySpark kit Introduction](../kit/introduction.md){ .md-button .md-button--primary }
-[Go to Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
-[Go to About](../chapter1/introduction.md){ .md-button .md-button--primary }
+[Go to the TinySpark kit Introduction](../docs/kit/introduction.md){ .md-button .md-button--primary }
+[Go to Chapter 1](../docs/chapter1/introduction.md){ .md-button .md-button--primary }
+[Go to About](../docs/chapter1/introduction.md){ .md-button .md-button--primary }
 
 <!-- sources -->
 [Tensorflow]: https://www.tensorflow.org/overview

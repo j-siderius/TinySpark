@@ -16,4 +16,4 @@ These pages give a quick overview of the TinySpark platform and kit.
 
 In the next section, the TinySpark platform will be explained.
 
-[Next :fontawesome-arrow-right:](../kit/platform.md){ .md-button .md-button--primary }
+[Next :fontawesome-solid-arrow-right:](../kit/platform.md){ .md-button .md-button--primary }
