@@ -50,28 +50,25 @@ print(c)
 
 TinyML development board code is hosted on Github, since there is no online platform available for running this code. All TinyML code should be uploaded to the development board to see it in action. Further explanation on running code on the TinyML development kit can be found in the [Programming](programming.md) section of this chapter.
 
-[![Open In Github](../assets/images/github-badge.svg)]()
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/led.py)
 
-```python title="test_code_micro.py"
-# This is some Python code for the TinyML development board
-import board
+```python title="led.py"
+# Include all libraries
 import time
+import board
 from digitalio import DigitalInOut, Direction
 
-# LED setup
+# Initialise LED, declare it an output
 led = DigitalInOut(board.LED)
+# led = DigitalInOut(board.D13)  # Alternatively use the well-known pin 13
 led.direction = Direction.OUTPUT
 
-print("Hello from TinyML development board")
-
+# Every second, flash the LED
 while True:
-    led.value = True
-    time.sleep(0.5)
-    led.value = False
-    time.sleep(0.7)
-
-
-=> "Hello from TinyML development board"
+    led.value  = 0
+    time.sleep(1)
+    led.value = 1
+    time.sleep(1)
 ```
 
 Concepts and (parts of) neural networks will be explained using interactive applications. These allow you to manipulate values, play around with network structures and more, seeing the effects in real time.

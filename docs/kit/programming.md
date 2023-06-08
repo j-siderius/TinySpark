@@ -42,7 +42,7 @@ After installing, open the Code with Mu editor and (upon first start) select the
 
 Now you can start coding! To begin, try to make the built-in LED (D13) blink.
 
-[![Open In Github](../assets/images/github-badge.svg)](../assets/examples/led.py)
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/led.py)
 
 ```python title="led.py"
 # Include all libraries
@@ -75,17 +75,51 @@ To access I/O of the TinyML development kit, CircuitPython has defined easy refe
 
     The TinyML development kit has the following pin definitions and names:
 
-    - `GPIO0` = `board.BUTTON1` = `board.BOOT`
-    - `GPIO1` = `board.IR`
-    - `GPIO2` = `board.HALL`
-    - `GPIO4` = `board.I2S_CLK`
-    - etc...
+    Expansion header
+
+    `board.GPIO6 board.ANALOG1 board.D6 board.IO6`
+    `board.GPIO7 board.ANALOG2 board.D7 board.IO7`
+    `board.GPIO9 board.ANALOG3 board.D9 board.IO9`
+    `board.GPIO10 board.D10 board.IO10`
+    `board.GPIO11 board.D11 board.IO11`
+    `board.GPIO12 board.D12 board.IO12`
+    `board.GPIO47 board.D47 board.IO47`
+    `board.GPIO48 board.D48 board.IO48`
+
+    Data busses
+
+    `board.GPIO18 board.D18 board.I2C1_SCL board.I2C_SCL board.IO18 board.SCL`
+    `board.GPIO8 board.D8 board.I2C1_SDA board.I2C_SDA board.IO8 board.SDA`
+    `board.GPIO16 board.D16 board.I2C2_SCL board.I2C_SCL2 board.IO16 board.SCL2`
+    `board.GPIO17 board.D17 board.I2C2_SDA board.I2C_SDA2 board.IO17 board.SDA2`
+    `board.GPIO43 board.D43 board.IO43 board.TX`
+    `board.GPIO44 board.D44 board.IO44 board.RX`
+
+    Buttons
+
+    `board.GPIO0 board.BUTTON1 board.D0 board.IO0 board.BOOT`
+    `board.GPIO38 board.BUTTON2 board.D38 board.IO38`
+
+    Sensors
+
+    `board.GPIO14 board.D14 board.IO14 board.LDO2`
+    `board.GPIO1 board.D1 board.IO1 board.IR board.IR_RECV`
+    `board.GPIO4 board.D4 board.I2S_CLK board.IO4 board.MIC_CLK`
+    `board.GPIO5 board.D5 board.I2S_WS board.IO5 board.MIC_WS`
+    `board.GPIO15 board.D15 board.I2S_DIN board.IO15 board.MIC_DIN`
+    `board.GPIO2 board.D2 board.HALL board.HALL_EFFECT board.IO2`
+    `board.GPIO21 board.D21 board.IMU board.IMU_INTERRUPT board.IMU_ISR board.IMU_WAKE board.IO21`
+
+    LEDs
+
+    `board.GPIO13 board.D13 board.IO13 board.LED board.STATUS`
+    `board.GPIO39 board.D39 board.IO39 board.NEOPIXEL`
 
     The original I/O pins of the kit can also be found in the electronic schematic of the TinyML development kit, in the [previous section](devkit.md).
 
     To see this overview of pin naming on the TinyML development kit, run the following code.
 
-    [![Open In Github](../assets/images/github-badge.svg)](../assets/examples/pin_mapping.py)
+    [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/pin_mapping.py)
 
     ```python title="pin_mapping.py"
     # CircuitPython Essentials Pin Map Script
@@ -105,37 +139,6 @@ To access I/O of the TinyML development kit, CircuitPython has defined easy refe
         print(pins)
     
     ```
-
-
-**TODO: update pin list with all definitions**
-
-<!-- 
-board.ANALOG1 board.D6 board.GPIO6 board.IO6
-board.ANALOG2 board.D7 board.GPIO7 board.IO7
-board.ANALOG3 board.D9 board.GPIO9 board.IO9
-board.BOOT board.BUTTON1 board.D0 board.GPIO0 board.IO0
-board.BUTTON2 board.D38 board.GPIO38 board.IO38
-board.D1 board.GPIO1 board.IO1 board.IR board.IR_RECV
-board.D10 board.GPIO10 board.IO10
-board.D11 board.GPIO11 board.IO11
-board.D12 board.GPIO12 board.IO12
-board.D13 board.GPIO13 board.IO13 board.LED board.STATUS
-board.D14 board.GPIO14 board.IO14 board.LDO2
-board.D15 board.GPIO15 board.I2S_DIN board.IO15 board.MIC_DIN
-board.D16 board.GPIO16 board.I2C2_SCL board.I2C_SCL2 board.IO16 board.SCL2
-board.D17 board.GPIO17 board.I2C2_SDA board.I2C_SDA2 board.IO17 board.SDA2
-board.D18 board.GPIO18 board.I2C1_SCL board.I2C_SCL board.IO18 board.SCL
-board.D2 board.GPIO2 board.HALL board.HALL_EFFECT board.IO2
-board.D21 board.GPIO21 board.IMU board.IMU_INTERRUPT board.IMU_ISR board.IMU_WAKE board.IO21
-board.D39 board.GPIO39 board.IO39 board.NEOPIXEL
-board.D4 board.GPIO4 board.I2S_CLK board.IO4 board.MIC_CLK
-board.D43 board.GPIO43 board.IO43 board.TX
-board.D44 board.GPIO44 board.IO44 board.RX
-board.D47 board.GPIO47 board.IO47
-board.D48 board.GPIO48 board.IO48
-board.D5 board.GPIO5 board.I2S_WS board.IO5 board.MIC_WS
-board.D8 board.GPIO8 board.I2C1_SDA board.I2C_SDA board.IO8 board.SDA
- -->
 
 ---
 
