@@ -131,6 +131,9 @@ nav:
     - Network connections: chapter2/network_connections.md
     - Plant monitoring: chapter2/plant_monitoring.md
     - Plant monitoring on micro: chapter2/plant_monitoring_micro.md
+  - Chapter 2:
+    - Introduction: chapter3/introduction.md
+    - Training: chapter3/training.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
