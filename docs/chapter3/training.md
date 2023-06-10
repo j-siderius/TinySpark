@@ -45,7 +45,9 @@ $$
 }
 $$
 
-In order to now calculate the required changes to the weights of the network (called the delta / $\delta$), it is nescessary to walk 'backwards' through the network, which in this example only consists of one neuron, and discover the influence of each weight on the final prediction. If the influence is then known, the appropriate changes can be applied to the weights.
+In order to now calculate the required changes to the weights of the network (called the delta / $\delta$), it is nescessary to walk 'backwards' through the network, which in this example only consists of one neuron, and discover the influence of each weight on the final prediction. If the influence is then known, the appropriate changes can be applied to the weights. This technique is called Stochastic Gradient Descent[^2], but for now, let's just focus on the application.
+
+[^2]:<https://en.wikipedia.org/wiki/Stochastic_gradient_descent>
 
 During the feedforward, two steps were performed:
 1. The summation of inputs and weights
@@ -106,6 +108,20 @@ $$
 \text{error}=0.5225-0.4=0.1225\\
 $$
 
-Succes! The neuron has now become more accurate at predicting the output.
+Succes! The neuron has now become more accurate at predicting the output. If the above steps are repeated more often, the network will slowly evolve and come closer to an error of $0$. In programming, the repeating training steps are often called _epochs_, with training for a neural network sometimes needing just 100 epochs to get the desired accuracy, or sometimes requiring more than 1000000 epochs.
 
-In training bigger neural networks, there are a few more nuances to keep in mind.
+In training bigger neural networks, there are a few more nuances to keep in mind. First, in networks with more possible inputs and expected outputs, it is common to run each input through the training calculation and sum all deltas for each respective weight before applying them to that weight. That way, no single input / expected output combination will have too much of an influence on the change in weights. 
+
+$$\delta_{weight}=\delta_1+\delta_2+...+\delta_n$$
+
+There is often also a _learning rate_[^3] applied to the delta before it changes the weight. This learning rate (common rates include 0.1, 0.05 or 0.01) limits the influence of a single change on the weight. The limiting is important to prevent overshooting the expected output(s) and generating weights that are so tiny or large that they have uncontrolled effects on the network. 
+
+[^3]:<https://en.wikipedia.org/wiki/Learning_rate>
+
+$$\text{weight}_{new}=\text{learning rate}*\delta_{weight}$$
+
+Lastly, it can be beneficial to split input / expected output combinations in subsets, if there exists a lot of training data. This is called _mini-batching_[^4] and  is done to reduce the overall computation- and memory needs to train the network one itteration / epoch. Additionally, it can give the network a faster training cycle as well as quicker approach to the desired accuracy of the model.
+
+[^4]:<https://mzuer.github.io/machine_learning/mini_batch>
+
+In the next section, the training of a neural network is programmed in Python, and an example network is trained using **TODO: add example here**.
