@@ -58,4 +58,5 @@ $$
 \text{total_error}=\sum \frac{1}{2}(\text{expected - output})^2=\frac{1}{2}(0.05−0.73492)^2+\frac{1}{2}(0.95−0.77955)^2=0.24908
 \text{error_1}= \text{output_1-expected output 1}=0.73492-0.05=0.68492
 \text{error_2}= \text{output_2-expected output 2}=0.77955-0.95=−0.17044
+}
 $$
