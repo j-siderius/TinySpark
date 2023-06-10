@@ -1,62 +1,85 @@
 # Training networks
 
-In the last chapters, neuron weights were intuitively tuned to produce precise predictions. The mathematical approach to tuning weights will be explained a little more methodically. The following network will be used to explain the training.
+In the last chapters, neuron weights were intuitively tuned to produce precise predictions. The mathematical approach to tuning weights will be explained a little more methodically. 
 
-![Training NN](https://placehold.co/600x400?text=Training+NN+2x2x2)
+To start off, a small recap to the calculation of the output of neurons. First, all inputs get summed together with their weights. Then, a activation function is applied to the result and this gives the final output of a neuron. This is commonly known as the _Feedforward_ of neural a network (as in, feeding inputs forward through a neural network, until an output is generated).
 
-The network is initialised with pseudo-random weight values. The inputs and expected outputs are also given. This time, a new type of activation function is used, namely the Sigmoid function[^1]. This function is often used in machine learning, since it constrains the output between $0$ and $1$. The formula for this function can be found below.
+In training a neuron, almost the opposite of this process is performed, in the so-called _Backpropagation_[^1]. To start, a input and the expected output is needed. For this example, a single neuron will be used to show all calculations, and in a later section, the mathematics for a simple network will be explained.
 
-??? info "Why do we use sigmoid?"
+[^1]:<https://en.wikipedia.org/wiki/Backpropagation>
 
-    The advantage of using a sigmoid function instead of some linear function (e.g. the step function used in the previous chapters), is that it compresses the entire range of possible numbers into a small range from $0-1$. It still retains the accuracy of values near the zero-point, but is less precise for very extreme values.
+![Training neuron mathematically](https://placehold.co/600x400?text=Training+neuron)
 
-    ![Sigmoid curve](../assets/images/sigmoid.png)
-
-[^1]:<https://en.wikipedia.org/wiki/Sigmoid_function>
-
-$$ 
-f(x) = \frac{1}{1-e^{-x}}
-$$
-
-$$
-\displaylines{
-\text{weight 1}=0.1\\
-\text{weight 2}=0.2\\
-\text{weight 3}=0.3\\
-\text{weight 4}=0.4\\
-\text{weight 5}=0.5\\
-\text{weight 6}=0.6\\
-\text{weight 7}=0.7\\
-\text{weight 8}=0.8\\
-}
-$$
+The neuron above has the following weights, inputs, expected output and new activation function (this is the linear activation function, chosen for it's simplicity).
 
 $$
 \displaylines{
 \text{input 1}=0.1\\
-\text{input 2}=0.5\\
-\text{expected output 1}=0.05\\
-\text{expected output 4}=0.95\\
+\text{input 2}=0.8\\
+\text{expected 1}=0.4\\
+\text{weight 1}=0.3\\
+\text{weight 2}=0.9\\
 }
 $$
 
-In order to calculate the needed changes to our network weights, first calculate the output.
+$$ 
+f(x) = x
+$$
+
+The feedfoward of this neuron will look as follows.
+
+$$
+\sum \text{inputs}*\text{weights} = 0.1 * 0.3 + 0.8 * 0.9 = 0.75 \\
+$$
+
+$$
+f(0.75)=0.75
+$$
+
+As can be seen, the predicted result is off by quite a bit. Mathematically speaking, this offset is the error of the prediction. It is calculated as follows.
 
 $$
 \displaylines{
-\text{output_hidden1(0.1, 0.5)}=f((0.1*0.1)+(0.5*0.3))=0.60108\\
-\text{output_hidden2(0.1, 0.5)}=f((0.1*0.2)+(0.5*0.4))=0.61538\\
-\text{output_1(0.60108, 0.61538)}=f((0.60108*0.5)+(0.61538*0.7))=0.73492\\
-\text{output_2(0.60108, 0.61538)}=f((0.60108*0.6)+(0.61538*0.8))=0.77955\\
+\text{error}=\text{output}-\text{expected}\\
+\text{error}=0.75-0.4=0.35\\
 }
 $$
 
-For each output, the error from the expected value can be calculated. This is done by using the following Error function. The individual errors are calculated thereafter.
+In order to now calculate the required changes to the weights of the network (called the delta / $\delta$), it is nescessary to walk 'backwards' through the network, which in this example only consists of one neuron, and discover the influence of each weight on the final prediction. If the influence is then known, the appropriate changes can be applied to the weights.
+
+During the feedforward, two steps were performed:
+1. The summation of inputs and weights
+2. The activation of the sum
+
+Additionally, one last step is performed at the output of the network, namely the calculation of the error of the prediction.
+
+To calculate backwards, the derivatives of the mentioned steps need to be determined. For step 2. this requires the derivative of the activation function (in this case the linear function).
 
 $$
 \displaylines{
-\text{total_error}=\sum \frac{1}{2}(\text{expected - output})^2=\frac{1}{2}(0.05−0.73492)^2+\frac{1}{2}(0.95−0.77955)^2=0.24908
-\text{error_1}= \text{output_1-expected output 1}=0.73492-0.05=0.68492
-\text{error_2}= \text{output_2-expected output 2}=0.77955-0.95=−0.17044
+f(x)=x\\
+f'(x)=1\\
 }
 $$
+
+For step 1. the derivate is also easy to calculate.
+
+$$
+\displaylines{
+\text{sum}=\text{input1}*\text{weight1}+\text{input2}*\text{weight2}//
+\text{sum}'_{weight1}=\text{input1}
+}
+$$
+
+To calculate the total influence, or delta, all values need to be multiplied. This is shown for weight1 below
+
+$$
+\delta_{weight1}=f'(x)*\text{sum}'_{weight1}*error=1*0.1*0.35=0.035
+$$
+
+Similarly, the delta for weight2 can be calculated.
+
+$$
+\delta_{weight2}=f'(x)*\text{sum}'_{weight2}*error=1*0.8*0.35=0.28
+$$
+
