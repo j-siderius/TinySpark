@@ -6,6 +6,12 @@ In the last chapters, neuron weights were intuitively tuned to produce precise p
 
 The network is initialised with pseudo-random weight values. The inputs and expected outputs are also given. This time, a new type of activation function is used, namely the Sigmoid function[^1]. This function is often used in machine learning, since it constrains the output between $0$ and $1$. The formula for this function can be found below.
 
+??? info "Why do we use sigmoid?"
+
+    The advantage of using a sigmoid function instead of some linear function (e.g. the step function used in the previous chapters), is that it compresses the entire range of possible numbers into a small range from $0-1$. It still retains the accuracy of values near the zero-point, but is less precise for very extreme values.
+
+    ![Sigmoid curve](../assets/images/sigmoid.png)
+
 [^1]:<https://en.wikipedia.org/wiki/Sigmoid_function>
 
 $$ 
@@ -45,10 +51,11 @@ $$
 }
 $$
 
-For each output, the error from the expected value can be calculated. This is done by using the following Error function.
+For each output, the error from the expected value can be calculated. This is done by using the following Error function. The individual errors are calculated thereafter.
 
 $$
 \displaylines{
 \text{total_error}=\sum \frac{1}{2}(\text{expected - output})^2=\frac{1}{2}(0.05−0.73492)^2+\frac{1}{2}(0.95−0.77955)^2=0.24908
-}
+\text{error_1}= \text{output_1-expected output 1}=0.73492-0.05=0.68492
+\text{error_2}= \text{output_2-expected output 2}=0.77955-0.95=−0.17044
 $$
