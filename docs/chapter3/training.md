@@ -14,11 +14,11 @@ The neuron above has the following weights, inputs, expected output and new acti
 
 $$
 \displaylines{
-\text{input 1}=0.1\\
-\text{input 2}=0.8\\
+\text{input1}=0.1\\
+\text{input2}=0.8\\
 \text{expected 1}=0.4\\
-\text{weight 1}=0.3\\
-\text{weight 2}=0.9\\
+\text{weight1}=0.3\\
+\text{weight2}=0.9\\
 }
 $$
 
@@ -33,7 +33,7 @@ $$
 $$
 
 $$
-f(0.75)=0.75
+\text{output}=f(0.75)=0.75
 $$
 
 As can be seen, the predicted result is off by quite a bit. Mathematically speaking, this offset is the error of the prediction. It is calculated as follows.
@@ -66,12 +66,12 @@ For step 1. the derivate is also easy to calculate.
 
 $$
 \displaylines{
-\text{sum}=\text{input1}*\text{weight1}+\text{input2}*\text{weight2}//
-\text{sum}'_{weight1}=\text{input1}
+\text{sum}=\text{input1}*\text{weight1}+\text{input2}*\text{weight2}\\
+\text{sum}'_{weight1}=\text{input1}\\
 }
 $$
 
-To calculate the total influence, or delta, all values need to be multiplied. This is shown for weight1 below
+To calculate the total influence, or delta, all values need to be multiplied. This is shown for weight1 below.
 
 $$
 \delta_{weight1}=f'(x)*\text{sum}'_{weight1}*error=1*0.1*0.35=0.035
@@ -83,3 +83,29 @@ $$
 \delta_{weight2}=f'(x)*\text{sum}'_{weight2}*error=1*0.8*0.35=0.28
 $$
 
+Now these deltas can be applied to the weights of the neuron.
+
+$$
+\displaylines{
+\text{weight1}_{new}=\text{weight1}-\delta_{weight1}=0.3-0.035=0.265\\
+\text{weight2}_{new}=\text{weight2}-\delta_{weight1}=0.9-0.28=0.62\\
+}
+$$
+
+With these new weights, the output of the neuron has come closer to the expected output. To check if this is indeed the case, the error can be re-calculated as well.
+
+$$
+\sum \text{inputs}*\text{weights}_{new} = 0.1 * 0.265 + 0.8 * 0.62 = 0.5225 \\
+$$
+
+$$
+\text{output}=f(0.5225)=0.5225
+$$
+
+$$
+\text{error}=0.5225-0.4=0.1225\\
+$$
+
+Succes! The neuron has now become more accurate at predicting the output.
+
+In training bigger neural networks, there are a few more nuances to keep in mind.

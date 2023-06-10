@@ -55,7 +55,7 @@ $$
 $$
 
 $$
-f(0.78)=1
+\text{output}=f(0.78)=1
 $$
 
 The output of our neuron, with the given inputs would be $1$.
