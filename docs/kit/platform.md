@@ -15,7 +15,7 @@ The TinySpark platform is divided into several chapters:
 <!-- sources -->
 [Chapter 1: Introduction to neurons]:../chapter1/introduction.md
 [Chapter 2: Networks and structures]:../chapter2/introduction.md
-[Chapter 3: Training networks]:../index.md
+[Chapter 3: Training networks]:../chapter3/introduction.md
 [Chapter 4: Large models and Input shaping]:../index.md
 [Chapter 5: Datatypes and more Projects]:../index.md
 
