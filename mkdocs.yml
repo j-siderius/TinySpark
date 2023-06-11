@@ -134,6 +134,8 @@ nav:
   - Chapter 3:
     - Introduction: chapter3/introduction.md
     - Training: chapter3/training.md
+    - Gesture recognition: chapter3/gesture_recognition_data.md
+    - Gesture recognition training: chapter3/gesture_recognition_training.md
   - About: 
     - Project: about/project.md
     - License: about/license.md

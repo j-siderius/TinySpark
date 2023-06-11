@@ -50,6 +50,7 @@ In order to now calculate the required changes to the weights of the network (ca
 [^2]:<https://en.wikipedia.org/wiki/Stochastic_gradient_descent>
 
 During the feedforward, two steps were performed:
+
 1. The summation of inputs and weights
 2. The activation of the sum
 
