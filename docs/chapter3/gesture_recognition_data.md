@@ -6,7 +6,7 @@ In this mini-project, a simple gesture recognition system will be built. Using t
 - moving closer
 - moving away
 
-To detect these gestures, a network that takes in multiple proximity readings needs to be devised. In this example, three measurements will be input into the network, one measurement that is current, one that was 50ms ago, and one that is 100ms ago. This _Time series_[^1] prediction method is a common way to analyse real-time sensor data using a neural network.
+To detect these gestures, a network that takes in multiple proximity readings needs to be devised. In this example, three measurements will be input into the network, one measurement that is current, one that was 250ms ago, and one that is 500ms ago. This _Time series_[^1] prediction method is a common way to analyse real-time sensor data using a neural network.
 
 [^1]:<https://en.wikipedia.org/wiki/Time_series>
 
@@ -54,27 +54,35 @@ while True:
 
         # Startup delay
         recording = list()
+        print("> Starting recording in 1sec")
         time.sleep(1)
 
         # Start recording
         led.value = 1
-        recording.append(sensor.proximity)
-        # delay for 50ms
-        time.sleep(0.050)
-        recording.append(sensor.proximity)
-        # delay for another 50ms
-        time.sleep(0.050)
-        recording.append(sensor.proximity)
+        distance = sensor.proximity
+        recording.append(distance)
+        print(f"{distance=}")
+        # delay for 250ms
+        time.sleep(0.250)
+        distance = sensor.proximity
+        recording.append(distance)
+        print(f"{distance=}")
+        # delay for another 250ms
+        time.sleep(0.250)
+        distance = sensor.proximity
+        recording.append(distance)
+        print(f"{distance=}")
 
         # Stop recording
         led.value = 0
+        print("> Stopped recording")
         proximity_readings.append(recording)
 
-    # CHeck button 2
+    # Check button 2
     elif button2.value == 0:
-        
+
         # Print all recordings to the serial console, in form of an array
-        print("Recordings: [-100ms, -50ms, current]")
+        print("Recordings: [-500ms, -250ms, current]")
         print("[")
         for recording in proximity_readings:
             print(f"[{recording[0]}, {recording[1]}, {recording[2]}],")
@@ -82,7 +90,10 @@ while True:
 
         # Clear the measurement storage
         proximity_readings = list()
-    
+        
+        # Pause a bit after resetting
+        time.sleep(1)
+
     # Debounce the buttons
     time.sleep(0.01)
 ```
