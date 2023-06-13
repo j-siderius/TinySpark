@@ -4,11 +4,7 @@
 
 A neural network is a computational model that mimics the structure and function of biological neurons. A neuron is a basic unit of a neural network that can receive, process and transmit information. In this chapter, neurons' function and connections will be explained. After the explanation, a simple project will be programmed to show how a neuron functions mathematically.
 
-```mermaid
-    graph LR
-    A((inputs)) --> B[Neural\nnetwork]
-    B --> C((output))
-```
+![Neural network structure](../assets/images/neural_network_structure.png)
 
 ---
 

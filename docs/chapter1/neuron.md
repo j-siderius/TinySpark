@@ -2,12 +2,7 @@
 
 The neuron is at the heart of every neural network, it provides all computation and links to other neurons and layers within the neural network. A neuron consists of three main components: an input layer, an activation function and an output layer. The input layer receives signals from other neurons or external sources, such as images, texts, or numbers. The activation function determines whether the neuron should fire or not based on the input signals. The output layer sends the firing signal to other neurons or to the final output of the network.
 
-```mermaid
-    graph LR
-    A((input)) -- weight --> B[Neuron]
-    B --> C[Activation]
-    C --> D((output))
-```
+![Neuron structure](../assets/images/neuron_structure.png)
 
 The inputs of a neuron come in many different shapes and sizes (literally). A neuron could receive just one single input, or be connected to more than 500 different inputs. The inputs to a neuron are always numeric (since we are essentially working with one giant mathematical formula), so complex inputs like sound or images have to be split into many different parts (e.g. milliseconds of sound or pixels in an image). These can then be fed into the input of a network.
 
@@ -15,11 +10,7 @@ The inputs of a neuron come in many different shapes and sizes (literally). A ne
 
 Let's now look at an example neuron, and how inputs travel through it; suppose we have a neuron with two inputs, two weights and a simple threshold function. We will compute the output of this neuron.
 
-```mermaid
-    graph LR
-    A((input 1)) -- weight 1 --> B[Neuron]
-    C((input 2)) -- weight 2 --> B
-```
+![Neuron inputs structure](../assets/images/inputs_neuron_structure.png)
 
 The first step in computation of the output is to sum the inputs together with the weights:
 
