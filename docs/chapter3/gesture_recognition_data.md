@@ -14,7 +14,7 @@ In order to train an accurate neural network, it is important to record actual d
 
 **TODO: write more on local recording / remote training**
 
-![Recording data locally, processing / training remote, deploy locally](https://placehold.co/600x400?text=Device+>+Cloud+>+Device)
+![Recording data locally, processing / training remote, deploy locally](../assets/images/micro_cloud_deploy.png)
 
 Starting off, some data needs to be recorded on the TinySpark development kit. The code below will start the recording of the datapoints one second after button 1 is pressed. The LED will show when a recording is made. After the recording has finished, the values will be stored in an array. Once button 2 is pressed, all datapoints are printed onto the serial console. From there, it is possible to copy them over to a training program, which will be discussed further along this section.
 

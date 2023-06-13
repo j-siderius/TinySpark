@@ -8,7 +8,7 @@ In training a neuron, almost the opposite of this process is performed, in the s
 
 [^1]:<https://en.wikipedia.org/wiki/Backpropagation>
 
-![Training neuron mathematically](https://placehold.co/600x400?text=Training+neuron)
+![Training neuron mathematically](../assets/images/training_neuron_weights.png)
 
 The neuron above has the following weights, inputs, expected output and new activation function (this is the linear activation function, chosen for it's simplicity).
 
