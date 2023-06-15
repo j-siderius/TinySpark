@@ -48,7 +48,7 @@ In order to now calculate the required changes to the weights of the network (ca
 
 [^2]:<https://en.wikipedia.org/wiki/Stochastic_gradient_descent>
 
-![Feedforward neuron](https://placehold.co/600x400?text=Feedforward)
+![Feedforward neuron](../assets/images/neuron_structure.png)
 
 During the feedforward, two steps were performed:
 
@@ -57,7 +57,7 @@ During the feedforward, two steps were performed:
 
 Additionally, one last step is performed at the output of the network, namely the calculation of the error of the prediction.
 
-![Backpropagate neuron](https://placehold.co/600x400?text=Backpropagate)
+![Backpropagate neuron](../assets/images/neuron_backpropagation.png)
 
 To calculate backwards, the derivatives of the mentioned steps need to be determined. For step 2, this requires the derivative of the activation function (in this case the linear function).
 
@@ -158,7 +158,7 @@ Next, each neuron in a neural network often has an additional weight applied to 
 $$\sum (\text{inputs}*\text{weights}) + \text{bias}$$
 
 
-![Biased neuron](https://placehold.co/600x400?text=Bias+>+Neuron)
+![Biased neuron](../assets/images/neuron_bias.png)
 
 [^3]:<https://machine-learning.paperspace.com/wiki/weights-and-biases>
 
