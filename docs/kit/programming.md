@@ -12,8 +12,6 @@ The TinyML development kit is programmed using the included USB-C to USB-A cable
 
 After connecting the TinyML development kit, two green LEDs on the board should light up, indicating that there is power on the board. At the same time, a new USB-drive named `CIRCUITPY` should appear on your computer (in File Explorer, Finder or Files). This drive contains code, software libraries and files. To learn more about the `CIRCUITPY`-drive, take a look at the [Adafruit - Circuitpy Drive guide](https://learn.adafruit.com/welcome-to-circuitpython/the-circuitpy-drive).
 
-**TODO: change USB name?***
-
 ![CIRCUITPY drive](../assets/images/circuitpy_drive.png)
 
 ---
