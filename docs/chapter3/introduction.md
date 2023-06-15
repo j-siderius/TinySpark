@@ -1,4 +1,4 @@
-# Chapter 2 - Training networks
+# Chapter 3 - Training networks
 
 The network shown in the last chapter was still relatively simple. Tuning the weights was still handled manually and by intuition. However, if networks become larger, calculating the optimal weights for each neuron is impossible. Through the use of mathematics, it is possible to calculate the influence of every weight in the network, and determine how to optimally change all weights to get the required output.
 

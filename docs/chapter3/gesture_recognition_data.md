@@ -15,7 +15,7 @@ In order to train an accurate neural network, it is important to record actual d
 
 To start the mini-project, some data needs to be recorded on the TinySpark development kit. The code below will start the recording of the datapoints one second after `Button 1` is pressed. The LED will show when a recording is made. After the recording has finished, the values will be stored in an array. Once `Button 2` is pressed, all datapoints are printed onto the serial console. For information on using the serial console, please read the [TinySpark Programming section](../kit/programming.md). From there, it is possible to copy the measurements over to a training program, which will be discussed further along this section.
 
-[![Open In Github](../assets/images/github-badge.svg)]()
+[![Open In Github](../assets/images/github-badge.svg)](../assets/examples/gesture_data_recording.py)
 
 ```python title="gesture_data_recording.py"
 # Import all libraries
@@ -95,12 +95,12 @@ while True:
     time.sleep(0.01)
 ```
 
-To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. _About 5-7 datapoints per gesture is enough for this example._
+To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. Store the measurements somewhere (as we are using them in the next section) and make sure to label them appropriately. _About 5-7 datapoints per gesture is enough for this example._
 
 ??? info "Proximity sensor measurements"
 
     Since the proximity sensor included on the TinySpark development board was originally produced for use in hand-detecting applications such as automatic soap dispensers, the optimal measurement range is between 10-25cm from the sensor. Additionally, it is easiest to use a solid coloured object such as a piece of paper or cardboard to record the gestures, as this ensures accurate detection.
 
-    Use the distance printed to the serial console in order to see if the measurement(s) makes sense. If they don't seem right, try again and delete the old measurement(s) by emptying the array using `Button 2`.
+    Use the distance printed to the serial console in order to see if the measurement(s) makes sense. If they don't seem right, try again and delete the old measurement(s) by emptying the array using `Button 2`. Also look at [TinySpark development kit description](../kit/devkit.md) to see the example code for the proximity (and light) sensor.
 
 In the next section, the measurements will be run through the neural network and the weights will be trained using backpropagation.
