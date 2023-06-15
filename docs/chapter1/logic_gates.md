@@ -7,6 +7,8 @@ A logic gate (in electronics), is a device which performs logical operations usi
 
 In this first Mini-project, we will build a single-neuron 'network' to replicate the behaviour of an OR logic gate[^3]. The OR gate will activate whenever either of it's inputs reads HIGH (or 1 in our case).
 
+![OR gate logic symbol](../assets/images/or_gate.png)
+
 [^3]: <https://en.wikipedia.org/wiki/OR_gate>
 
 The logic table for an OR gate looks like this:

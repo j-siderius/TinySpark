@@ -61,15 +61,19 @@ while True:
     time.sleep(1)
 ```
 
-Copy or write the above code into the Code with Mu editor and Save it to the TinyML development board. The red LED should start to blink.
+Copy or write the above code into the Code with Mu editor and click the Save button to save it to the TinyML development board. The red LED should start to blink.
 
-To check out more simple code examples, take a look at the [Adafruit Learning System - Guide to CIrcuitPython](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/main/CircuitPython_Essentials) or at the sensor code examples in the [previous section](devkit.md).
+![CircuitPython serial console](../assets/images/serial.png)
+
+If some code outputs something (e.g. has a `print("Hello world!")` statement), the serial console can be used. Through the USB connection, it is possible to read out messages from the `print` statements. To open the Serial console in Code with Mu, click the Serial button at the top of the window. The serial console will now show at the bottom of the window. Take a look at the [Adafruit CircuitPython - Serial console page](https://learn.adafruit.com/welcome-to-circuitpython/kattni-connecting-to-the-serial-console).
+
+To check out more simple code examples, take a look at the [Adafruit Learning System - Guide to CircuitPython](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/main/CircuitPython_Essentials) or at the sensor code examples in the [previous section](devkit.md).
 
 ---
 
 To access I/O of the TinyML development kit, CircuitPython has defined easy references to the different pins. Certain inputs and outputs can be accessed using their semantic definition (e.g. the output connected to the red LED is `GPIO13`, however we can just reference it as `board.LED` in our code). All pin definitions can be found in the info box below. To learn more about the board library, visit [CircuitPython - Pins and Board](https://learn.adafruit.com/circuitpython-essentials/circuitpython-pins-and-modules).
 
-???+ info "Pin definition"
+??? info "Pin definition"
 
     The TinyML development kit has the following pin definitions and names:
 

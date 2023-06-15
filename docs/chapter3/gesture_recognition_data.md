@@ -5,6 +5,8 @@ In this mini-project, a simple gesture recognition system will be built. Using t
 - moving closer
 - moving away
 
+![TinySpark development kit proximity sensor](../assets/images/devboard_prox_sensor.png)
+
 To detect these gestures, a network that takes in multiple proximity readings needs to be devised. In this example, three measurements will be input into the network, one measurement that is current, one that was 250ms ago, and one that is 500ms ago. This _Time series_[^1] prediction method is a common way to analyse real-time sensor data using a neural network.
 
 [^1]:<https://en.wikipedia.org/wiki/Time_series>

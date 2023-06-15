@@ -4,7 +4,7 @@ Now that you have implemented your first real neural network, let's deploy it to
 
 The environmental sensor (more information on the [TinyML development kit sensors page](../kit/devkit.md)) will be used for the temperature and humidity measurements. In a deployment, this sensor could be mounted close to the plant, and be configured to send a message to the gardener, or remotely open a window or start a ventilator. For now, the result of the prediction will be printed to the Serial monitor (see the [Programming guide](../kit/programming.md) for more information).
 
-![TinyML development board](../assets/images/devboard.png)
+![TinyML development board environmental sensor](../assets/images/devboard_env_sensor.png)
 
 Let's implement the logic from our last section, and build the neural network into the development board code.
 
