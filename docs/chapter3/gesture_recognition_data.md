@@ -1,8 +1,7 @@
 # Gesture recognition - data aquisition
 
-In this mini-project, a simple gesture recognition system will be built. Using the on-board proximity sensor introduced in the [TinySpark development section](../kit/devkit.md), three states will be detected: 
+In this mini-project, a simple gesture recognition system will be built. Using the on-board proximity sensor introduced in the [TinySpark development section](../kit/devkit.md), two states will be detected: 
 
-- no movement / no object
 - moving closer
 - moving away
 
@@ -10,13 +9,11 @@ To detect these gestures, a network that takes in multiple proximity readings ne
 
 [^1]:<https://en.wikipedia.org/wiki/Time_series>
 
-In order to train an accurate neural network, it is important to record actual data on the end device. One of the possible downsides of local, on-device machine learning
-
-**TODO: write more on local recording / remote training**
+In order to train an accurate neural network, it is important to record actual data on the end device. In more complex systems however, it is not feasible to train the neural network on the data recording device, as it would take far too long to perform all training calculations there. Therefor, it is common practise to capture measurements on the local device, transfer them to a more powerful computer (e.g. PC or even to the cloud) and perform the training there. Afterwards, only the tuned weights and the feedforward part of the neural network are transfered back to the local device in order to make predictions.
 
 ![Recording data locally, processing / training remote, deploy locally](../assets/images/micro_cloud_deploy.png)
 
-Starting off, some data needs to be recorded on the TinySpark development kit. The code below will start the recording of the datapoints one second after button 1 is pressed. The LED will show when a recording is made. After the recording has finished, the values will be stored in an array. Once button 2 is pressed, all datapoints are printed onto the serial console. From there, it is possible to copy them over to a training program, which will be discussed further along this section.
+To start the mini-project, some data needs to be recorded on the TinySpark development kit. The code below will start the recording of the datapoints one second after `Button 1` is pressed. The LED will show when a recording is made. After the recording has finished, the values will be stored in an array. Once `Button 2` is pressed, all datapoints are printed onto the serial console. For information on using the serial console, please read the [TinySpark Programming section](../kit/programming.md). From there, it is possible to copy the measurements over to a training program, which will be discussed further along this section.
 
 [![Open In Github](../assets/images/github-badge.svg)]()
 
@@ -98,6 +95,12 @@ while True:
     time.sleep(0.01)
 ```
 
-To record some datapoints, press button 1 and when the LED turns on, then perform a gesture. After recording some datapoints, press button 2 to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. _About 5 datapoints per gesture is enough for this example._
+To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. _About 5-7 datapoints per gesture is enough for this example._
+
+??? info "Proximity sensor measurements"
+
+    Since the proximity sensor included on the TinySpark development board was originally produced for use in hand-detecting applications such as automatic soap dispensers, the optimal measurement range is between 10-25cm from the sensor. Additionally, it is easiest to use a solid coloured object such as a piece of paper or cardboard to record the gestures, as this ensures accurate detection.
+
+    Use the distance printed to the serial console in order to see if the measurement(s) makes sense. If they don't seem right, try again and delete the old measurement(s) by emptying the array using `Button 2`.
 
 In the next section, the measurements will be run through the neural network and the weights will be trained using backpropagation.
