@@ -200,7 +200,7 @@ As mentioned before, it is possible to use ready-made code libraries, for exampl
 
 That's it! Now you know everything needed to get started with the TinySpark TinyML material.
 
-[Get started in Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
+[Get started on Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
 
 
 
