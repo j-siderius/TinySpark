@@ -2,17 +2,66 @@
 
 To continue building the neural network that will recognise gestures, the mathemathics as discussed in a [previous section](../chapter3/training.md) will be implemented in Python. Then the aquired data from the [last section](../chapter3/gesture_recognition_data.md) will be used to train the network. Finally, the tuned weights will be used to run the model on the TinySpark development kit in order to detect gestures.
 
+For this model, a neural network with two hidden neurons and two output neurons is chosen. Since three measurements are taken, three input neurons are required. For the output, two neurons are chosen, as to give the probability of each of the gestures: $\text{output1}=p(\text{moving closer})$ and $\text{output2}=p(\text{moving away})$. The weights are initialised randomly, since it is not possible to determine starting weights by hand in a meaningful way anymore. The randomisation uses a uniform random distribution between $-1$ and $1$. Below, a depiction of the described neural network can be found.
+
+![Gesture neural network 3-2-2 with weights](../assets/images/nn_3-2-2_weights.png)
+
+With the measurements take in the [previous section](../chapter3/gesture_recognition_data.md), one example calculation will be performed on a _moving closer_ measurement. All variables that belong together will be grouped into an array for convenience. Additionally, the linear activation function is defined.
+
+$$
+\displaylines{
+\text{measurement}=[5.1, 46.7, 120.5]\\
+\text{expected output}=[1, 0]\\
+\text{weights1}=[-0.50, 0.22, -0.91, 0.61, 0.14, -0.48]\\
+\text{weights1}=[0.73, 0.29, -0.29, -0.24]\\
+f(x)=x\\
+}
+$$
+
+Since the measurement values are quite large, and it is best to keep the weights in a network within managable ranges (e.g. between $-2$ and $2$), some pre-processing of the data needs to be performed again. For each measurement in the measurements array, the following calculation will be performed
+
+$measurement_{in} = \frac{measurement}{100}$
+
+$$
+\displaylines{
+\text{measurement}=[5.1, 46.7, 120.5]\\
+\text{measurement}_{in}=[0.051, 0.467, 1.205]\\
+}
+$$
+
+The hidden layer can now be calculated as follows.
+
+$$
+\displaylines{
+\text{hidden}1=f(\text{measurement}_{in}1 * \text{weights}11 + \text{measurement}_{in}2 * \text{weights}12 + \text{measurement}_{in}3 * \text{weights}13)\\
+\text{hidden}2=f(\text{measurement}_{in}1 * \text{weights}14 + \text{measurement}_{in}2 * \text{weights}15 + \text{measurement}_{in}3 * \text{weights}16)\\
+\text{output}1=f(\text{hidden}1 * \text{weights}21 + \text{hidden}2 * \text{weights}22)\\
+\text{output}2=f(\text{hidden}1 * \text{weights}23 + \text{hidden}2 * \text{weights}24)\\
+}
+$$
+
+$$
+\displaylines{
+\text{hidden}1=-1.0193\\
+\text{hidden}2=-0.4819\\
+\text{output}1=-0.8839\\
+\text{output}2=0.41126\\
+}
+$$
+
+<!-- TODO: calculate one example by hand above -->
+
 There are some nuances to keep in mind with this training program.
 
 1. Since it is not possible any more to determine the starting weights by hand in a meaningful way, they are initialised randomly (using a uniform random distribution).
 2. The system will output the probability $p$ that a gesture is either moving closer $[1, 0]$ or moving away $[0, 1]$.
 3. In order to introduce some variance into the training, the samples are shuffled for each training cycle.
-4. As done in the [previous chapter](../chapter2/plant_monitoring.md), the inputs are pre-processed: $measuremt_{in} = \frac{measurement}{100}$. This is done in order to limit the range of weights.
+4. As done in the [previous chapter](../chapter2/plant_monitoring.md), the inputs are pre-processed: $measurement_{in} = \frac{measurement}{100}$. This is done in order to limit the range of weights.
 5. A loss value is kept in order to check if the network is improving. This loss is printed every 10 training cycles in order to see the progress.
 
 See if the model is able to train successfully on the measurements recorded in the [last section](../chapter3/gesture_recognition_data.md).
 
-[![Open In Colab](assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=G1Upy1Z1iPvS)
+[![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=G1Upy1Z1iPvS)
 
 ```python title="training_model.py"
 # Import the random library to initialise the weights
@@ -124,5 +173,5 @@ print(f"{loss=}")
 print(f"{weights=}")
 ```
 
-
+If the loss at the end of training is satisfactory, the weights can be copied / stored and loaded into the model that runs on the TinySpark development kit. This will be done in the next section.
 
