@@ -28,6 +28,8 @@ To install the software, head to the [Code with Mu - Downloads] page and install
 
     If you are already familiar with programming development kits, or want to work in an IDE which you are familiar with (such as Atom or VS Code), take a look at the [Adafruit - Advanced CircuitPython setup](https://learn.adafruit.com/welcome-to-circuitpython/advanced-setup).
 
+    Be aware that all examples are based on the Code with Mu editor, they should function in other editors as well. Setting up the serial connection to the microcontroller can be somewhat more difficult however.
+
 After installing, open the Code with Mu editor and (upon first start) select the CircuitPython mode. This ensures that the IDE is set up correctly for use with the TinyML development kit.
 
 ??? info "Reset the Code with Mu editor"
@@ -61,19 +63,19 @@ while True:
     time.sleep(1)
 ```
 
-Copy or write the above code into the Code with Mu editor and click the Save button to save it to the TinyML development board. The red LED should start to blink.
+Copy or write the above code into the Code with Mu editor and click the Save button to save it to the TinyML development board. The red LED should start to blink. Contrary to normal Python, CircuitPython requires the main code file to be named `code.py` and be located in the root of the `CIRCUITPY` drive. You can still work with multiple code files, just make sure that the main file is as described.
 
 ![CircuitPython serial console](../assets/images/serial.png)
 
-If some code outputs something (e.g. has a `print("Hello world!")` statement), the serial console can be used. Through the USB connection, it is possible to read out messages from the `print` statements. To open the Serial console in Code with Mu, click the Serial button at the top of the window. The serial console will now show at the bottom of the window. Take a look at the [Adafruit CircuitPython - Serial console page](https://learn.adafruit.com/welcome-to-circuitpython/kattni-connecting-to-the-serial-console).
+If code outputs something (e.g. has a `print("Hello world!")` statement), the serial console can be used. Through the USB connection, it is possible to read out messages from the `print` statements using a serial console. To open the Serial console in Code with Mu, click the Serial button at the top of the window. The serial console will now show at the bottom of the window. For more information, take a look at the [Adafruit CircuitPython - Serial console page](https://learn.adafruit.com/welcome-to-circuitpython/kattni-connecting-to-the-serial-console).
 
 To check out more simple code examples, take a look at the [Adafruit Learning System - Guide to CircuitPython](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/main/CircuitPython_Essentials) or at the sensor code examples in the [previous section](devkit.md).
 
 ---
 
-To access I/O of the TinyML development kit, CircuitPython has defined easy references to the different pins. Certain inputs and outputs can be accessed using their semantic definition (e.g. the output connected to the red LED is `GPIO13`, however we can just reference it as `board.LED` in our code). All pin definitions can be found in the info box below. To learn more about the board library, visit [CircuitPython - Pins and Board](https://learn.adafruit.com/circuitpython-essentials/circuitpython-pins-and-modules).
+To access inputs and outputs (I/O) of the TinyML development kit, CircuitPython has defined easy references to the default pins. Certain inputs and outputs can be accessed using their semantic definition (e.g. the output connected to the red LED is `GPIO13`, however it can be referenced  as `board.LED` in the code). All pin definitions can be found in the info box below. To learn more about the board library and pin usage, visit [CircuitPython - Pins and Board](https://learn.adafruit.com/circuitpython-essentials/circuitpython-pins-and-modules).
 
-??? info "Pin definition"
+??? info "Pin definitions"
 
     The TinyML development kit has the following pin definitions and names:
 
@@ -162,7 +164,7 @@ To access I/O of the TinyML development kit, CircuitPython has defined easy refe
 
 ---
 
-As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, however if you want to learn more about external libraries, visit the [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries).
+As mentioned before, it is possible to use ready-made code libraries, for example to easily integrate sensors, outputs or connectivity. Some libraries are built-in to the CircuitPython firmware, others may need to be downloaded and included in the `lib` folder on the `CIRCUITPY` drive. The examples on the TinySpark platform only use built-in libraries, as all sensor libraries for the on-board sensors are included in CircuitPython. If you want to learn more about external libraries, visit [CircuitPython - Libraries](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries).
 
 ??? info "Included libraries"
 
@@ -198,10 +200,7 @@ As mentioned before, it is possible to use ready-made code libraries, for exampl
 
 That's it! Now you know everything needed to get started with the TinySpark TinyML material.
 
-[Go to Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
-
-
-
+[Get started in Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
 
 
 

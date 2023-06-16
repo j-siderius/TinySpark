@@ -19,11 +19,11 @@ The TinySpark platform is divided into several chapters:
 [Chapter 4: Large models and Input shaping]:../index.md
 [Chapter 5: Datatypes and more Projects]:../index.md
 
-These chapters will introduce various concepts within (Tiny) Machine Learning in an engaging, interactive and project-based way. They can be accessed by clicking on the chapters here, or on the navigation bar at the top of the page (pictured below). Each chapter will explain some theory, let you play around with parts of a neural network and finish with a project, in which the theory can be put into practise.
+These chapters will introduce various concepts within (Tiny) Machine Learning in an engaging, interactive and project-based way. They can be accessed by clicking on the chapters here, or on the navigation bar at the top of the page (pictured below). Each chapter will explain some theory, let you play around with parts of a neural network and program a mini-project, in which the theory can be put into practise.
 
 ![Navigation bar](../assets/images/navigation_bar.png)
 
-To navigate through chapters, it is possible to use the arrows at the bottom of most pages. Clicking the right-arrow will go to the next chapter section. THe left-arrow can be used to go back to the previous section of a chapter.
+To navigate through chapters, it is possible to use the arrows at the bottom of most pages. Clicking the right-arrow will go to the next chapter section. THe left-arrow can be used to go back to the previous section of a chapter. Additionally, on ccomputers, there is a side-menu available at the top left of each page, which shows all sections of a chapter.
 
 ![Navigation footer](../assets/images/navigation_footer.png)
 
@@ -71,7 +71,7 @@ while True:
     time.sleep(1)
 ```
 
-Concepts and (parts of) neural networks will be explained using interactive applications. These allow you to manipulate values, play around with network structures and more, seeing the effects in real time.
+Concepts can also be explained using interactive applications. These allow you to manipulate values, play around with network structures and more, seeing the effects in real time.
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
@@ -126,4 +126,4 @@ function draw() {
 
 ---
 
-In the next section, the TinyML Development Kit will be introduced.
+In the next section, the TinyML Development Kit will be introduced. Click on `Next` to continue the _Get Started_ guide.

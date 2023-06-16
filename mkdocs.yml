@@ -116,7 +116,7 @@ extra_javascript:
   
 nav:
   - Home: index.md
-  - TinySpark:
+  - Get started:
     - Introduction: kit/introduction.md
     - Platform: kit/platform.md
     - TinyML development kit: kit/devkit.md

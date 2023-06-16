@@ -35,11 +35,11 @@ There are multiple output pins on the TinyML development board. The specific pin
 
 ![TinyML devkit pinouts](../assets/images/header_pins.png)
 
-The Stemma QT / Qwiic connector uses a different I2C communication bus as the main sensors on the board (on board uses I2C1, Stemma QT / Qwiic uses I2C2). Please see information below to connect sensors to the Stemma QT / Qwiic connector.
+The Stemma QT / Qwiic connector uses a different I2C communication bus as the main sensors on the board (on board uses I2C<sub>1</sub>, Stemma QT / Qwiic uses I2C<sub>2</sub>). Please see information below to connect sensors to the Stemma QT / Qwiic connector.
 
 ??? info "Secondary I2C bus"
 
-    To connect external sensors to the Stemma QT / Qwiic connector, a new (secondary) I2C bus needs to be initialised. This I2C2-bus is connected to the following pins: `SDA2=GPIO17 SCL2=GPIO16`.
+    To connect external sensors to the Stemma QT / Qwiic connector, a new (secondary) I2C bus needs to be initialised. This I2C<sub>2</sub>-bus is connected to the following pins: `SDA2=GPIO17 SCL2=GPIO16`.
 
     To start the secondary I2C bus, use the template project below.
 
