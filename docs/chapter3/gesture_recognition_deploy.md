@@ -2,6 +2,8 @@
 
 Now it is time to deploy the trained model to the TinySpark development board. In order to do so, the recording code from a [previous section](../chapter3/gesture_recognition_data.md) is rewritten to accomodate the prediction. The trained weights are included in the code and the final prediction (the gesture with the highest probability) is printed.
 
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/gesture_model.py)
+
 ```python title="gesture_model.py"
 # Import all libraries
 import time

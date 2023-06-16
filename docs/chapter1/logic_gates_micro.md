@@ -4,9 +4,9 @@ Now that we have implemented our first neuron 'network', let's see how we can tr
 
 We are going to use the two buttons, `button 1` and `button 2` on the development kit to simulate our inputs, and we will use an LED (`LED13`) to show if our output is LOW/0 or HIGH/1. In order to access the Inputs and Outputs of the development kit, we need some code.
 
-[![Open In Github](../assets/images/github-badge.svg)]()
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/input_output.py)
 
-```python title="devboard_input_output.py"
+```python title="input_output.py"
 # import the library to take care of our pins
 import board
 from digitalio import DigitalInOut, Direction
@@ -35,9 +35,9 @@ while 1:
 
 Now let's implement the logic from our last section, and build the neuron 'network' into our development board code.
 
-[![Open In Github](../assets/images/github-badge.svg)]()
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/OR_gate.py)
 
-```python title="devboard_OR_gate.py"
+```python title="OR_gate.py"
 # import the library to take care of our pins
 import board
 from digitalio import DigitalInOut, Direction

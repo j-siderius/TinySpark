@@ -8,9 +8,9 @@ The environmental sensor (more information on the [TinyML development kit sensor
 
 Let's implement the logic from our last section, and build the neural network into the development board code.
 
-[![Open In Github](../assets/images/github-badge.svg)]()
+[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/plant_monitoring.py)
 
-```python title="devboard_plant_monitoring.py"
+```python title="plant_monitoring.py"
 # import the libraries to take care of our sensor and manage time
 import board
 import time
