@@ -2,7 +2,7 @@
 
 Now that we have implemented our first neuron 'network', let's see how we can transport this network to our TinySpark development kit.
 
-We are going to use the two buttons, `button 1` and `button 2` on the development kit to simulate our inputs, and we will use an LED (`LED13`) to show if our output is LOW/0 or HIGH/1. In order to access the Inputs and Outputs of the development kit, we need some code.
+We are going to use the two buttons, `button 1` and `button 2` on the development kit to simulate our inputs, and we will use the LED (`LED13`) to show if our output is LOW/0 or HIGH/1. In order to access the Inputs and Outputs of the development kit, we need some code.
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/input_output.py)
 

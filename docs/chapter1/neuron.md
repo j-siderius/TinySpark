@@ -1,6 +1,6 @@
-# Chapter 1 - The Neuron
+# The Neuron
 
-The neuron is at the heart of every neural network, it provides all computation and links to other neurons and layers within the neural network. A neuron consists of three main components: an input layer, an activation function and an output layer. The input layer receives signals from other neurons or external sources, such as images, texts, or numbers. The activation function determines whether the neuron should fire or not based on the input signals. The output layer sends the firing signal to other neurons or to the final output of the network.
+The neuron is at the heart of every neural network, it provides all computation and links to other neurons and layers within the neural network. A neuron consists of three main components: an input layer, an activation function and an output layer. The input layer receives signals from other neurons or external sources, such as images, texts, or numbers. The activation function determines whether the neuron should fire or not, based on the input signals. The output layer sends the firing signal to other neurons or to the final output of the network.
 
 ![Neuron structure](../assets/images/neuron_structure.png)
 
