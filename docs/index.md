@@ -5,8 +5,6 @@ hide:
 ---
 
 <style> .md-footer__inner:not([hidden]) { display: none } </style>
-<!-- <style> .md-footer__link--prev:not([hidden]) { display: none } </style> -->
-<!-- <style> .md-footer__link--next:not([hidden]) { display: none } </style> -->
 
 # TinySpark
 
@@ -18,13 +16,9 @@ On the TinySpark platform, you will interactively learn the basics of neural net
 
 To follow along with the projects and examples, you will need a TinySpark development board, which is a tiny device that packs enough processing power and sensors to start your TinyML journey!
 
-![TinyML development baord](assets/images/devboard.png)
-
 [Get started!](https://j-siderius.github.io/TinySpark/kit/introduction/){ .md-button .md-button--primary}
 
-<!-- [Go to the TinySpark kit Introduction](https://j-siderius.github.io/TinySpark/kit/introduction/){ .md-button .md-button--primary }
-[Go to Chapter 1](https://j-siderius.github.io/TinySpark/chapter1/introduction/){ .md-button .md-button--primary }
-[Go to About](https://j-siderius.github.io/TinySpark/about/project/){ .md-button .md-button--primary } -->
+![TinyML development baord](assets/images/devboard.png)
 
 <!-- Last updated timestamp -->
 <script>fetch("https://api.github.com/repos/j-siderius/TinySpark/actions/runs?per_page=10").then((e=>e.json())).then((e=>{for(let t of e.workflow_runs)if("pages build and deployment"==t.name&&"success"==t.conclusion){datetime=new Date(t.updated_at),document.getElementById("lastupdate").innerHTML=datetime.toLocaleString("en-GB",{timeZone:"CET"});break}}));</script>
