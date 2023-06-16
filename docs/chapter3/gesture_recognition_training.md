@@ -12,15 +12,17 @@ $$
 \displaylines{
 \text{measurement}=[5.1, 46.7, 120.5]\\
 \text{expected output}=[1, 0]\\
-\text{weights1}=[-0.50, 0.22, -0.91, 0.61, 0.14, -0.48]\\
-\text{weights1}=[0.73, 0.29, -0.29, -0.24]\\
+\text{weights}1=[-0.50, 0.22, -0.91, 0.61, 0.14, -0.48]\\
+\text{weights}2=[0.73, 0.29, -0.29, -0.24]\\
 f(x)=x\\
 }
 $$
 
 Since the measurement values are quite large, and it is best to keep the weights in a network within managable ranges (e.g. between $-2$ and $2$), some pre-processing of the data needs to be performed again. For each measurement in the measurements array, the following calculation will be performed
 
-$measurement_{in} = \frac{measurement}{100}$
+$$
+measurement_{in} = \frac{measurement}{100}
+$$
 
 $$
 \displaylines{
@@ -29,7 +31,7 @@ $$
 }
 $$
 
-The hidden layer can now be calculated as follows.
+The hidden layer can now be determined by using the feedforward calculation.
 
 $$
 \displaylines{
@@ -46,6 +48,29 @@ $$
 \text{hidden}2=-0.4819\\
 \text{output}1=-0.8839\\
 \text{output}2=0.41126\\
+}
+$$
+
+Now the error is calculated. Additionally, since there is more than one output, the _Loss_ is calculated. This serves as a measure of all error in the system (the compound error). There are many different loss functions[^1], but for the sake of simplicity, our loss function will just be a summation of the errors.
+
+[^1]:<https://en.wikipedia.org/wiki/Loss_function>
+
+$$
+\displaylines{
+    \text{error}1=\text{output}1 - \text{expected output}1 = -0.8839 - 1 = -1.8839\\
+    \text{error}2=\text{output}2 - \text{expected output}2 = 0.41126 - 0 = 0.4116\\
+    \text{loss}=\text{error}1 + \text{error}2 = -1.4723
+}
+$$
+
+To now make the model a bit more accurate, backpropagation will be performed. First, the deltas of the output layer weights ($\text{weights}2$) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the [previous sections](../chapter3/training.md).
+
+$$
+\displaylines{
+\delta_{weights}21=f'(x)*\text{sum}'_{weights}21*\text{error}1=1*-1.0193*-1.8893=1.9258\\
+\delta_{weights}22=f'(x)*\text{sum}'_{weights}22*\text{error}1=1*-0.4819*-1.8893=0.9105\\
+\delta_{weights}23=f'(x)*\text{sum}'_{weights}23*\text{error}2=1*-1.0193*0.4116=-0.4195\\
+\delta_{weights}24=f'(x)*\text{sum}'_{weights}24*\text{error}2=1*-0.4819*0.4116=-0.1984\\
 }
 $$
 
