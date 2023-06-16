@@ -47,7 +47,7 @@ $$
 \text{hidden}1=-1.0193\\
 \text{hidden}2=-0.4819\\
 \text{output}1=-0.8839\\
-\text{output}2=0.41126\\
+\text{output}2=0.4112\\
 }
 $$
 
@@ -58,33 +58,100 @@ Now the error is calculated. Additionally, since there is more than one output, 
 $$
 \displaylines{
     \text{error}1=\text{output}1 - \text{expected output}1 = -0.8839 - 1 = -1.8839\\
-    \text{error}2=\text{output}2 - \text{expected output}2 = 0.41126 - 0 = 0.4116\\
+    \text{error}2=\text{output}2 - \text{expected output}2 = 0.4112 - 0 = 0.4112\\
     \text{loss}=\text{error}1 + \text{error}2 = -1.4723
 }
 $$
 
-To now make the model a bit more accurate, backpropagation will be performed. First, the deltas of the output layer weights ($\text{weights}2$) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the [previous sections](../chapter3/training.md).
+To now make the model a bit more accurate, backpropagation will be performed. First, the deltas of the output layer weights ($\text{weights}2$) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the [previous sections](../chapter3/training.md). Recall that the derivative of $f(x)$ was $1$ and the derivative of the $\text{sum}_{weights}$ was the respective input.
 
 $$
 \displaylines{
-\delta_{weights}21=f'(x)*\text{sum}'_{weights}21*\text{error}1=1*-1.0193*-1.8893=1.9258\\
-\delta_{weights}22=f'(x)*\text{sum}'_{weights}22*\text{error}1=1*-0.4819*-1.8893=0.9105\\
-\delta_{weights}23=f'(x)*\text{sum}'_{weights}23*\text{error}2=1*-1.0193*0.4116=-0.4195\\
-\delta_{weights}24=f'(x)*\text{sum}'_{weights}24*\text{error}2=1*-0.4819*0.4116=-0.1984\\
+\delta_{weights}21=\text{error}1*f'(x)*\text{sum}'_{weights21}=-1.8893*1*-1.0193=1.9258\\
+\delta_{weights}22=\text{error}1*f'(x)*\text{sum}'_{weights22}=-1.8893*1*-0.4819=0.9105\\
+\delta_{weights}23=\text{error}2*f'(x)*\text{sum}'_{weights23}=0.4116*1*-1.0193=-0.4195\\
+\delta_{weights}24=\text{error}2*f'(x)*\text{sum}'_{weights24}=0.4116*1*-0.4819=-0.1984\\
 }
 $$
 
-<!-- TODO: calculate one example by hand above -->
+In order to calculate deltas for the weights in the hidden layer, one more step needs to be considered. Since the weights of the hidden layer neurons affect not only the outcome of their own neuron, but also the outcome of neurons further 'downstream' to them (e.g. in this case the output neurons), their total influence needs to be taken into account when calculating the delta. In practise, this means that first, the backpropagation of the weight for $\text{output}1$ needs to be calculated, and then the backpropagation of the weight for $\text{output}2$ is calculated. Subsequently, these values are summed. In larger networks, with more hidden layers, these calculations can become pretty big and almost impossible to write down in formulas. That is why many machine learning libraries (such as Tensorflow[^2]) do all of this math in the background. But now, for our network with a single hidden layer, the formula will be worked out fully.
 
-There are some nuances to keep in mind with this training program.
+??? info "Practical thinking about backpropagation"
 
-1. Since it is not possible any more to determine the starting weights by hand in a meaningful way, they are initialised randomly (using a uniform random distribution).
-2. The system will output the probability $p$ that a gesture is either moving closer $[1, 0]$ or moving away $[0, 1]$.
-3. In order to introduce some variance into the training, the samples are shuffled for each training cycle.
-4. As done in the [previous chapter](../chapter2/plant_monitoring.md), the inputs are pre-processed: $measurement_{in} = \frac{measurement}{100}$. This is done in order to limit the range of weights.
-5. A loss value is kept in order to check if the network is improving. This loss is printed every 10 training cycles in order to see the progress.
+    If it is conceptually hard to understand how the backpropagation might function in a larger network, it is best to draw (imaginary) lines from the current delta / weight you are trying to calculate to every possible output of the model. These lines now show which backpropagation calculations need to be performed and summed to get the final delta.
 
-See if the model is able to train successfully on the measurements recorded in the [last section](../chapter3/gesture_recognition_data.md).
+[^2]:<https://www.tensorflow.org/>
+
+$$
+\displaylines{
+\delta_{weights}11=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights11} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights11}\\
+\delta_{weights}12=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights12} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights12}\\
+\delta_{weights}13=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights13} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights13}\\
+\delta_{weights}14=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights14} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights14}\\
+\delta_{weights}15=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights15} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights15}\\
+\delta_{weights}16=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights16} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights16}\\
+}
+$$
+
+$$
+\displaylines{
+\delta_{weights}11=-1.8893*1*-1.0193*1*0.051 + 0.4116*1*-1.0193*1*0.051 = 0.0768\\
+\delta_{weights}12=-1.8893*1*-1.0193*1*0.467 + 0.4116*1*-1.0193*1*0.467 = 0.7034\\
+\delta_{weights}13=-1.8893*1*-1.0193*1*1.205 + 0.4116*1*-1.0193*1*1.205 = 1.8150\\
+\delta_{weights}14=-1.8893*1*-0.4819*1*0.051 + 0.4116*1*-0.4819*1*0.051 = 0.0363\\
+\delta_{weights}15=-1.8893*1*-0.4819*1*0.467 + 0.4116*1*-0.4819*1*0.467 = 0.3326\\
+\delta_{weights}16=-1.8893*1*-0.4819*1*1.205 + 0.4116*1*-0.4819*1*1.205 = 0.8580\\
+}
+$$
+
+Now that all deltas are calculated, they need to be applied to the weights. As introduced in a previous section, it is often common to multiply the delta to a _learning rate_, in order to limit the influence of any single measurement (sample) on the model. In this example, a learning rate of 0.01 will be applied. While this may seem small for this single calculation, keep in mind that these training calculations are often performed hundreds or even thousands of times.
+
+$$
+\displaylines{
+\text{weight11}_{new}=\text{weight11}-(\text{learning rate}*\delta_{weight11})=-0.50-(0.01*0.0768)=-0.5008\\
+\text{weight12}_{new}=\text{weight12}-(\text{learning rate}*\delta_{weight12})=0.22-(0.01*0.7034)=0.2130\\
+\text{weight12}_{new}=\text{weight13}-(\text{learning rate}*\delta_{weight13})=-0.91-(0.01*1.8150)=-0.9282\\
+\text{weight13}_{new}=\text{weight14}-(\text{learning rate}*\delta_{weight14})=0.61-(0.01*0.0363)=0.6096\\
+\text{weight14}_{new}=\text{weight15}-(\text{learning rate}*\delta_{weight15})=0.14-(0.01*0.3326)=0.1367\\
+\text{weight15}_{new}=\text{weight16}-(\text{learning rate}*\delta_{weight16})=-0.48-(0.01*0.8580)=-0.4886\\
+}
+$$
+
+$$
+\displaylines{
+\text{weight21}_{new}=\text{weight21}-(\text{learning rate}*\delta_{weight21})=0.73-(0.01*1.9258)=0.7107\\
+\text{weight22}_{new}=\text{weight22}-(\text{learning rate}*\delta_{weight22})=0.29-(0.01*0.9105)=0.2809\\
+\text{weight22}_{new}=\text{weight23}-(\text{learning rate}*\delta_{weight23})=-0.29-(0.01*-0.4195)=-0.2858\\
+\text{weight23}_{new}=\text{weight24}-(\text{learning rate}*\delta_{weight24})=-0.24-(0.01*-0.1984)=-0.238\\
+}
+$$
+
+Now that the weights have been tuned (a little bit), check if the prediction error or loss has improved.
+
+$$
+\displaylines{
+\text{hidden}1=-1.0446\\
+\text{hidden}2=-0.4938\\
+\text{output}1=-0.8810\\
+\text{output}2=0.4161\\
+}
+$$
+
+$$
+\displaylines{
+\text{error1}_{new}=\text{output}1 - \text{expected output}1 = -0.8810 - 1 = -1.8810\\
+\text{error2}_{new}=\text{output}2 - \text{expected output}2 = 0.4161 - 0 = 0.4161\\
+\text{loss}_{new}=\text{error}1 + \text{error}2 = -1.4649
+}
+$$
+
+The initial error was $-1.4723$ and the new error has reduced to $-1.4649$, meaning that the training was succesful! Now the above steps need to be reproduced many times, and with different measurements, to ensure that the resulting model works for both gestures.
+
+---
+
+After manually working out one measurement training cycle, it may become apparent why it is good to let a computer program handle all the calculations. So, the training of the gesture recognition system will be put into a Python program.
+
+To introduce some variance into the training, the measurements / samples are shuffled for each training cycle. This ensures that the model gets trained evenly and unbiased. See if the model is able to train successfully on the measurements recorded in the [last section](../chapter3/gesture_recognition_data.md) by adding your own measurements into the code.
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=G1Upy1Z1iPvS)
 
@@ -198,5 +265,8 @@ print(f"{loss=}")
 print(f"{weights=}")
 ```
 
-If the loss at the end of training is satisfactory, the weights can be copied / stored and loaded into the model that runs on the TinySpark development kit. This will be done in the next section.
+If the loss at the end of training is satisfactory (e.g. it has decreased a lot), the weights seem to be tuned well. Now they can be loaded into a model that runs on the TinySpark development kit, predicting gestures.
 
+---
+
+In the next section, the model will be transferred to the TinySpark development kit, and the trained weights will be loaded, in order to test the trained model.

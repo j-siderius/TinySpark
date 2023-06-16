@@ -81,8 +81,8 @@ To calculate the total influence, or delta, all values need to be multiplied tog
 
 $$
 \displaylines{
-\delta_{weight1}=f'(x)*\text{sum}'_{weight1}*error=1*0.1*0.35=0.035\\
-\delta_{weight2}=f'(x)*\text{sum}'_{weight2}*error=1*0.8*0.35=0.28
+\delta_{weight1}=error*f'(x)*\text{sum}'_{weight1}=0.35*1*0.1=0.035\\
+\delta_{weight2}=error*f'(x)*\text{sum}'_{weight2}=0.35*1*0.8=0.28\\
 }
 $$
 
