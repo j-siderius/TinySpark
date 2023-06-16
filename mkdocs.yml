@@ -138,7 +138,7 @@ nav:
     - Gesture recognition training: chapter3/gesture_recognition_training.md
     - Gesture recognition deployment: chapter3/gesture_recognition_deploy.md
   - Beyond TinySpark:
-    - Go further with TinyML: chapter4/introduction.md
+    - Go further with TinyML: beyond/introduction.md
   - About: 
     - Project: about/project.md
     - License: about/license.md
