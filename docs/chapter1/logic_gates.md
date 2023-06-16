@@ -89,7 +89,60 @@ $$
 }
 $$
 
-<!-- TODO: add interactive changing of weight1 here -->
+To see the changes $\text{weight 1}$ has on the outputs of the model, use the interactive visualisation below.
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+<script>
+let img;
+
+function preload() {
+    img = loadImage('https://j-siderius.github.io/TinySpark/assets/images/inputs_neuron_structure.png')
+}
+
+let slider1;
+let weights = [
+  0.3,
+  0.9
+];
+
+function setup() {
+  const canvas = createCanvas(600, 400);
+  canvas.parent('sketch-holder');
+
+  slider1 = select('#weight1')
+}
+
+function draw() {
+  background(220);
+
+  image(img, 0, 0)
+  
+  weights[0] = slider1.value();
+  
+  fill(0, 102, 153);
+  textSize(18);
+  text(' = '+ weights[0], 218, 112);
+  text(' = '+ weights[1], 226, 263);
+  
+  let outputs = [
+    (0*weights[0]+0*weights[1])>=0.5 ? 1 : 0,
+    (0*weights[0]+1*weights[1])>=0.5 ? 1 : 0,
+    (1*weights[0]+0*weights[1])>=0.5 ? 1 : 0,
+    (1*weights[0]+1*weights[1])>=0.5 ? 1 : 0
+  ];
+    
+  text('Outputs:', 350, 140)
+  text('[0,0] = ' + outputs[0], 350, 160);
+  text('[0,1] = ' + outputs[1], 350, 180);
+  text('[1,0] = ' + outputs[2], 350, 200);
+  text('[1,1] = ' + outputs[3], 350, 220);
+}
+</script>
+<div>
+    <div id="sketch-holder"></div>
+    <label for="weight1">Weight 1</label>
+    <input type="range" id="weight1" name="weight1" min="0" max="1" value="0.3" step="0.1">
+</div>
 
 Let's program this into a simple Python script. To make sure that we cover all possible inputs our OR-gate might receive, we will store those inside of an array. We will then loop over all possible inputs and create an output for each.
 
