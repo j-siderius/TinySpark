@@ -6,6 +6,8 @@ This page gives a quick overview of the the TinySpark platform (this webpage), h
 
 The TinySpark platform is divided into several chapters:
 
+<!-- TODO: revise chapter division -->
+
 - [Chapter 1: Introduction to neurons]
 - [Chapter 2: Networks and structures]
 - [Chapter 3: Training networks]
@@ -23,7 +25,7 @@ These chapters will introduce various concepts within (Tiny) Machine Learning in
 
 ![Navigation bar](../assets/images/navigation_bar.png)
 
-To navigate through chapters, it is possible to use the arrows at the bottom of most pages. Clicking the right-arrow will go to the next chapter section. THe left-arrow can be used to go back to the previous section of a chapter. Additionally, on ccomputers, there is a side-menu available at the top left of each page, which shows all sections of a chapter.
+To navigate through chapters, it is possible to use the arrows at the bottom of most pages. Clicking the right-arrow will direct you to the next chapter section. The left-arrow can be used to go back to the previous section of a chapter. Additionally, on ccomputers, there is a side-menu available at the top left of each page, which shows all sections of a chapter.
 
 ![Navigation footer](../assets/images/navigation_footer.png)
 
@@ -31,7 +33,7 @@ To navigate through chapters, it is possible to use the arrows at the bottom of 
 
 The TinySpark platform uses several methods to teach, for example using textual explanation, formulas, code snippets and interactive applications.
 
-Source code will be displayed on the page, with the option to open Python code in [Google Colaboratory], a online code environment for Python notebooks. Any Python code that can be run on a PC (so no TinyML Development Kit code) will be available for testing and playing around on Colab; just click the link and a new notebook will open. If you want to interact this with the code, you need a Google account. 
+Source code will be displayed on the page, with the option to open Python code in [Google Colaboratory], an online code environment for Python notebooks. Any Python code that can be run on a PC (so no TinyML Development Kit code) will be available for testing and playing around on Colab; just click the link and a new notebook will open. If you want to interact with the code, you need a Google account. 
 
 [Google Colaboratory]:https://colab.research.google.com/
 
@@ -65,7 +67,7 @@ led.direction = Direction.OUTPUT
 
 # Every second, flash the LED
 while True:
-    led.value  = 0
+    led.value = 0
     time.sleep(1)
     led.value = 1
     time.sleep(1)

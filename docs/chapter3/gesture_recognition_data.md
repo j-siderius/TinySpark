@@ -17,7 +17,7 @@ In order to train an accurate neural network, it is important to record actual d
 
 To start the mini-project, some data needs to be recorded on the TinySpark development kit. The code below will start the recording of the datapoints one second after `Button 1` is pressed. The LED will show when a recording is made. After the recording has finished, the values will be stored in an array. Once `Button 2` is pressed, all datapoints are printed onto the serial console. For information on using the serial console, please read the [TinySpark Programming section](../kit/programming.md). From there, it is possible to copy the measurements over to a training program, which will be discussed further along this section.
 
-[![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/gesture_data_recording.py)
+[![Open In Github](../assets/images/colab-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/gesture_data_recording.py)
 
 ```python title="gesture_data_recording.py"
 # Import all libraries

@@ -16,7 +16,7 @@ After connecting the TinyML development kit, two green LEDs on the board should 
 
 ---
 
-Programming the TinyML development kit is as easy as editing the `code.py` file that is found on the CIRCUITPY drive. However to make coding for the kit a little easier, the [Code with Mu] IDE will be used. Code with Mu works out of the box with CircuitPython, gives helpful programming prompts and was built with learning in mind.
+Programming the TinyML development kit is as easy as editing the `code.py` file that is found on the CIRCUITPY drive. However, to make coding for the kit a little easier, the [Code with Mu] IDE will be used. Code with Mu works out of the box with CircuitPython, gives helpful programming prompts and was built with learning in mind.
 
 [Code with Mu]:https://codewith.mu/
 
@@ -57,7 +57,7 @@ led.direction = Direction.OUTPUT
 
 # Every second, flash the LED
 while True:
-    led.value  = 0
+    led.value = 0
     time.sleep(1)
     led.value = 1
     time.sleep(1)
