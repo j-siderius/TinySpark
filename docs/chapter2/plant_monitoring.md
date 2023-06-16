@@ -70,7 +70,7 @@ $$
 }
 $$
 
-**TODO: write tweaking of new network**
+<!-- TODO: add tweaking of weights calculation -->
 
 <!-- Now the inputs $1,1$ give the incorrect output of $1$, so again the weights need to be tweaked. Compared to the neuron in the last chapter, tweaking becomes more complicated in this network. Breaking down the calculation into small steps to see where the error occurs is a good way to start. -->
 
@@ -83,6 +83,8 @@ $$
 $$ -->
 
 <!-- To ensure the correct output of $0$, the output neuron calculation for needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$). If the weight $-0.4$ is tweaked to a value of $-0.5$, the activation function will not output $1$ anymore, since the result of the sum is $(1*-0.4 + 1*0.9)=0.4$. -->
+
+<!-- TODO: add interactive tweaking of weights here, with some pointers to get it right -->
 
 Now program this into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API that supplies weather data, such as the [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
 

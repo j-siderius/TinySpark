@@ -20,10 +20,8 @@ The Development kit contains the following sensors and I/O:
 - **Output LED**: this Red LED can be used as a simple output, for example to quickly see if your sensor functions correctly. It is connected to the default LED pin, D13. A template code project for using the output LED can be found [here](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/led.py).
 - **Neopixel LEDs**: the Neopixel LEDs can be used to output application specific information, and since they can be programmed to (individually) display every RGB colour imaginable, you can use them to output loads of useful information. The datasheet for the WS2812B programmable RGB LEDs can be found [here](../assets/datasheets/ws2812b.pdf). A template code project for using the Neopixels can be found [here](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/neopixel_rainbow.py).
 - **USB-C connector**: this connector is used for the main connection to power and program the board. It can be connected using the included USB-C to USB-A cable.
-- **Stemma QT / Qwiic connector**: this connector can be used to connect extra sensors to adapt to your specific projects. The connector enables connection to sensors and actuators using the popular [Adafruit Stemma QT](https://www.adafruit.com/category/620) or [Sparkfun Qwiic](https://www.sparkfun.com/categories/399) standards. A template code project for using the Stemma QT / Qwiic connector with an external sensor can be found [here]().
+- **Stemma QT / Qwiic connector**: this connector can be used to connect extra sensors to adapt to your specific projects. The connector enables connection to sensors and actuators using the popular [Adafruit Stemma QT](https://www.adafruit.com/category/620) or [Sparkfun Qwiic](https://www.sparkfun.com/categories/399) standards. A template code project for using the Stemma QT / Qwiic connector with an external sensor can be found [here](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/secondary_i2c.py).
 - **Expansion header**: this connector can be used to connect extra peripherals, sensors and actuators to adapt to your specific projects. The connector features power, ground, digital and analog connections, giving you the freedom to connect anything you want!
-
-<!-- TODO: Implement Stemma QT/Qwiic code -->
 
 The TinyML development kit also contains some miscellaneous other components such as two green LEDs (for showing power), a Debug header (used to initially program and test the development kit) and some passive components such as resistors and capacitors.
 
@@ -44,6 +42,8 @@ The Stemma QT / Qwiic connector uses a different I2C communication bus as the ma
     To connect external sensors to the Stemma QT / Qwiic connector, a new (secondary) I2C bus needs to be initialised. This I2C<sub>2</sub>-bus is connected to the following pins: `SDA2=GPIO17 SCL2=GPIO16`.
 
     To start the secondary I2C bus, use the template project below.
+
+    [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/secondary_i2c.py)
 
     ```python title="secondary_i2c.py"
     # import needed libraries

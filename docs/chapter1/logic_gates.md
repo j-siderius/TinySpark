@@ -89,6 +89,8 @@ $$
 }
 $$
 
+<!-- TODO: add interactive changing of weight1 here -->
+
 Let's program this into a simple Python script. To make sure that we cover all possible inputs our OR-gate might receive, we will store those inside of an array. We will then loop over all possible inputs and create an output for each.
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=DykfGQVnQ2k5)

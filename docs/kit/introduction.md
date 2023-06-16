@@ -6,14 +6,8 @@ These pages give a quick overview of the TinySpark platform and how it works, th
 
 ![TinySpark kit](../assets/images/tinyspark_kit.png)
 
-<!-- The TinySpark kit contains the following:
-
-- TinySpark platform reference
-- TinySpark TinyML development kit
-- USB-C cable -->
+<!-- TODO: change picture to include colour insert -->
 
 ---
 
 In the next section, the TinySpark platform will be explained. Click on `Next` to continue the _Get Started_ guide.
-
-<!-- [Next :fontawesome-solid-arrow-right:](../kit/platform.md){ .md-button .md-button--primary } -->
