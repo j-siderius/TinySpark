@@ -151,7 +151,7 @@ The initial error was $-1.4723$ and the new error has reduced to $-1.4649$, mean
 
 After manually working out one measurement training cycle, it may become apparent why it is good to let a computer program handle all the calculations. So, the training of the gesture recognition system will be put into a Python program.
 
-To introduce some variance into the training, the measurements / samples are shuffled for each training cycle. This ensures that the model gets trained evenly and unbiased. See if the model is able to train successfully on the measurements recorded in the [last section](../chapter3/gesture_recognition_data.md) by adding your own measurements into the code.
+To introduce some variance into the training, the measurements / samples are shuffled for each training cycle. This ensures that the model gets trained evenly and unbiased. The amount of training epochs and the learning rate were chosen after some experimentation. It is interesting to see what changes in the calculation if these are tweaked (when using machine learning libraries, it is also common to tune these parameters until the desired output or loss is achieved). See if the model is able to train successfully on the measurements recorded in the [last section](../chapter3/gesture_recognition_data.md) by adding your own measurements into the code.
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=G1Upy1Z1iPvS)
 
@@ -264,6 +264,15 @@ for epoch in range(epochs):
 print(f"{loss=}")
 print(f"{weights=}")
 ```
+
+?? info "Training problems"
+
+    Training a neural network can take some insights and even luck. Below are some points of attention to look at when the training does not work like intended.
+
+    1. One or more of the weights of the model have exploded (gone far into the negative or positive), subsequently skewing the whole model. This can be solved by reducing the learning rate, or by limiting the weights.
+    2. One or more of the samples used in training are skewed or an outlier. This can lead to the model not being able to reach acceptably tuned weights. This can be solved by excluding edge cases, or by changing the network structure (shape).
+    3. The model outputs `NaN` (Not a Number), if the model is not able to output the weights anymore, this usually means that they have exploded (see point 1 above).
+    4. The model does not seem to reach an acceptable loss, even after hundreds or thousands of epochs. This could be caused because a network structure (shape) was chosen that does not fit well with the data it tries to predict.
 
 If the loss at the end of training is satisfactory (e.g. it has decreased a lot), the weights seem to be tuned well. Now they can be loaded into a model that runs on the TinySpark development kit, predicting gestures.
 

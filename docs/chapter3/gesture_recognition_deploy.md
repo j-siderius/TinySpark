@@ -1,6 +1,6 @@
 # Gesture recognition - deploying the model
 
-Now it is time to deploy the trained model to the TinySpark development board. In order to do so, the recording code from a [previous section](../chapter3/gesture_recognition_data.md) is rewritten to accomodate the prediction. The trained weights are included in the code and the final prediction (the gesture with the highest probability) is printed.
+Now it is time to deploy the trained model to the TinySpark development board. In order to do so, the recording code from [a previous section](../chapter3/gesture_recognition_data.md) is rewritten to accomodate the prediction. The trained weights are included in the code. Since the training phase of the neural network is not needed anymore, its code will not be included from [the previous section](../chapter3/gesture_recognition_training.md). The program will work by pressing `Button 1` and then recording a gesture. The on-board LED will be on when recording the gesture. The final prediction (the gesture with the highest probability) is printed to the serial console together with its probability.
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/gesture_model.py)
 
@@ -92,4 +92,15 @@ while True:
 
 Deploy the model to the TinySpark development kit and add your trained weights to it. Press `Button 1` and see if the model predicted the gesture correctly!
 
-**TODO: Add troubleshooting**
+??? info "Deployment problems"
+
+    The trained model might behave differently than expected once it has been uploaded to the TinySpark development board. This could be due to a plethora of reasons, some are listed below.
+
+    1. The measurement taken was not performed in the same way as the recordings during training (e.g. using a piece of cardboard vs your hand).
+    2. The measurement taken was not performed in the same lighting conditions as the recordings during training (e.g. inside a dimly lit room vs outside).
+    3. The model was trained using a narrow range of measurements (all measurements resembled each other very closely), this can lead to a skewed prediction model.
+    4. The model was trained with too little samples.
+
+---
+
+In the next chapter, there will be some closing remarks, recommendations for further learning and project ideas to get you started on your own TinyML journey.
