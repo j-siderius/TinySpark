@@ -265,7 +265,7 @@ print(f"{loss=}")
 print(f"{weights=}")
 ```
 
-?? info "Training problems"
+??? info "Training problems"
 
     Training a neural network can take some insights and even luck. Below are some points of attention to look at when the training does not work like intended.
 
