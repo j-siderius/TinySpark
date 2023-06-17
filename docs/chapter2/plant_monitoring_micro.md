@@ -63,7 +63,7 @@ while 1:
     time.sleep(2)
 ```
 
-Now upload the code and see if the network works on the development board! You can try to manipulate the readings for temperature and humidity by breathing or blowing on the environmental sensor (see where it is on the board in the [TinyML kit introduction](../kit/devkit.md)). To cool the sensor down again or to get the humidity lower, let some ambient air go over the sensor, for example by holding it in the wind or by putting a fan over it.
+Now upload the code and see if the network works on the development board. You can try to manipulate the readings for temperature and humidity by breathing or blowing on the environmental sensor (see where it is on the board in the [TinyML kit introduction](../kit/devkit.md)). To cool the sensor down again or to get the humidity lower, let some ambient air go over the sensor, for example by holding it in the wind or by putting a fan over it.
 
 ---
 

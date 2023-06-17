@@ -1,6 +1,6 @@
-# Advanced plant monitoring
+# Plant monitoring
 
-In the first chapter, Logic gates were introduced. The mini-project programmed a OR gate in Python, and later implemented it onto the TinySpark development board.
+In the first chapter, Logic gates were introduced. The mini-project programmed an OR gate in Python, and later implemented it onto the TinySpark development board.
 
 During this mini-project, plant care is of highest regard. The _Fictioplantus_[^1], as can be read below, is a very delicate plant from the Botanica Kingdom. It requires careful control of both temperature and humidity, as it will grow very poorly when conditions are not right.
 
@@ -17,7 +17,7 @@ above 25&deg;C|below 70&percnt;|yes
 
 [^1]:The Fictioplantus acts as a simplified plant example in this case, although principles learned in this project can be applied to real plant monitoring.
 
-Classifying inputs like the temperature and humidity is a little more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case the inputs) where it is possible to draw a straight line that can completely separate the points into different classes (below/above 25&deg; or below/above 70% humidity in this case). The problem proposed above is such a non-linearly separable problem. To overcome this, it is nescessary to introduce more neurons into the neural network.
+Classifying inputs like the temperature and humidity is more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case the inputs) where it is possible to draw a straight line that can completely separate the points into different classes (below/above 25&deg; or below/above 70% humidity in this case). The problem proposed above is such a non-linearly separable problem. To overcome this, it is nescessary to introduce more neurons into the neural network.
 
 [^2]:<https://en.wikipedia.org/wiki/Linear_separability>
 
@@ -57,7 +57,7 @@ $$
 
 [^3]:<https://en.wikipedia.org/wiki/Layer_(deep_learning)>
 
-Calculating the outputs for some possible input combinations is now a little more complicated than in the previous chapter. As inputs, a few values above and below the threshold are chosen: $22$&deg;C and $30$&deg;C for temperature, $40$&percnt; and $85$&percnt; for humidity. In the calculations below, first the pre-processing of the values is done, then the respective outputs are calculated. Remember that because the activation function used is still a step function, the output will always be either $0$ or $1$ (signifying poor and good growing conditions respectively).
+Calculating the outputs for some possible input combinations is now more complicated than in the previous chapter. As inputs, a few values above and below the threshold are chosen: $22$&deg;C and $30$&deg;C for temperature, $40$&percnt; and $85$&percnt; for humidity. In the calculations below, first the pre-processing of the values is done, then the respective outputs are calculated. Remember that because the activation function used is still a step function, the output will always be either $0$ or $1$ (signifying poor and good growing conditions respectively).
 
 $$
 \displaylines{
@@ -166,7 +166,9 @@ function draw() {
     <input type="range" id="humid" name="humid" min="20" max="90" value="40" step="5">
 </div>
 
-Now program the found weights (of the pre-given ones) into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API that supplies weather data, such as the [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
+Now program the found weights (of the pre-given ones) into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API[^4] that supplies weather data, such as the Dutch weather forecast [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
+
+[^4]:<https://en.wikipedia.org/wiki/API>
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1n0ICeDesHq-a74yKYkdi2NV9295TgGCH#scrollTo=kK0VsuHfyz7M)
 

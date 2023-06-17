@@ -1,8 +1,8 @@
 # Training networks
 
-In the last chapters, neuron weights were intuitively tuned to produce precise predictions. The mathematical approach to tuning weights will be explained a little more methodically. 
+In the last chapters, neuron weights were intuitively tuned to produce precise predictions. The mathematical approach to tuning weights will be explained more methodically. 
 
-To start off, a small recap to the calculation of the output of neurons. First, all inputs get summed together with their weights. Then, a activation function is applied to the result and this gives the final output of a neuron. This is commonly known as the _Feedforward_ of neural a network (as in, feeding inputs forward through a neural network, until an output is generated).
+To start off, a small recap to the calculation of the output of neurons. First, all inputs get summed together with their weights. Then, an activation function is applied to the result and this gives the final output of a neuron. This is commonly known as the _Feedforward_ of a neural network (as in, feeding inputs forward through a neural network, until an output is generated).
 
 In training a neuron, almost the opposite of this process is performed, in the so-called _Backpropagation_[^1]. To start, a input and the expected output is needed. For this example, a single neuron will be used to show all calculations, and in a later section, the mathematics for a simple network will be explained.
 
@@ -26,7 +26,7 @@ $$
 f(x) = x
 $$
 
-The feedfoward of this neuron will look as follows.
+The feedforward of this neuron will look as follows.
 
 $$
 \displaylines{
@@ -35,7 +35,7 @@ $$
 }
 $$
 
-As can be seen, the predicted result is off by quite a bit. Mathematically speaking, this offset is the error of the prediction. It is calculated as follows.
+As can be seen, the predicted result deviates a considerable amount. Mathematically speaking, this offset is the error of the prediction. It is calculated as follows.
 
 $$
 \displaylines{
@@ -105,11 +105,11 @@ $$
 }
 $$
 
-Succes! The neuron has now become more accurate at predicting the output. If the above steps are repeated more often, the network will slowly evolve and come closer to an error of $0$. In programming, the repeating training steps are often called _epochs_, with training for a neural network sometimes needing just 100 epochs to get the desired accuracy, or sometimes requiring more than one million epochs.
+The neuron has now become more accurate at predicting the output. If the above steps are repeated more often, the network will slowly evolve and come closer to an error of $0$. In programming, the repeating training steps are often called _epochs_, with training for a neural network sometimes needing just 100 epochs to get the desired accuracy, or sometimes requiring more than one million epochs.
 
 This training can of course be programmed in Python.
 
-[![Open In Colab](assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=-HVYddbv6mK_)
+[![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=-HVYddbv6mK_)
 
 ```python title="training_example.py"
 # Define the inputs, expected output and weights
@@ -149,7 +149,7 @@ print(f"new weights: {weight1=},{weight2=}")
 
 ---
 
-In training bigger neural networks, there are a few more nuances to keep in mind. First, in networks with more possible inputs and expected outputs, it is common to run each input through the training calculation and average all deltas for each respective weight before applying them to that weight. That way, no single input / expected output combination will have too much of an influence on the change in weights. 
+In training more complicated neural networks, there are a few more nuances to keep in mind. First, in networks with more possible inputs and expected outputs, it is common to run each input through the training calculation and average all deltas for each respective weight before applying them to that weight. That way, no single input / expected output combination will have too much of an influence on the change in weights. 
 
 $$\delta_{weight}=\frac{\delta_1+\delta_2+...+\delta_n}{n}$$
 
@@ -168,7 +168,7 @@ $$\text{weight}_{new}=\text{learning rate}*\delta_{weight}$$
 
 [^4]:<https://en.wikipedia.org/wiki/Learning_rate>
 
-Lastly, it can be beneficial to split input / expected output combinations in subsets, if there exists a lot of training data. This is called _mini-batching_[^5] and  is done to reduce the overall computation- and memory needs to train the network one itteration / epoch. Additionally, it can give the network a faster training cycle as well as quicker approach to the desired accuracy of the model.
+Lastly, it can be beneficial to split input / expected output combinations in subsets, if there exist a lot of training data. This is called _mini-batching_[^5] and  is done to reduce the overall computation- and memory needs to train the network one itteration / epoch. Additionally, it can give the network a faster training cycle as well as quicker approach to the desired accuracy of the model.
 
 [^5]:<https://mzuer.github.io/machine_learning/mini_batch>
 

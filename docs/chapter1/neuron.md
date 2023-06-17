@@ -74,4 +74,4 @@ else:
 print(activation)
 ```
 
-In the next section, the neuron that was just created will be used to predict something a bit more meaningful.
+In the next section, the neuron that was just created will be used to predict something more meaningful.

@@ -6,7 +6,7 @@ For this model, a neural network with two hidden neurons and two output neurons 
 
 ![Gesture neural network 3-2-2 with weights](../assets/images/nn_3-2-2_weights.png)
 
-With the measurements take in the [previous section](../chapter3/gesture_recognition_data.md), one example calculation will be performed on a _moving closer_ measurement. All variables that belong together will be grouped into an array for convenience. Additionally, the linear activation function is defined.
+With the measurements taken in the [previous section](../chapter3/gesture_recognition_data.md), one example calculation will be performed on a _moving closer_ measurement. All variables that belong together will be grouped into an array for convenience. Additionally, the linear activation function is defined.
 
 $$
 \displaylines{
@@ -63,7 +63,7 @@ $$
 }
 $$
 
-To now make the model a bit more accurate, backpropagation will be performed. First, the deltas of the output layer weights ($\text{weights}2$) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the [previous sections](../chapter3/training.md). Recall that the derivative of $f(x)$ was $1$ and the derivative of the $\text{sum}_{weights}$ was the respective input.
+To now make the model more accurate, backpropagation will be performed. First, the deltas of the output layer weights ($\text{weights}2$) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the [previous sections](../chapter3/training.md). Recall that the derivative of $f(x)$ was $1$ and the derivative of the $\text{sum}_{weights}$ was the respective input.
 
 $$
 \displaylines{
@@ -110,10 +110,10 @@ $$
 \displaylines{
 \text{weight11}_{new}=\text{weight11}-(\text{learning rate}*\delta_{weight11})=-0.50-(0.01*0.0768)=-0.5008\\
 \text{weight12}_{new}=\text{weight12}-(\text{learning rate}*\delta_{weight12})=0.22-(0.01*0.7034)=0.2130\\
-\text{weight12}_{new}=\text{weight13}-(\text{learning rate}*\delta_{weight13})=-0.91-(0.01*1.8150)=-0.9282\\
-\text{weight13}_{new}=\text{weight14}-(\text{learning rate}*\delta_{weight14})=0.61-(0.01*0.0363)=0.6096\\
-\text{weight14}_{new}=\text{weight15}-(\text{learning rate}*\delta_{weight15})=0.14-(0.01*0.3326)=0.1367\\
-\text{weight15}_{new}=\text{weight16}-(\text{learning rate}*\delta_{weight16})=-0.48-(0.01*0.8580)=-0.4886\\
+\text{weight13}_{new}=\text{weight13}-(\text{learning rate}*\delta_{weight13})=-0.91-(0.01*1.8150)=-0.9282\\
+\text{weight14}_{new}=\text{weight14}-(\text{learning rate}*\delta_{weight14})=0.61-(0.01*0.0363)=0.6096\\
+\text{weight15}_{new}=\text{weight15}-(\text{learning rate}*\delta_{weight15})=0.14-(0.01*0.3326)=0.1367\\
+\text{weight16}_{new}=\text{weight16}-(\text{learning rate}*\delta_{weight16})=-0.48-(0.01*0.8580)=-0.4886\\
 }
 $$
 
@@ -126,7 +126,7 @@ $$
 }
 $$
 
-Now that the weights have been tuned (a little bit), check if the prediction error or loss has improved.
+Now that the weights have been tuned, check if the prediction error or loss has improved.
 
 $$
 \displaylines{
@@ -145,7 +145,7 @@ $$
 }
 $$
 
-The initial error was $-1.4723$ and the new error has reduced to $-1.4649$, meaning that the training was succesful! Now the above steps need to be reproduced many times, and with different measurements, to ensure that the resulting model works for both gestures.
+The initial error was $-1.4723$ and the new error has reduced to $-1.4649$, meaning that the training was succesful. Now the above steps need to be reproduced many times, and with different measurements, to ensure that the resulting model works for both gestures.
 
 ---
 
@@ -267,7 +267,7 @@ print(f"{weights=}")
 
 ??? info "Training problems"
 
-    Training a neural network can take some insights and even luck. Below are some points of attention to look at when the training does not work like intended.
+    Training a neural network needs insights and sometimes even luck. Below are some points of attention to look at when the training does not work like intended.
 
     1. One or more of the weights of the model have exploded (gone far into the negative or positive), subsequently skewing the whole model. This can be solved by reducing the learning rate, or by limiting the weights.
     2. One or more of the samples used in training are skewed or an outlier. This can lead to the model not being able to reach acceptably tuned weights. This can be solved by excluding edge cases, or by changing the network structure (shape).

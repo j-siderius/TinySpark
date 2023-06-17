@@ -90,7 +90,7 @@ while True:
     time.sleep(0.01)
 ```
 
-Deploy the model to the TinySpark development kit and add your trained weights to it. Press `Button 1` and see if the model predicted the gesture correctly!
+Deploy the model to the TinySpark development kit and add your trained weights to it. Press `Button 1` and see if the model predicted the gesture correctly.
 
 ??? info "Deployment problems"
 

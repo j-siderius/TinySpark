@@ -16,7 +16,7 @@ After connecting the TinyML development kit, two green LEDs on the board should 
 
 ---
 
-Programming the TinyML development kit is as easy as editing the `code.py` file that is found on the CIRCUITPY drive. However, to make coding for the kit a little easier, the [Code with Mu] IDE will be used. Code with Mu works out of the box with CircuitPython, gives helpful programming prompts and was built with learning in mind.
+Programming the TinyML development kit is as easy as editing the `code.py` file that is found on the CIRCUITPY drive. However, to make coding for the kit easier, the [Code with Mu] IDE will be used. Code with Mu works out of the box with CircuitPython, gives helpful programming prompts and was built with learning in mind.
 
 [Code with Mu]:https://codewith.mu/
 
@@ -40,7 +40,7 @@ After installing, open the Code with Mu editor and (upon first start) select the
 
 ---
 
-Now you can start coding! To begin, try to make the built-in LED (D13) blink.
+Now you can start coding. To begin, try to make the built-in LED (D13) blink.
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/led.py)
 
@@ -198,7 +198,7 @@ As mentioned before, it is possible to use ready-made code libraries, for exampl
 
 ---
 
-That's it! Now you know everything needed to get started with the TinySpark TinyML material.
+That's it, now you know everything needed to get started with the TinySpark TinyML material.
 
 [Get started on Chapter 1](../chapter1/introduction.md){ .md-button .md-button--primary }
 

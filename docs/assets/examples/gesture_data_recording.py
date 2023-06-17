@@ -68,7 +68,7 @@ while True:
         # Clear the measurement storage
         proximity_readings = list()
         
-        # Pause a bit after resetting
+        # Pause after resetting
         time.sleep(1)
 
     # Debounce the buttons

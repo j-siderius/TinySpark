@@ -14,7 +14,7 @@ Tiny Machine Learning (TinyML) is an emerging field of technology that combines 
 
 On the TinySpark platform, you will interactively learn the basics of neural networks, their structure, mathematics and how to train them. The theoretical learning is alternated with mini-projects that deepen your understanding, leading to fun, engaging and interesting insights into TinyML.
 
-To follow along with the projects and examples, you will need a TinySpark development board, which is a tiny device that packs enough processing power and sensors to start your TinyML journey!
+To follow along with the projects and examples, you will need a TinySpark development board, which is a tiny device that packs enough processing power and sensors to start your TinyML journey.
 
 [Get started!](https://j-siderius.github.io/TinySpark/kit/introduction/){ .md-button .md-button--primary}
 

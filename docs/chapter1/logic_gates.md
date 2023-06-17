@@ -22,7 +22,7 @@ The logic table for an OR gate looks like this:
 
 ---
 
-In order to make writing the equations a bit easier, the sum and activation function are combined into one formula.
+In order to make writing the equations easier, the sum and activation function are combined into one formula.
 
 $$
 \text{output}=f(\sum\text{inputs}*\text{weights})
@@ -55,7 +55,7 @@ $$
 
 Almost correct, however with the inputs $1,0$, the neuron wrongly outputs $0$, which should be $1$ (according to the logic table above).
 
-How can this behaviour be changed? <br> Change the weights!
+How can this behaviour be changed? <br> By changing the weights.
 
 Take a closer look at the calculation of the incorrect output.
 

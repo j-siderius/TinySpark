@@ -1,8 +1,8 @@
 # Project information
 site_name: TinySpark
 site_description: Tiny board, big predictions.
-site_author: J Siderius
-copyright: Copyright &copy; 2023 J Siderius
+site_author: JC Siderius
+copyright: Copyright &copy; 2023 JC Siderius
 
 repo_name: j-siderius/TinySpark
 repo_url: https://github.com/j-siderius/TinySpark
@@ -125,20 +125,20 @@ nav:
     - Introduction: chapter1/introduction.md
     - Neuron: chapter1/neuron.md
     - Logic gates: chapter1/logic_gates.md
-    - Logic gates on micro: chapter1/logic_gates_micro.md
+    - Logic gates with TinySpark: chapter1/logic_gates_micro.md
   - Chapter 2:
     - Introduction: chapter2/introduction.md
     - Network connections: chapter2/network_connections.md
     - Plant monitoring: chapter2/plant_monitoring.md
-    - Plant monitoring on micro: chapter2/plant_monitoring_micro.md
+    - Plant monitoring with TinySpark: chapter2/plant_monitoring_micro.md
   - Chapter 3:
     - Introduction: chapter3/introduction.md
-    - Training: chapter3/training.md
-    - Gesture recognition: chapter3/gesture_recognition_data.md
-    - Gesture recognition training: chapter3/gesture_recognition_training.md
-    - Gesture recognition deployment: chapter3/gesture_recognition_deploy.md
+    - Training Networks: chapter3/training.md
+    - Gesture recognition with TinySpark: chapter3/gesture_recognition_data.md
+    - Training the model: chapter3/gesture_recognition_training.md
+    - Deploying to TinySpark: chapter3/gesture_recognition_deploy.md
   - Beyond TinySpark:
-    - Go further with TinyML: beyond/introduction.md
+    - Dive into TinyML: beyond/introduction.md
   - About: 
     - Project: about/project.md
     - License: about/license.md

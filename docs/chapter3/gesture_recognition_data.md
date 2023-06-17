@@ -7,11 +7,11 @@ In this mini-project, a simple gesture recognition system will be built. Using t
 
 ![TinySpark development kit proximity sensor](../assets/images/devboard_prox_sensor.png)
 
-To detect these gestures, a network that takes in multiple proximity readings needs to be devised. In this example, three measurements will be input into the network, one measurement that is current, one that was 250ms ago, and one that is 500ms ago. This _Time series_[^1] prediction method is a common way to analyse real-time sensor data using a neural network.
+To detect these gestures, a network that takes in multiple proximity readings needs to be devised. In this example, three measurements will be input into the network: one measurement that is current, one that was 250ms ago, and one that is 500ms ago. This _Time series_[^1] prediction method is a common way to analyse real-time sensor data using a neural network.
 
 [^1]:<https://en.wikipedia.org/wiki/Time_series>
 
-In order to train an accurate neural network, it is important to record actual data on the end device. In more complex systems however, it is not feasible to train the neural network on the data recording device, as it would take far too long to perform all training calculations there. Therefor, it is common practise to capture measurements on the local device, transfer them to a more powerful computer (e.g. PC or even to the cloud) and perform the training there. Afterwards, only the tuned weights and the feedforward part of the neural network are transfered back to the local device in order to make predictions.
+In order to train an accurate neural network, it is important to record actual data on the end device. In more complex systems however, it is not feasible to train the neural network on the data recording device, as it would take far too long to perform all training calculations there. Therefore, it is common practise to capture measurements on the local device, transfer them to a more powerful computer (e.g. PC or even to the cloud) and perform the training there. Afterwards, only the tuned weights and the feedforward part of the neural network are transfered back to the local device in order to make predictions.
 
 ![Recording data locally, processing / training remote, deploy locally](../assets/images/micro_cloud_deploy.png)
 
@@ -90,14 +90,14 @@ while True:
         # Clear the measurement storage
         proximity_readings = list()
         
-        # Pause a bit after resetting
+        # Pause after resetting
         time.sleep(1)
 
     # Debounce the buttons
     time.sleep(0.01)
 ```
 
-To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. Store the measurements somewhere (as they will be used in the next section) and make sure to label them appropriately. _About 5-7 datapoints per gesture is enough for this example._
+To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. Store the measurements somewhere (as they will be used in the next section) and make sure to label them appropriately. _About 5-7 datapoints per gesture are enough for this example._
 
 ??? info "Proximity sensor measurements"
 
