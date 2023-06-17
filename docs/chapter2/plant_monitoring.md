@@ -81,7 +81,7 @@ $$
     }
     $$
 
-Using the interactive visualisation below, try to tune the weights so that the prediction is correct for the given inputs. The weights given above can be used as guidance, however there are many different possible combinations of weights to be found that will lead to the desired output.
+Using the interactive visualisation below, try to tune the weights so that the prediction is correct for the given inputs. The weights given above can be used as guidance, however there are many different possible combinations of weights to be found that will lead to the desired output. _Note that this tuning is meant more as a exercise to see what effects weights have in a neural network. It is expected to be very difficult to find correct weights by hand._
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
