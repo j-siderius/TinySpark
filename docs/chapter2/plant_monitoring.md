@@ -25,7 +25,7 @@ Classifying inputs like the temperature and humidity is a little more difficult 
 
 ![FCNN with weights](../assets/images/nn_2-2-1_weights.png)
 
-The network from the [previous section](network_connections.md) is used here. Weights are defined as seen. For the activation function, the step function from [Chapter 1](../chapter1/logic_gates.md) is used again. Note how in this example, negative weights are also possible, and we introduce it to weight the first input of the output neuron.
+The network from the [previous section](network_connections.md) is used here. Weights are defined as seen. For the activation function, the step function from [Chapter 1](../chapter1/logic_gates.md) is used again. Note how in this example, negative weights are also possible in order to give inputs negative influences as well.
 
 $$ 
 f(x) =
@@ -46,7 +46,14 @@ $$
 }
 $$
 
-In order to process the inputs correctly, some pre-proccessing of the measurements needs to take place. The temperature and humidity will both be set around null and their inputs divided by 10: $temp_{in} = (temperature - 25) / 10$ and $humid_{in} = (humidity - 70) / 10$. This is done in order to make calculations easier, and to keep weights managable (in this case within ranges -1 and 1). In complicated neural networks, this pre-processing can be part of the network, in a so called Convolution step[^3].
+In order to process the inputs correctly, some pre-proccessing of the measurements needs to take place. This is done in order to make calculations easier, and to keep weights managable (in this case within ranges -1 and 1). The calculation is described below. In complicated neural networks, this pre-processing can be part of the network, in a so called Convolution step[^3].
+
+$$
+\displaylines{
+temp_{in} = (temperature - 25) / 10\\
+humid_{in} = (humidity - 70) / 10\\
+}
+$$
 
 [^3]:<https://en.wikipedia.org/wiki/Layer_(deep_learning)>
 
@@ -70,6 +77,77 @@ $$
 }
 $$
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+<script>
+let img;
+
+function preload() {
+    img = loadImage('https://j-siderius.github.io/TinySpark/assets/images/nn_2-2-1.png')
+}
+
+let slider1;
+let weights = [
+  0.3,
+  -0.5,
+  -0.6,
+  0.4,
+  0.7,
+  0.5
+];
+  
+function setup() {
+  const canvas = createCanvas(600, 400);
+  canvas.parent('sketch-holder');
+
+  slider2 = select('#weight2')
+  slider6 = select('#weight6')
+  
+  sliderT = select('#temp')
+  sliderH = select('#humid')
+}
+
+function draw() {
+  background(220);
+
+  image(img, -50, -30)
+  
+  weights[1] = slider2.value();
+  weights[5] = slider6.value();
+  
+  temperature = sliderT.value();
+  humidity = sliderH.value();
+  
+  fill(0, 102, 153);
+  textSize(18);
+  text('w1 = '+ weights[0], 175, 80);
+  text('w2 = '+ weights[1], 225, 160);
+  text('w3 = '+ weights[2], 225, 230);
+  text('w4 = '+ weights[3], 175, 320);
+  text('w5 = '+ weights[4], 400, 150);
+  text('w6 = '+ weights[5], 400, 250);
+  
+  text('Temperature: ' + temperature + 'C', 50, 30)
+  text('Humidity: ' + humidity + '%', 225, 30)
+  
+  let hidden1 = (((temperature-25)/10)*weights[0] + ((humidity-70)/10)*weights[1])>=0.5 ? 1 : 0
+  let hidden2 = (((temperature-25)/10)*weights[2] + ((humidity-70)/10)*weights[3])>=0.5 ? 1 : 0
+  let output = ((hidden1)*weights[3] + (hidden2)*weights[4])>=0.5 ? 1 : 0
+  
+  text('Output: ' + output, 510, 200)
+</script>
+<div>
+    <div id="sketch-holder"></div>
+    <label for="weight2">Weight 2</label>
+    <input type="range" id="weight2" name="weight2" min="-1" max="1" value="-0.5" step="0.1">
+  <label for="weight6">Weight 6</label>
+    <input type="range" id="weight6" name="weight6" min="-1" max="1" value="0.5" step="0.1">
+  
+  <label for="temp">Temperature</label>
+    <input type="range" id="temp" name="temp" min="20" max="30" value="23" step="1">
+  <label for="humid">Humidity</label>
+    <input type="range" id="humid" name="humid" min="20" max="90" value="40" step="5">
+</div>
+
 <!-- TODO: add tweaking of weights calculation -->
 
 <!-- Now the inputs $1,1$ give the incorrect output of $1$, so again the weights need to be tweaked. Compared to the neuron in the last chapter, tweaking becomes more complicated in this network. Breaking down the calculation into small steps to see where the error occurs is a good way to start. -->
@@ -83,8 +161,6 @@ $$
 $$ -->
 
 <!-- To ensure the correct output of $0$, the output neuron calculation for needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$). If the weight $-0.4$ is tweaked to a value of $-0.5$, the activation function will not output $1$ anymore, since the result of the sum is $(1*-0.4 + 1*0.9)=0.4$. -->
-
-<!-- TODO: add interactive tweaking of weights here, with some pointers to get it right -->
 
 Now program this into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API that supplies weather data, such as the [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
 

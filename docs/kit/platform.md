@@ -69,13 +69,15 @@ Concepts can also be explained using interactive applications. These allow you t
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
+let img;
+
+function preload() {
+    img = loadImage('https://j-siderius.github.io/TinySpark/assets/images/inputs_neuron_structure.png')
+}
+
 let slider1;
 let weights = [
-  0.2,
   0.3,
-  0.5,
-  0.6,
-  -0.4,
   0.9
 ];
 
@@ -83,39 +85,39 @@ function setup() {
   const canvas = createCanvas(600, 400);
   canvas.parent('sketch-holder');
 
-  slider1 = select('#weight5')
+  slider1 = select('#weight1')
 }
 
 function draw() {
   background(220);
+
+  image(img, 0, 0)
   
-  weights[4] = slider1.value();
+  weights[0] = slider1.value();
   
   fill(0, 102, 153);
-  text('weight 1: ' + weights[0], 10, 30);
-  text('weight 2: ' + weights[1], 10, 40);
-  text('weight 3: ' + weights[2], 10, 50);
-  text('weight 4: ' + weights[3], 10, 60);
-  text('weight 5: ' + weights[4], 10, 70);
-  text('weight 6: ' + weights[5], 10, 80);
+  textSize(18);
+  text(' = '+ weights[0], 218, 112);
+  text(' = '+ weights[1], 226, 263);
   
   let outputs = [
-    (((0*weights[0]+0*weights[1])>=0.5 ? 1 : 0)*weights[4] + ((0*weights[2]+0*weights[3])>=0.5 ? 1 : 0)*weights[5])>=0.5 ? 1 : 0,
-    (((0*weights[0]+1*weights[1])>=0.5 ? 1 : 0)*weights[4] + ((0*weights[2]+1*weights[3])>=0.5 ? 1 : 0)*weights[5])>=0.5 ? 1 : 0,
-    (((1*weights[0]+0*weights[1])>=0.5 ? 1 : 0)*weights[4] + ((1*weights[2]+0*weights[3])>=0.5 ? 1 : 0)*weights[5])>=0.5 ? 1 : 0,
-    (((1*weights[0]+1*weights[1])>=0.5 ? 1 : 0)*weights[4] + ((1*weights[2]+1*weights[3])>=0.5 ? 1 : 0)*weights[5])>=0.5 ? 1 : 0,
+    (0*weights[0]+0*weights[1])>=0.5 ? 1 : 0,
+    (0*weights[0]+1*weights[1])>=0.5 ? 1 : 0,
+    (1*weights[0]+0*weights[1])>=0.5 ? 1 : 0,
+    (1*weights[0]+1*weights[1])>=0.5 ? 1 : 0
   ];
     
-  text('[0,0] = ' + outputs[0], 10, 100);
-  text('[0,1] = ' + outputs[1], 10, 110);
-  text('[1,0] = ' + outputs[2], 10, 120);
-  text('[1,1] = ' + outputs[3], 10, 130);
+  text('Outputs:', 350, 140)
+  text('[0,0] = ' + outputs[0], 350, 160);
+  text('[0,1] = ' + outputs[1], 350, 180);
+  text('[1,0] = ' + outputs[2], 350, 200);
+  text('[1,1] = ' + outputs[3], 350, 220);
 }
 </script>
 <div>
     <div id="sketch-holder"></div>
-    <label for="weight5">Weight 5</label>
-    <input type="range" id="weight5" name="weight5" min="-1" max="1" value="-0.4" step="0.1">
+    <label for="weight1">Weight 1</label>
+    <input type="range" id="weight1" name="weight1" min="0" max="1" value="0.3" step="0.1">
 </div>
 
 ---
