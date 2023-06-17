@@ -44,7 +44,7 @@ $$
 }
 $$
 
-In order to now calculate the required changes to the weights of the network (called the delta / $\delta$), it is nescessary to walk 'backwards' through the network, which in this example only consists of one neuron, and discover the influence of each weight on the final prediction. If the influence is then known, the appropriate changes can be applied to the weights. This technique is called Stochastic Gradient Descent[^2], but for now, let's just focus on the application.
+In order to now calculate the required changes to the weights of the network (called the delta / $\delta$), it is nescessary to walk 'backwards' through the network, which in this example only consists of one neuron, and discover the influence of each weight on the final prediction. If the influence is then known, the appropriate changes can be applied to the weights. This technique is called Stochastic Gradient Descent[^2], but for now, just focus on the application.
 
 [^2]:<https://en.wikipedia.org/wiki/Stochastic_gradient_descent>
 

@@ -97,7 +97,7 @@ while True:
     time.sleep(0.01)
 ```
 
-To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. Store the measurements somewhere (as we are using them in the next section) and make sure to label them appropriately. _About 5-7 datapoints per gesture is enough for this example._
+To record some datapoints, press `Button 1` and when the LED turns on, then perform a gesture. After recording some datapoints, press `Button 2` to print them to the serial console. It is advisable to record all datapoints for one type of gesture, then print those, then continue to record the next type. Store the measurements somewhere (as they will be used in the next section) and make sure to label them appropriately. _About 5-7 datapoints per gesture is enough for this example._
 
 ??? info "Proximity sensor measurements"
 
