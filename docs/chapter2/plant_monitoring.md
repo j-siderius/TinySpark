@@ -70,16 +70,16 @@ $$
 
 ??? info "Network calculation results"
 
-  For the weights above, the calculated predictions for the network can be found below.
+    For the weights above, the calculated predictions for the network can be found below. 
 
-  $$
-  \displaylines{
-  \text{output(-0.3, -3)}=f(f(-0.3*0.3+-3*-0.5)*0.7+f(-0.3*-0.6+-3*0.4)*0.5)=0\\
-  \text{output(-0.3, 1)}=f(f(-0.3*0.3+1*-0.5)*0.7+f(-0.3*-0.6+1*0.4)*0.5)=1\\
-  \text{output(0.5, -3)}=f(f(0.5*0.3+-3*-0.5)*0.7+f(0.5*-0.6+-3*0.4)*0.5)=1\\
-  \text{output(0.5, 1)}=f(f(0.5*0.3+1*-0.5)*0.7+f(0.5*-0.6+1*0.4)*0.5)=0\\
-  }
-  $$
+    $$
+    \displaylines{
+    \text{output(-0.3, -3)}=f(f(-0.3*0.3+-3*-0.5)*0.7+f(-0.3*-0.6+-3*0.4)*0.5)=0\\
+    \text{output(-0.3, 1)}=f(f(-0.3*0.3+1*-0.5)*0.7+f(-0.3*-0.6+1*0.4)*0.5)=1\\
+    \text{output(0.5, -3)}=f(f(0.5*0.3+-3*-0.5)*0.7+f(0.5*-0.6+-3*0.4)*0.5)=1\\
+    \text{output(0.5, 1)}=f(f(0.5*0.3+1*-0.5)*0.7+f(0.5*-0.6+1*0.4)*0.5)=0\\
+    }
+    $$
 
 Using the interactive visualisation below, try to tune the weights so that the prediction is correct for the given inputs. The weights given above can be used as guidance, however there are many different possible combinations of weights to be found that will lead to the desired output.
 
@@ -126,7 +126,7 @@ function draw() {
   temperature = sliderT.value();
   humidity = sliderH.value();
   
-  fill(0, 102, 153);
+  fill(0, 128, 128);
   textSize(18);
   text('w1 = '+ weights[0], 175, 80);
   text('w2 = '+ weights[1], 225, 160);

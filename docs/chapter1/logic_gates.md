@@ -119,7 +119,7 @@ function draw() {
   
   weights[0] = slider1.value();
   
-  fill(0, 102, 153);
+  fill(0, 128, 128);
   textSize(18);
   text(' = '+ weights[0], 218, 112);
   text(' = '+ weights[1], 226, 263);
