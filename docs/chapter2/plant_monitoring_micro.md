@@ -11,7 +11,7 @@ Implement the logic from the [previous section](../chapter2/plant_monitoring.md)
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/plant_monitoring.py)
 
 ```python title="plant_monitoring.py"
-# import the libraries to take care of our sensor and manage time
+# import the libraries to take care of the sensor and manage time
 import board
 import time
 from adafruit_bme280 import basic as adafruit_bme280

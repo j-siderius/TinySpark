@@ -1,4 +1,4 @@
-# import the libraries to take care of our sensor and manage time
+# import the libraries to take care of the sensor and manage time
 import board
 import time
 from adafruit_bme280 import basic as adafruit_bme280
@@ -7,7 +7,7 @@ from adafruit_bme280 import basic as adafruit_bme280
 i2c = board.I2C()
 bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
 
-# store our weights
+# store the weights
 weights = [
     0.3,
     -0.5,

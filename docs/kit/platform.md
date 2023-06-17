@@ -11,7 +11,7 @@ The TinySpark platform is divided into several chapters:
 - [Chapter 1: Introduction to neurons](../chapter1/introduction.md)
 - [Chapter 2: Networks and structures](../chapter2/introduction.md)
 - [Chapter 3: Training networks](../chapter3/introduction.md)
-- [Beyond TinySpark](../beyond/introduction.md)=
+- [Beyond TinySpark](../beyond/introduction.md)
 
 These chapters will introduce various concepts within (Tiny) Machine Learning in an engaging, interactive and project-based way. They can be accessed by clicking on the chapters here, or on the navigation bar at the top of the page (pictured below). Each chapter will explain some theory, let you play around with parts of a neural network and program a mini-project, in which the theory can be put into practise.
 

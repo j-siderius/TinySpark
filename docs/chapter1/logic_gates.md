@@ -5,7 +5,7 @@ A logic gate (in electronics), is a device which performs logical operations usi
 [^1]: <https://en.wikipedia.org/wiki/Flip-flop_(electronics)>
 [^2]: <https://en.wikipedia.org/wiki/Arithmetic_logic_unit>
 
-In this first Mini-project, a single-neuron 'network' will be built to replicate the behaviour of an OR logic gate[^3]. The OR gate will activate whenever either of it's inputs reads HIGH (or 1 in our case).
+In this first Mini-project, a single-neuron 'network' will be built to replicate the behaviour of an OR logic gate[^3]. The OR gate will activate whenever either of it's inputs reads HIGH (or 1 in this case).
 
 ![OR gate logic symbol](../assets/images/or_gate.png)
 
@@ -170,4 +170,4 @@ for input in inputs:
 
 ---
 
-In the next section, we will deploy this network to our TinySpark development board, in order to experience how to expand our neuron 'network' beyond the screen.
+In the next section, this network will be deployted to the TinySpark development board, in order to experience how to expand the neuron 'network' beyond the screen.

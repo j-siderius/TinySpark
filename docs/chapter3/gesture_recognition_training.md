@@ -51,7 +51,7 @@ $$
 }
 $$
 
-Now the error is calculated. Additionally, since there is more than one output, the _Loss_ is calculated. This serves as a measure of all error in the system (the compound error). There are many different loss functions[^1], but for the sake of simplicity, our loss function will just be a summation of the errors.
+Now the error is calculated. Additionally, since there is more than one output, the _Loss_ is calculated. This serves as a measure of all error in the system (the compound error). There are many different loss functions[^1], but for the sake of simplicity, the loss function will just be a summation of the errors.
 
 [^1]:<https://en.wikipedia.org/wiki/Loss_function>
 
@@ -74,7 +74,7 @@ $$
 }
 $$
 
-In order to calculate deltas for the weights in the hidden layer, one more step needs to be considered. Since the weights of the hidden layer neurons affect not only the outcome of their own neuron, but also the outcome of neurons further 'downstream' to them (e.g. in this case the output neurons), their total influence needs to be taken into account when calculating the delta. In practise, this means that first, the backpropagation of the weight for $\text{output}1$ needs to be calculated, and then the backpropagation of the weight for $\text{output}2$ is calculated. Subsequently, these values are summed. In larger networks, with more hidden layers, these calculations can become pretty big and almost impossible to write down in formulas. That is why many machine learning libraries (such as Tensorflow[^2]) do all of this math in the background. But now, for our network with a single hidden layer, the formula will be worked out fully.
+In order to calculate deltas for the weights in the hidden layer, one more step needs to be considered. Since the weights of the hidden layer neurons affect not only the outcome of their own neuron, but also the outcome of neurons further 'downstream' to them (e.g. in this case the output neurons), their total influence needs to be taken into account when calculating the delta. In practise, this means that first, the backpropagation of the weight for $\text{output}1$ needs to be calculated, and then the backpropagation of the weight for $\text{output}2$ is calculated. Subsequently, these values are summed. In larger networks, with more hidden layers, these calculations can become pretty big and almost impossible to write down in formulas. That is why many machine learning libraries (such as Tensorflow[^2]) do all of this math in the background. But now, for the network with a single hidden layer, the formula will be worked out fully.
 
 ??? info "Practical thinking about backpropagation"
 

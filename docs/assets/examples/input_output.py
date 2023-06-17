@@ -1,4 +1,4 @@
-# import the library to take care of our pins
+# import the library to take care of the pins
 import board
 from digitalio import DigitalInOut, Direction
 

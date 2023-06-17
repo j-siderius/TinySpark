@@ -1,4 +1,4 @@
-# import the library to take care of our pins
+# import the library to take care of the pins
 import board
 from digitalio import DigitalInOut, Direction
 
@@ -10,7 +10,7 @@ button2.direction = Direction.INPUT
 led = DigitalInOut(board.LED)
 led.direction = Direction.OUTPUT
 
-# store our weights
+# store the weights
 weight1 = 0.5
 weight2 = 0.9
 

@@ -7,7 +7,7 @@ The two buttons, `Button 1` and `Button 2` on the development kit will be used t
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/input_output.py)
 
 ```python title="input_output.py"
-# import the library to take care of our pins
+# import the library to take care of the pins
 import board
 from digitalio import DigitalInOut, Direction
 
@@ -33,14 +33,12 @@ while 1:
 
 ![TinyML development board LED and button](../assets/images/devboard_led_button.png)
 
-Now let's implement the logic from our last section, and build the neuron 'network' into our development board code.
-
 Now the logic from the [previous section](../chapter1/logic_gates.md) needs to be implemented, in order to complete the neuron 'network' and succesfully deploy it to the TinySpark development board.
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/OR_gate.py)
 
 ```python title="OR_gate.py"
-# import the library to take care of our pins
+# import the library to take care of the pins
 import board
 from digitalio import DigitalInOut, Direction
 

@@ -86,7 +86,7 @@ $$
 }
 $$
 
-Now these deltas can be applied to the weights of the neuron. Note that the delta $\delta$ is being subtracted from the weight, since we are dealing with an overshoot of our initial output.
+Now these deltas can be applied to the weights of the neuron. Note that the delta $\delta$ is being subtracted from the weight, since there is an overshoot of the initial output.
 
 $$
 \displaylines{

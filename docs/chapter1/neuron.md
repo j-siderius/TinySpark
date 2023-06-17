@@ -4,7 +4,7 @@ The neuron is at the heart of every neural network, it provides all computation 
 
 ![Neuron structure](../assets/images/neuron_structure.png)
 
-The inputs of a neuron come in many different shapes and sizes (literally). A neuron could receive just one single input, or be connected to more than 500 different inputs. The inputs to a neuron are always numeric (since we are essentially working with one giant mathematical formula), so complex inputs like sound or images have to be split into many different parts (e.g. milliseconds of sound or pixels in an image). These can then be fed into the input of a network.
+The inputs of a neuron come in many different shapes and sizes (literally). A neuron could receive just one single input, or be connected to more than 500 different inputs. The inputs to a neuron are always numeric (since this is essentially one giant mathematical formula), so complex inputs like sound or images have to be split into many different parts (e.g. milliseconds of sound or pixels in an image). These can then be fed into the input of a network.
 
 ---
 
@@ -49,11 +49,11 @@ $$
 \text{output}=f(0.78)=1
 $$
 
-The output of our neuron, with the given inputs would be $1$.
+The output of tje neuron, with the given inputs would be $1$.
 
 ---
 
-If we now implement this into a simple Python script, it could look like this:
+If this is now implemented into a simple Python script, it could look like this:
 
 Implementing this simple neuron logic into Python should be straightforward.
 
@@ -72,8 +72,6 @@ else:
     activation = 0
 
 print(activation)
-
-=> 1
 ```
 
 In the next section, the neuron that was just created will be used to predict something a bit more meaningful.

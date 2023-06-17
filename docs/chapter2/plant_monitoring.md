@@ -15,9 +15,9 @@ above 25&deg;C|above 70&percnt;|no
 below 25&deg;C|above 70&percnt;|yes
 above 25&deg;C|below 70&percnt;|yes
 
-[^1]:The Fictioplantus acts as a simplified plant example in our case, although principles learned in this project can be applied to real plant monitoring.
+[^1]:The Fictioplantus acts as a simplified plant example in this case, although principles learned in this project can be applied to real plant monitoring.
 
-Classifying inputs like the temperature and humidity is a little more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case our inputs) where it is possible to draw a straight line that can completely separate the points into different classes (below/above 25&deg; or below/above 70% humidity in our case). The problem proposed above is such a non-linearly separable problem. To overcome this, it is nescessary to introduce more neurons into the neural network.
+Classifying inputs like the temperature and humidity is a little more difficult than classifying simple logic gates. The reason behind this is the case of linear and non-linear separability[^2]. Separability refers to the property of a dataset or set of points (in this case the inputs) where it is possible to draw a straight line that can completely separate the points into different classes (below/above 25&deg; or below/above 70% humidity in this case). The problem proposed above is such a non-linearly separable problem. To overcome this, it is nescessary to introduce more neurons into the neural network.
 
 [^2]:<https://en.wikipedia.org/wiki/Linear_separability>
 
