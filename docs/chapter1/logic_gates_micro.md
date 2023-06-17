@@ -1,8 +1,8 @@
 # Logic gates on the TinySpark development board
 
-Now that we have implemented our first neuron 'network', let's see how we can transport this network to our TinySpark development kit.
+Now that the first neuron 'network' was succesfully implemented, it will be transported to the TinySpark development kit.
 
-We are going to use the two buttons, `button 1` and `button 2` on the development kit to simulate our inputs, and we will use the LED (`LED13`) to show if our output is LOW/0 or HIGH/1. In order to access the Inputs and Outputs of the development kit, we need some code.
+The two buttons, `Button 1` and `Button 2` on the development kit will be used to simulate the inputs, and thee LED (`LED13`) will be used to show if the output of the neuron 'network' is LOW/0 or HIGH/1. In order to access the Inputs and Outputs of the development kit, some code is needed. The code below combines the example code for interaction with the [buttons](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/buttons.py) and output through the [LED](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/led.py).
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/input_output.py)
 
@@ -24,16 +24,18 @@ led.value = True
 
 # loop endlessly
 while 1:
-    # check if a button is pressed, and print if it is
-    if button1.value is True:
+    # check if a button is pressed, and print if it is (buttons are pulled HIGH, so check for low)
+    if not button1.value:
         print("button1 pressed")
-    if button2.value is True:
+    if not button2.value:
         print("button2 pressed")
 ```
 
 ![TinyML development board LED and button](../assets/images/devboard_led_button.png)
 
 Now let's implement the logic from our last section, and build the neuron 'network' into our development board code.
+
+Now the logic from the [previous section](../chapter1/logic_gates.md) needs to be implemented, in order to complete the neuron 'network' and succesfully deploy it to the TinySpark development board.
 
 [![Open In Github](../assets/images/github-badge.svg)](https://github.com/j-siderius/TinySpark/blob/main/docs/assets/examples/OR_gate.py)
 
@@ -50,12 +52,13 @@ button2.direction = Direction.INPUT
 led = DigitalInOut(board.LED)
 led.direction = Direction.OUTPUT
 
-# store our weights
+# store the weights
 weight1 = 0.5
 weight2 = 0.9
 
 # loop endlessly
 while 1:
+    # Read the button value (buttons are pulled HIGH, so check for low)
     input1 = button1.value
     input2 = button2.value
 
@@ -68,4 +71,8 @@ while 1:
         led.value = False
 ```
 
-Let's upload the code and see if our neuron works on the development board!
+Upload the code and see if the neuron 'network' functions as expected, by pressing `Button 1` and `Button 2` and observing the LED.
+
+---
+
+In the next chapter, some more complicated predictions will be made by utilising an actual network of neurons.

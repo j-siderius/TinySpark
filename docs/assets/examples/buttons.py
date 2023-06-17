@@ -13,7 +13,7 @@ button2 = DigitalInOut(board.BUTTON2)
 button2.direction = Direction.INPUT
 button2.pull = Pull.UP
 
-# Check if buttons are pressed
+# Check if buttons are pressed (buttons are pulled HIGH, so check for low)
 while True:
     if not button1.value:
         print("Button 1 pressed!")

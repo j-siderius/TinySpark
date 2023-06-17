@@ -8,19 +8,19 @@ The inputs of a neuron come in many different shapes and sizes (literally). A ne
 
 ---
 
-Let's now look at an example neuron, and how inputs travel through it; suppose we have a neuron with two inputs, two weights and a simple threshold function. We will compute the output of this neuron.
+The neuron with two inputs, two weights and a simple threshold activation function below will be examined. How do inputs travel through it and how do they lead to an output?
 
 ![Neuron inputs structure](../assets/images/inputs_neuron_structure.png)
 
-The first step in computation of the output is to sum the inputs together with the weights:
+The first step in computation of the output is to sum the inputs of the neuron together with the weights of the neuron:
 
 $$
 \sum \text{inputs}*\text{weights} = \text{input 1} * \text{weight 1} + \text{input 2} * \text{weight 2}
 $$
 
-The activation function which comes after the inputs can be a simple threshold function that fires if the input signals exceed a certain value, or a more complex function that can capture nonlinear relationships between inputs and outputs. Some common activation functions are sigmoid, tanh, ReLU and softmax, which will be covered in later chapters.
+The activation function which comes after the inputs can be a simple threshold function that fires if the input signals exceed a certain value, or a more complex function that can capture nonlinear relationships between inputs and outputs. Some common activation functions are sigmoid, tanh, ReLU and softmax. More information can be found in the [Machine Learning glossary](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html).
 
-Now, our neuron needs to be _activated_ by running the sum through the chosen activation function. We choose a simple threshold function. If the sum of the neuron is $0.5$ or higher, we output $1$, otherwise we output $0$.
+Now, the neuron needs to be _activated_ by running the sum through the chosen activation function. In this example, a simple threshold function is chosen. If the sum of the neuron is $0.5$ or higher, the output will be $1$, otherwise the output will be $0$.
 
 $$ 
 f(x) =
@@ -30,7 +30,7 @@ f(x) =
 \end{cases}
 $$
 
-Now let's calculate the output for the following inputs and weights:
+Now, the output of the neuron with these inputs and weights is calculated as follows:
 
 $$
 \displaylines{
@@ -55,6 +55,8 @@ The output of our neuron, with the given inputs would be $1$.
 
 If we now implement this into a simple Python script, it could look like this:
 
+Implementing this simple neuron logic into Python should be straightforward.
+
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1ifiq6e0aOzHRPsRP8OT0_t_h8MajBrlx#scrollTo=Ktv4RpKJP8mR)
 
 ```python title="single_neuron.py"
@@ -74,4 +76,4 @@ print(activation)
 => 1
 ```
 
-In the next section, we will have a look at actually predicting something with the neuron that we just created.
+In the next section, the neuron that was just created will be used to predict something a bit more meaningful.

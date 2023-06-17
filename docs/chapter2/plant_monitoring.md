@@ -134,6 +134,7 @@ function draw() {
   let output = ((hidden1)*weights[3] + (hidden2)*weights[4])>=0.5 ? 1 : 0
   
   text('Output: ' + output, 510, 200)
+}
 </script>
 <div>
     <div id="sketch-holder"></div>

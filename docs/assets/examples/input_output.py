@@ -15,8 +15,8 @@ led.value = True
 
 # loop endlessly
 while 1:
-    # check if a button is pressed, and print if it is
-    if button1.value is True:
+    # check if a button is pressed, and print if it is (buttons are pulled HIGH, so check for low)
+    if not button1.value:
         print("button1 pressed")
-    if button2.value is True:
+    if not button2.value:
         print("button2 pressed")

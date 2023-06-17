@@ -16,8 +16,9 @@ weight2 = 0.9
 
 # loop endlessly
 while 1:
-    input1 = button1.value
-    input2 = button2.value
+    # Read the button value (buttons are pulled HIGH, so check for low)
+    input1 = not button1.value
+    input2 = not button2.value
 
     sum = (input1 * weight1) + (input2 * weight2)
     if sum >= 0.5:
