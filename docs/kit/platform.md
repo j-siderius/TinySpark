@@ -38,8 +38,6 @@ b = 2
 c = a + b
 
 print(c)
-
-=> 3
 ```
 
 TinyML development board code is hosted on Github, since there is no online platform available for running this code. All TinyML code should be uploaded to the development board to see it in action. Further explanation on running code on the TinyML development kit can be found in the [Programming](programming.md) section of this chapter.
@@ -89,7 +87,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  clear();
 
   image(img, 0, 0)
   

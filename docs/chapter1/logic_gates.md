@@ -113,7 +113,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  clear();
 
   image(img, 0, 0)
   
@@ -166,11 +166,6 @@ for input in inputs:
         activation = 0
     
     print(input, activation)
-
-=> [0, 0]   0
-=> [0, 1]   1
-=> [1, 0]   1
-=> [1, 1]   1
 ```
 
 ---

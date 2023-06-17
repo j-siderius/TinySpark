@@ -1,6 +1,6 @@
 <style> .md-footer__link--next:not([hidden]) { display: none } </style>
 
-# Chapter 4 - Going futher with TinyML
+# Going futher with TinyML
 
 This chapter will be used to give some closing remarks, recommendations for further learning and project ideas to get started on your own TinyML powered projects.
 

@@ -57,7 +57,7 @@ $$
 
 [^3]:<https://en.wikipedia.org/wiki/Layer_(deep_learning)>
 
-Calculating the outputs for some possible input combinations is now a little more complicated than in the previous chapter. As inputs, a few values above and below the threshold are chosen: $22$&deg;C and $30$&deg;C for temperature, $40$&percnt; and $85$&percnt; for humidity. In the calculations below, first the pre-processing of the values is done, then the repective outputs are calculated. Remember that because the activation function used is still a step function, the output will always be either $0$ or $1$ (signifying poor and good growing conditions respectively).
+Calculating the outputs for some possible input combinations is now a little more complicated than in the previous chapter. As inputs, a few values above and below the threshold are chosen: $22$&deg;C and $30$&deg;C for temperature, $40$&percnt; and $85$&percnt; for humidity. In the calculations below, first the pre-processing of the values is done, then the respective outputs are calculated. Remember that because the activation function used is still a step function, the output will always be either $0$ or $1$ (signifying poor and good growing conditions respectively).
 
 $$
 \displaylines{
@@ -68,14 +68,20 @@ $$
 }
 $$
 
-$$
-\displaylines{
-\text{output(-0.3, -3)}=f(f(-0.3*0.3+-3*-0.5)*0.7+f(-0.3*-0.6+-3*0.4)*0.5)=0\\
-\text{output(-0.3, 1)}=f(f(-0.3*0.3+1*-0.5)*0.7+f(-0.3*-0.6+1*0.4)*0.5)=1\\
-\text{output(0.5, -3)}=f(f(0.5*0.3+-3*-0.5)*0.7+f(0.5*-0.6+-3*0.4)*0.5)=1\\
-\text{output(0.5, 1)}=f(f(0.5*0.3+1*-0.5)*0.7+f(0.5*-0.6+1*0.4)*0.5)=0\\
-}
-$$
+??? info "Network calculation results"
+
+  For the weights above, the calculated predictions for the network can be found below.
+
+  $$
+  \displaylines{
+  \text{output(-0.3, -3)}=f(f(-0.3*0.3+-3*-0.5)*0.7+f(-0.3*-0.6+-3*0.4)*0.5)=0\\
+  \text{output(-0.3, 1)}=f(f(-0.3*0.3+1*-0.5)*0.7+f(-0.3*-0.6+1*0.4)*0.5)=1\\
+  \text{output(0.5, -3)}=f(f(0.5*0.3+-3*-0.5)*0.7+f(0.5*-0.6+-3*0.4)*0.5)=1\\
+  \text{output(0.5, 1)}=f(f(0.5*0.3+1*-0.5)*0.7+f(0.5*-0.6+1*0.4)*0.5)=0\\
+  }
+  $$
+
+Using the interactive visualisation below, try to tune the weights so that the prediction is correct for the given inputs. The weights given above can be used as guidance, however there are many different possible combinations of weights to be found that will lead to the desired output.
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 <script>
@@ -87,31 +93,34 @@ function preload() {
 
 let slider1;
 let weights = [
-  0.3,
-  -0.5,
-  -0.6,
-  0.4,
-  0.7,
-  0.5
+  0,0,0,0,0,0
 ];
   
 function setup() {
   const canvas = createCanvas(600, 400);
   canvas.parent('sketch-holder');
 
-  slider2 = select('#weight2')
-  slider6 = select('#weight6')
+  slider1 = select('#weight1');
+  slider2 = select('#weight2');
+  slider3 = select('#weight3');
+  slider4 = select('#weight4');
+  slider5 = select('#weight5');
+  slider6 = select('#weight6');
   
-  sliderT = select('#temp')
-  sliderH = select('#humid')
+  sliderT = select('#temp');
+  sliderH = select('#humid');
 }
 
 function draw() {
-  background(220);
+  clear();
 
-  image(img, -50, -30)
+  image(img, -50, -30);
   
+  weights[0] = slider1.value();
   weights[1] = slider2.value();
+  weights[2] = slider3.value();
+  weights[3] = slider4.value();
+  weights[4] = slider5.value();
   weights[5] = slider6.value();
   
   temperature = sliderT.value();
@@ -126,44 +135,38 @@ function draw() {
   text('w5 = '+ weights[4], 400, 150);
   text('w6 = '+ weights[5], 400, 250);
   
-  text('Temperature: ' + temperature + 'C', 50, 30)
-  text('Humidity: ' + humidity + '%', 225, 30)
+  text('Temperature: ' + temperature + 'C', 50, 30);
+  text('Humidity: ' + humidity + '%', 225, 30);
   
-  let hidden1 = (((temperature-25)/10)*weights[0] + ((humidity-70)/10)*weights[1])>=0.5 ? 1 : 0
-  let hidden2 = (((temperature-25)/10)*weights[2] + ((humidity-70)/10)*weights[3])>=0.5 ? 1 : 0
-  let output = ((hidden1)*weights[3] + (hidden2)*weights[4])>=0.5 ? 1 : 0
+  let hidden1 = (((temperature-25)/10)*weights[0] + ((humidity-70)/10)*weights[1])>=0.5 ? 1 : 0;
+  let hidden2 = (((temperature-25)/10)*weights[2] + ((humidity-70)/10)*weights[3])>=0.5 ? 1 : 0;
+  let output = ((hidden1)*weights[3] + (hidden2)*weights[4])>=0.5 ? 1 : 0;
   
-  text('Output: ' + output, 510, 200)
+  text('Output: ' + output, 510, 200);
 }
 </script>
 <div>
     <div id="sketch-holder"></div>
+    <label for="weight1">Weight 1</label>
+    <input type="range" id="weight1" name="weight1" min="-1" max="1" value="0" step="0.1"><br>
     <label for="weight2">Weight 2</label>
-    <input type="range" id="weight2" name="weight2" min="-1" max="1" value="-0.5" step="0.1">
+    <input type="range" id="weight2" name="weight2" min="-1" max="1" value="0" step="0.1"><br>
+    <label for="weight3">Weight 3</label>
+    <input type="range" id="weight3" name="weight3" min="-1" max="1" value="0" step="0.1"><br>
+    <label for="weight4">Weight 4</label>
+    <input type="range" id="weight4" name="weight4" min="-1" max="1" value="0" step="0.1"><br>
+    <label for="weight5">Weight 5</label>
+    <input type="range" id="weight5" name="weight5" min="-1" max="1" value="0" step="0.1"><br>
   <label for="weight6">Weight 6</label>
-    <input type="range" id="weight6" name="weight6" min="-1" max="1" value="0.5" step="0.1">
+    <input type="range" id="weight6" name="weight6" min="-1" max="1" value="0" step="0.1"><br>
   
   <label for="temp">Temperature</label>
-    <input type="range" id="temp" name="temp" min="20" max="30" value="23" step="1">
+    <input type="range" id="temp" name="temp" min="20" max="30" value="23" step="1"><br>
   <label for="humid">Humidity</label>
     <input type="range" id="humid" name="humid" min="20" max="90" value="40" step="5">
 </div>
 
-<!-- TODO: add tweaking of weights calculation -->
-
-<!-- Now the inputs $1,1$ give the incorrect output of $1$, so again the weights need to be tweaked. Compared to the neuron in the last chapter, tweaking becomes more complicated in this network. Breaking down the calculation into small steps to see where the error occurs is a good way to start. -->
-
-<!-- $$
-\displaylines{
-\text{output_hidden1}=f(1*0.2+1*0.3)=f(0.5)=1\\
-\text{output_hidden2}=f(1*0.5+1*0.6)=f(1.1)=1\\
-\text{output}=f(1*-0.4+1*0.9)=f(0.5)=1\\
-}
-$$ -->
-
-<!-- To ensure the correct output of $0$, the output neuron calculation for needs to result in a value less than $0.5$ (as our activation-function $f(x)$ steps at $0.5$). If the weight $-0.4$ is tweaked to a value of $-0.5$, the activation function will not output $1$ anymore, since the result of the sum is $(1*-0.4 + 1*0.9)=0.4$. -->
-
-Now program this into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API that supplies weather data, such as the [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
+Now program the found weights (of the pre-given ones) into a simple Python script. The weights of the network will be stored inside of an array. The inputs for temperature and humidity can be either input manually, or fetched from an external API that supplies weather data, such as the [Buienradar API](https://www.buienradar.nl/overbuienradar/gratis-weerdata).
 
 [![Open In Colab](../assets/images/colab-badge.svg)](https://colab.research.google.com/drive/1n0ICeDesHq-a74yKYkdi2NV9295TgGCH#scrollTo=kK0VsuHfyz7M)
 
@@ -172,7 +175,7 @@ Now program this into a simple Python script. The weights of the network will be
 import requests
 import json
 
-# store our weights
+# store the weights
 weights = [
     0.3,
     -0.5,
@@ -196,6 +199,12 @@ response = requests.get('https://data.buienradar.nl/2.0/feed/json')
 # the location is currently set to De Bilt in the Netherlands
 temperature = response.json()['actual']['stationmeasurements'][3]['temperature']
 humidity = response.json()['actual']['stationmeasurements'][3]['humidity']
+
+# Alternatively, input the temperature and humidity manually
+# temperature = 23
+# humidity = 65
+
+# Print the inputs
 print(f"Temperature: {temperature}°C, Humidity: {humidity}%")
 
 # pre-processing the inputs
@@ -212,9 +221,6 @@ if output == 1:
     print("Growing conditions are good")
 else:
     print("Growing conditions are poor")
-
-=> "Temperature: 16.7°C, Humidity: 66.0%"
-=> "Growing conditions are good"
 ```
 
 In the next section, the network will be deployed to the TinySpark development board, utilising the on-board environmental sensor.
