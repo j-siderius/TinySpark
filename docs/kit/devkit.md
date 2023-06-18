@@ -25,6 +25,16 @@ The Development kit contains the following sensors and I/O:
 
 The TinyML development kit also contains some miscellaneous other components such as two green LEDs (for showing power), a Debug header (used to initially program and test the development kit) and some passive components such as resistors and capacitors.
 
+??? info "Sensor addresses"
+
+    Due to the nature of connections to the sensors on the TinySpark development board, the address on which they are reachable might be different depending on the board you have. Each sensor can be configured for a different address in software, to remedy this issue.
+    
+    The environmental sensor defaults to: `address=0x76`, however it might also be on `address=0x77`.
+    
+    The light and distance sensor defaults to `address=0x39`, this is the only possible address.
+
+    The inertial motion sensor defaults to `address=0x6b`, however it might also be on  `address=0x6a`.
+
 ??? warning "Microphone use"
 
     Due to driver issues in CircuitPython, it is currently not possible to access the microphone data using this programming language. The microphone is still usable in other programming languages such as [Arduino](https://github.com/atomic14/esp32-i2s-mic-test) and the [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2s.html). Please see the examples in the given links.

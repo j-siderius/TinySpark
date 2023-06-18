@@ -5,7 +5,7 @@ from adafruit_bme280 import basic as adafruit_bme280
 
 # initialise the environmental sensor
 i2c = board.I2C()
-bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
+bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c, address=0x76)
 
 # store the weights
 weights = [
