@@ -1,14 +1,14 @@
 # import the library to take care of the pins
 import board
-from digitalio import DigitalInOut, Direction
+from digitalio import DigitalInOut, Direction, Pull
 
 # initialise the pins
 button1 = DigitalInOut(board.BUTTON1)
 button1.direction = Direction.INPUT
-button1.pull = pull.UP
+button1.pull = Pull.UP
 button2 = DigitalInOut(board.BUTTON2)
 button2.direction = Direction.INPUT
-button2.pull = pull.UP
+button2.pull = Pull.UP
 led = DigitalInOut(board.LED)
 led.direction = Direction.OUTPUT
 
