@@ -1,0 +1,1309 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tiny board, big predictions.">
+      
+      
+        <meta name="author" content="JC Siderius">
+      
+      
+      
+        <link rel="prev" href="../gesture_recognition_data/">
+      
+      
+        <link rel="next" href="../gesture_recognition_deploy/">
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+    
+    
+      
+        <title>Training the model - TinySpark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gesture-recognition-training-the-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="TinySpark" class="md-header__button md-logo" aria-label="TinySpark" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TinySpark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Training the model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/j-siderius/TinySpark" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    j-siderius/TinySpark
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kit/introduction/" class="md-tabs__link">
+        Get started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../chapter1/introduction/" class="md-tabs__link">
+        Chapter 1
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../chapter2/introduction/" class="md-tabs__link">
+        Chapter 2
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+        Chapter 3
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../beyond/introduction/" class="md-tabs__link">
+        Beyond TinySpark
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/project/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="TinySpark" class="md-nav__button md-logo" aria-label="TinySpark" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    TinySpark
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/j-siderius/TinySpark" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    j-siderius/TinySpark
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Get started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kit/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kit/platform/" class="md-nav__link">
+        Platform
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kit/devkit/" class="md-nav__link">
+        TinyML development kit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kit/programming/" class="md-nav__link">
+        Programming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Chapter 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/neuron/" class="md-nav__link">
+        Neuron
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/logic_gates/" class="md-nav__link">
+        Logic gates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/logic_gates_micro/" class="md-nav__link">
+        Logic gates with TinySpark
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Chapter 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter2/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter2/network_connections/" class="md-nav__link">
+        Network connections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter2/plant_monitoring/" class="md-nav__link">
+        Plant monitoring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter2/plant_monitoring_micro/" class="md-nav__link">
+        Plant monitoring with TinySpark
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Chapter 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../training/" class="md-nav__link">
+        Training Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gesture_recognition_data/" class="md-nav__link">
+        Gesture recognition with TinySpark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Training the model
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gesture_recognition_deploy/" class="md-nav__link">
+        Deploying to TinySpark
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Beyond TinySpark
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Beyond TinySpark
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond/introduction/" class="md-nav__link">
+        Dive into TinyML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/project/" class="md-nav__link">
+        Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="gesture-recognition-training-the-model">Gesture recognition - training the model</h1>
+<p>To continue building the neural network that will recognise gestures, the mathemathics as discussed in a <a href="../training/">previous section</a> will be implemented in Python. Then the aquired data from the <a href="../gesture_recognition_data/">last section</a> will be used to train the network. Finally, the tuned weights will be used to run the model on the TinySpark development kit in order to detect gestures.</p>
+<p>For this model, a neural network with two hidden neurons and two output neurons is chosen. Since three measurements are taken, three input neurons are required. For the output, two neurons are chosen, as to give the probability of each of the gestures: <span class="arithmatex">\(\text{output1}=p(\text{moving closer})\)</span> and <span class="arithmatex">\(\text{output2}=p(\text{moving away})\)</span>. The weights are initialised randomly, since it is not possible to determine starting weights by hand in a meaningful way anymore. The randomisation uses a uniform random distribution between <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span>. Below, a depiction of the described neural network can be found.</p>
+<p><img alt="Gesture neural network 3-2-2 with weights" src="../../assets/images/nn_3-2-2_weights.png" /></p>
+<p>With the measurements taken in the <a href="../gesture_recognition_data/">previous section</a>, one example calculation will be performed on a <em>moving closer</em> measurement. All variables that belong together will be grouped into an array for convenience. Additionally, the linear activation function is defined.</p>
+<div class="arithmatex">\[
+\displaylines{
+\text{measurement}=[5.1, 46.7, 120.5]\\
+\text{expected output}=[1, 0]\\
+\text{weights}1=[-0.50, 0.22, -0.91, 0.61, 0.14, -0.48]\\
+\text{weights}2=[0.73, 0.29, -0.29, -0.24]\\
+f(x)=x\\
+}
+\]</div>
+<p>Since the measurement values are quite large, and it is best to keep the weights in a network within managable ranges (e.g. between <span class="arithmatex">\(-2\)</span> and <span class="arithmatex">\(2\)</span>), some pre-processing of the data needs to be performed again. For each measurement in the measurements array, the following calculation will be performed</p>
+<div class="arithmatex">\[
+measurement_{in} = \frac{measurement}{100}
+\]</div>
+<div class="arithmatex">\[
+\displaylines{
+\text{measurement}=[5.1, 46.7, 120.5]\\
+\text{measurement}_{in}=[0.051, 0.467, 1.205]\\
+}
+\]</div>
+<p>The hidden layer can now be determined by using the feedforward calculation.</p>
+<div class="arithmatex">\[
+\displaylines{
+\text{hidden}1=f(\text{measurement}_{in}1 * \text{weights}11 + \text{measurement}_{in}2 * \text{weights}12 + \text{measurement}_{in}3 * \text{weights}13)\\
+\text{hidden}2=f(\text{measurement}_{in}1 * \text{weights}14 + \text{measurement}_{in}2 * \text{weights}15 + \text{measurement}_{in}3 * \text{weights}16)\\
+\text{output}1=f(\text{hidden}1 * \text{weights}21 + \text{hidden}2 * \text{weights}22)\\
+\text{output}2=f(\text{hidden}1 * \text{weights}23 + \text{hidden}2 * \text{weights}24)\\
+}
+\]</div>
+<div class="arithmatex">\[
+\displaylines{
+\text{hidden}1=-1.0193\\
+\text{hidden}2=-0.4819\\
+\text{output}1=-0.8839\\
+\text{output}2=0.4112\\
+}
+\]</div>
+<p>Now the error is calculated. Additionally, since there is more than one output, the <em>Loss</em> is calculated. This serves as a measure of all error in the system (the compound error). There are many different loss functions<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, but for the sake of simplicity, the loss function will just be a summation of the errors.</p>
+<div class="arithmatex">\[
+\displaylines{
+    \text{error}1=\text{output}1 - \text{expected output}1 = -0.8839 - 1 = -1.8839\\
+    \text{error}2=\text{output}2 - \text{expected output}2 = 0.4112 - 0 = 0.4112\\
+    \text{loss}=\text{error}1 + \text{error}2 = -1.4723
+}
+\]</div>
+<p>To now make the model more accurate, backpropagation will be performed. First, the deltas of the output layer weights (<span class="arithmatex">\(\text{weights}2\)</span>) will be calculated. This is again done by going 'backwards' and using the derivatives, as shown in one of the <a href="../training/">previous sections</a>. Recall that the derivative of <span class="arithmatex">\(f(x)\)</span> was <span class="arithmatex">\(1\)</span> and the derivative of the <span class="arithmatex">\(\text{sum}_{weights}\)</span> was the respective input.</p>
+<div class="arithmatex">\[
+\displaylines{
+\delta_{weights}21=\text{error}1*f'(x)*\text{sum}'_{weights21}=-1.8893*1*-1.0193=1.9258\\
+\delta_{weights}22=\text{error}1*f'(x)*\text{sum}'_{weights22}=-1.8893*1*-0.4819=0.9105\\
+\delta_{weights}23=\text{error}2*f'(x)*\text{sum}'_{weights23}=0.4116*1*-1.0193=-0.4195\\
+\delta_{weights}24=\text{error}2*f'(x)*\text{sum}'_{weights24}=0.4116*1*-0.4819=-0.1984\\
+}
+\]</div>
+<p>In order to calculate deltas for the weights in the hidden layer, one more step needs to be considered. Since the weights of the hidden layer neurons affect not only the outcome of their own neuron, but also the outcome of neurons further 'downstream' to them (e.g. in this case the output neurons), their total influence needs to be taken into account when calculating the delta. In practise, this means that first, the backpropagation of the weight for <span class="arithmatex">\(\text{output}1\)</span> needs to be calculated, and then the backpropagation of the weight for <span class="arithmatex">\(\text{output}2\)</span> is calculated. Subsequently, these values are summed. In larger networks, with more hidden layers, these calculations can become pretty big and almost impossible to write down in formulas. That is why many machine learning libraries (such as Tensorflow<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>) do all of this math in the background. But now, for the network with a single hidden layer, the formula will be worked out fully.</p>
+<details class="info">
+<summary>Practical thinking about backpropagation</summary>
+<p>If it is conceptually hard to understand how the backpropagation might function in a larger network, it is best to draw (imaginary) lines from the current delta / weight you are trying to calculate to every possible output of the model. These lines now show which backpropagation calculations need to be performed and summed to get the final delta.</p>
+</details>
+<div class="arithmatex">\[
+\displaylines{
+\delta_{weights}11=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights11} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights11}\\
+\delta_{weights}12=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights12} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights12}\\
+\delta_{weights}13=\text{error}1*f'(x)*\text{sum}'_{weights21}*f'(x)*\text{sum}'_{weights13} + \text{error}2*f'(x)*\text{sum}'_{weights23}*f'(x)*\text{sum}'_{weights13}\\
+\delta_{weights}14=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights14} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights14}\\
+\delta_{weights}15=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights15} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights15}\\
+\delta_{weights}16=\text{error}1*f'(x)*\text{sum}'_{weights22}*f'(x)*\text{sum}'_{weights16} + \text{error}2*f'(x)*\text{sum}'_{weights24}*f'(x)*\text{sum}'_{weights16}\\
+}
+\]</div>
+<div class="arithmatex">\[
+\displaylines{
+\delta_{weights}11=-1.8893*1*-1.0193*1*0.051 + 0.4116*1*-1.0193*1*0.051 = 0.0768\\
+\delta_{weights}12=-1.8893*1*-1.0193*1*0.467 + 0.4116*1*-1.0193*1*0.467 = 0.7034\\
+\delta_{weights}13=-1.8893*1*-1.0193*1*1.205 + 0.4116*1*-1.0193*1*1.205 = 1.8150\\
+\delta_{weights}14=-1.8893*1*-0.4819*1*0.051 + 0.4116*1*-0.4819*1*0.051 = 0.0363\\
+\delta_{weights}15=-1.8893*1*-0.4819*1*0.467 + 0.4116*1*-0.4819*1*0.467 = 0.3326\\
+\delta_{weights}16=-1.8893*1*-0.4819*1*1.205 + 0.4116*1*-0.4819*1*1.205 = 0.8580\\
+}
+\]</div>
+<p>Now that all deltas are calculated, they need to be applied to the weights. As introduced in a previous section, it is often common to multiply the delta to a <em>learning rate</em>, in order to limit the influence of any single measurement (sample) on the model. In this example, a learning rate of 0.01 will be applied. While this may seem small for this single calculation, keep in mind that these training calculations are often performed hundreds or even thousands of times.</p>
+<div class="arithmatex">\[
+\displaylines{
+\text{weight11}_{new}=\text{weight11}-(\text{learning rate}*\delta_{weight11})=-0.50-(0.01*0.0768)=-0.5008\\
+\text{weight12}_{new}=\text{weight12}-(\text{learning rate}*\delta_{weight12})=0.22-(0.01*0.7034)=0.2130\\
+\text{weight13}_{new}=\text{weight13}-(\text{learning rate}*\delta_{weight13})=-0.91-(0.01*1.8150)=-0.9282\\
+\text{weight14}_{new}=\text{weight14}-(\text{learning rate}*\delta_{weight14})=0.61-(0.01*0.0363)=0.6096\\
+\text{weight15}_{new}=\text{weight15}-(\text{learning rate}*\delta_{weight15})=0.14-(0.01*0.3326)=0.1367\\
+\text{weight16}_{new}=\text{weight16}-(\text{learning rate}*\delta_{weight16})=-0.48-(0.01*0.8580)=-0.4886\\
+}
+\]</div>
+<div class="arithmatex">\[
+\displaylines{
+\text{weight21}_{new}=\text{weight21}-(\text{learning rate}*\delta_{weight21})=0.73-(0.01*1.9258)=0.7107\\
+\text{weight22}_{new}=\text{weight22}-(\text{learning rate}*\delta_{weight22})=0.29-(0.01*0.9105)=0.2809\\
+\text{weight22}_{new}=\text{weight23}-(\text{learning rate}*\delta_{weight23})=-0.29-(0.01*-0.4195)=-0.2858\\
+\text{weight23}_{new}=\text{weight24}-(\text{learning rate}*\delta_{weight24})=-0.24-(0.01*-0.1984)=-0.238\\
+}
+\]</div>
+<p>Now that the weights have been tuned, check if the prediction error or loss has improved.</p>
+<div class="arithmatex">\[
+\displaylines{
+\text{hidden}1=-1.0446\\
+\text{hidden}2=-0.4938\\
+\text{output}1=-0.8810\\
+\text{output}2=0.4161\\
+}
+\]</div>
+<div class="arithmatex">\[
+\displaylines{
+\text{error1}_{new}=\text{output}1 - \text{expected output}1 = -0.8810 - 1 = -1.8810\\
+\text{error2}_{new}=\text{output}2 - \text{expected output}2 = 0.4161 - 0 = 0.4161\\
+\text{loss}_{new}=\text{error}1 + \text{error}2 = -1.4649
+}
+\]</div>
+<p>The initial error was <span class="arithmatex">\(-1.4723\)</span> and the new error has reduced to <span class="arithmatex">\(-1.4649\)</span>, meaning that the training was succesful. Now the above steps need to be reproduced many times, and with different measurements, to ensure that the resulting model works for both gestures.</p>
+<hr />
+<p>After manually working out one measurement training cycle, it may become apparent why it is good to let a computer program handle all the calculations. So, the training of the gesture recognition system will be put into a Python program.</p>
+<p>To introduce some variance into the training, the measurements / samples are shuffled for each training cycle. This ensures that the model gets trained evenly and unbiased. The amount of training epochs and the learning rate were chosen after some experimentation. It is interesting to see what changes in the calculation if these are tweaked (when using machine learning libraries, it is also common to tune these parameters until the desired output or loss is achieved). See if the model is able to train successfully on the measurements recorded in the <a href="../gesture_recognition_data/">last section</a> by adding your own measurements into the code.</p>
+<p><a href="https://colab.research.google.com/drive/1iXkkWpqd0snpFr8fS0Kxw4A0u2fysBC8#scrollTo=G1Upy1Z1iPvS"><img alt="Open In Colab" src="../../assets/images/colab-badge.svg" /></a></p>
+<div class="language-python highlight"><span class="filename">training_model.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import the random library to initialise the weights</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">random</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">### Put the recorded measurements here ### </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">moving_closer</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">35.5</span><span class="p">,</span> <span class="mf">120.1</span><span class="p">],</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  <span class="p">[</span><span class="mf">2.625</span><span class="p">,</span> <span class="mf">33.375</span><span class="p">,</span> <span class="mf">127.875</span><span class="p">],</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  <span class="p">[</span><span class="mf">19.0</span><span class="p">,</span> <span class="mf">56.375</span><span class="p">,</span> <span class="mf">127.875</span><span class="p">],</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  <span class="p">[</span><span class="mf">47.875</span><span class="p">,</span> <span class="mf">51.375</span><span class="p">,</span> <span class="mf">127.875</span><span class="p">],</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  <span class="p">[</span><span class="mf">40.125</span><span class="p">,</span> <span class="mf">89.375</span><span class="p">,</span> <span class="mf">127.875</span><span class="p">]</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">]</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">moving_away</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  <span class="p">[</span><span class="mf">104.54</span><span class="p">,</span> <span class="mf">2.375</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  <span class="p">[</span><span class="mf">127.875</span><span class="p">,</span> <span class="mf">33.625</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">],</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  <span class="p">[</span><span class="mf">120.3</span><span class="p">,</span> <span class="mf">39.125</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  <span class="p">[</span><span class="mf">127.875</span><span class="p">,</span> <span class="mf">103.25</span><span class="p">,</span> <span class="mf">23.8</span><span class="p">],</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  <span class="p">[</span><span class="mf">127.875</span><span class="p">,</span> <span class="mf">29.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">]</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1"># Labeling the collected data, outputting the probability of that gesture</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1"># output1 = p(moving closer), output2 = p(moving away)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">moving_closer_labeled</span> <span class="o">=</span> <span class="p">[(</span><span class="n">sample</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">moving_closer</span><span class="p">]</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">moving_away_labeled</span> <span class="o">=</span> <span class="p">[(</span><span class="n">sample</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">moving_away</span><span class="p">]</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># Making one pile of samples from the split samples above</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">moving_closer_labeled</span> <span class="o">+</span> <span class="n">moving_away_labeled</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># Initialise the weights for the network randomly, define the learning rate and epochs (itterations)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)],</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">]</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="c1"># Define the activation function (linear)</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="k">def</span> <span class="nf">activation</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">return</span> <span class="n">x</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="c1"># Run the training for the configured epochs</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="c1"># Shuffle the samples in order to introduces some variance into the training</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="c1"># Define a total loss for the whole system</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="n">loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="c1"># Run through all samples</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>        <span class="c1"># Separate the inputs and expected outputs from the sample, pre-processing the inputs</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">/</span><span class="mi">100</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        <span class="n">expected</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="c1"># Calculate the output of the hidden layer</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="n">hiddens</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>            <span class="n">activation</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>            <span class="n">activation</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">5</span><span class="p">])</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>        <span class="p">]</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="c1"># Calculate the output from the output layer</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>            <span class="n">activation</span><span class="p">(</span><span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>            <span class="n">activation</span><span class="p">(</span><span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">]),</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>        <span class="p">]</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>        <span class="c1"># Calculate the errors</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>        <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>            <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">expected</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>            <span class="n">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">expected</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>        <span class="p">]</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>        <span class="c1"># Add the errors to the system loss</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>        <span class="n">loss</span> <span class="o">+=</span> <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>        <span class="c1"># Calculate the deltas for each weight</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>        <span class="n">deltas</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>            <span class="p">[</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>            <span class="p">],</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>            <span class="p">[</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>                <span class="n">errors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">hiddens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>            <span class="p">]</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>        <span class="p">]</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>        <span class="c1"># Apply the calculated deltas to the weights, keeping in mind the learning rate</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)):</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>            <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">layer</span><span class="p">])):</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>                <span class="n">weights</span><span class="p">[</span><span class="n">layer</span><span class="p">][</span><span class="n">weight</span><span class="p">]</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">deltas</span><span class="p">[</span><span class="n">layer</span><span class="p">][</span><span class="n">weight</span><span class="p">]</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>    <span class="c1"># Print the loss every 10 epochs in order to check progress</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">epoch</span><span class="si">:}</span><span class="s2"> </span><span class="si">{</span><span class="n">loss</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="c1"># Print the final loss of the system and the weights</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">loss</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">weights</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<details class="info">
+<summary>Training problems</summary>
+<p>Training a neural network needs insights and sometimes even luck. Below are some points of attention to look at when the training does not work like intended.</p>
+<ol>
+<li>One or more of the weights of the model have exploded (gone far into the negative or positive), subsequently skewing the whole model. This can be solved by reducing the learning rate, or by limiting the weights.</li>
+<li>One or more of the samples used in training are skewed or an outlier. This can lead to the model not being able to reach acceptably tuned weights. This can be solved by excluding edge cases, or by changing the network structure (shape).</li>
+<li>The model outputs <code>NaN</code> (Not a Number), if the model is not able to output the weights anymore, this usually means that they have exploded (see point 1 above).</li>
+<li>The model does not seem to reach an acceptable loss, even after hundreds or thousands of epochs. This could be caused because a network structure (shape) was chosen that does not fit well with the data it tries to predict.</li>
+</ol>
+</details>
+<p>If the loss at the end of training is satisfactory (e.g. it has decreased a lot), the weights seem to be tuned well. Now they can be loaded into a model that runs on the TinySpark development kit, predicting gestures.</p>
+<hr />
+<p>In the next section, the model will be transferred to the TinySpark development kit, and the trained weights will be loaded, in order to test the trained model.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Loss_function">https://en.wikipedia.org/wiki/Loss_function</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../gesture_recognition_data/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gesture recognition with TinySpark" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Gesture recognition with TinySpark
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../gesture_recognition_deploy/" class="md-footer__link md-footer__link--next" aria-label="Next: Deploying to TinySpark" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Deploying to TinySpark
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 JC Siderius
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "attr_list", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.suggest", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a51614de.min.js"></script>
+      
+        
+          <script src="../../assets/javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>
